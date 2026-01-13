@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission & Vision | Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--text-light);
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path fill="white" d="M0,0 L100,0 L100,100 Z"/><path fill="white" d="M0,0 L0,100 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Philosophy Container - Updated from original */
+        .philosophy-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: -50px auto 60px;
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+        }
+
+        .philosophy-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--secondary-green);
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 107, 82, 0.25);
+        }
+
+        .philosophy-icon {
+            background: var(--light-green);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-green);
+            font-size: 2.2rem;
+        }
+
+        .philosophy-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Mission & Vision Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--light-green);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-green);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .content-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .content-text h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Values Section */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--text-light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--earth-brown);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            color: var(--earth-brown);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .value-card h4 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--text-light);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--text-light);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--text-light);
+            color: var(--primary-green);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .philosophy-container {
+                margin-top: 30px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .philosophy-card {
+                min-width: 100%;
+            }
+            
+            .content-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1>Mission & Vision</h1>
+            <p class="subtitle">Guiding principles that shape our commitment to sustainable natural resource management and community empowerment</p>
+        </div>
+    </header>
+
+    <!-- Philosophy Cards -->
+    <div class="container">
+        <div class="philosophy-container">
+            <!-- Philosophy -->
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Our Philosophy</h3>
+                <p>Offering quality education, training, research, and outreach programs to empower communities for the improvement of their social well-being while assuring environmental sustainability.</p>
+            </div>
+            
+            <!-- Mission -->
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>The mission of the University is to be a University for research, education, teaching, and community services in management of mineral and natural resources.</p>
+            </div>
+            
+            <!-- Vision -->
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>The vision is to be an educated and transformed society in the sustainability of natural resources.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expanded Mission Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Mission in Detail</h2>
+            <div class="content-wrapper">
+                <div class="content-text">
+                    <h3>Advancing Resource Management Through Education</h3>
+                    <p>Our primary mission is to provide world-class education in natural resource management, equipping students with the knowledge and skills needed to address the complex challenges of sustainable development.</p>
+                    <p>We are committed to fostering innovative research that bridges scientific discovery with practical application, ensuring that our findings contribute directly to improved resource management practices.</p>
+                    <p>Through community engagement and outreach programs, we extend our expertise beyond campus boundaries, working collaboratively with local communities to develop sustainable solutions that balance ecological, social, and economic needs.</p>
+                </div>
+                <div class="content-image">
+                    <!-- Using a placeholder image related to education and nature -->
+                    <div style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-graduation-cap" style="font-size: 8rem; opacity: 0.7;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Vision Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Vision for the Future</h2>
+            <div class="content-wrapper">
+                <div class="content-image">
+                    <!-- Using a placeholder image related to sustainability -->
+                    <div style="background: linear-gradient(135deg, var(--earth-brown), var(--secondary-green)); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-seedling" style="font-size: 8rem; opacity: 0.7;"></i>
+                    </div>
+                </div>
+                <div class="content-text">
+                    <h3>A Transformed Society Through Sustainability</h3>
+                    <p>We envision a future where communities are empowered with knowledge and tools to manage natural resources responsibly, ensuring their availability for generations to come.</p>
+                    <p>Our vision extends beyond academic excellence to societal transformation, where sustainable practices become integrated into all aspects of community life, from agriculture and mining to energy production and conservation.</p>
+                    <p>We strive to be a catalyst for positive change, fostering a global network of environmentally conscious leaders who will champion sustainable resource management in their respective fields and communities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Sustainability</h4>
+                    <p>We prioritize long-term ecological balance in all our programs and initiatives.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Excellence</h4>
+                    <p>We maintain the highest standards in education, research, and community service.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Community</h4>
+                    <p>We engage and empower communities as partners in sustainable development.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Innovation</h4>
+                    <p>We foster creative solutions to complex resource management challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Become part of a community dedicated to creating a sustainable future through responsible natural resource management. Explore our programs, research initiatives, and community partnerships.</p>
+            <a href="#" class="cta-button">Explore Opportunities</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
+            <p>Committed to sustainability, education, and community transformation.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add simple hover effect for philosophy cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.philosophy-card, .value-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                });
+            });
+            
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe content sections
+            const sections = document.querySelectorAll('.content-wrapper, .values-container');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

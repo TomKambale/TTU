@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee Template | University Council</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--text-light);
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path fill="white" d="M0,0 L100,0 L100,100 Z"/><path fill="white" d="M0,0 L0,100 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .committee-breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .breadcrumb-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--text-light);
+        }
+
+        .breadcrumb-separator {
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .committee-subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Committee Info Section */
+        .committee-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 50px 0;
+            align-items: flex-start;
+        }
+
+        .committee-meta {
+            flex: 1;
+            min-width: 300px;
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .meta-item {
+            display: flex;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .meta-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .meta-icon {
+            background: var(--light-green);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .meta-content h3 {
+            color: var(--dark-green);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .meta-content p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .committee-overview {
+            flex: 2;
+            min-width: 300px;
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px var(--shadow);
+            border-left: 5px solid var(--secondary-green);
+        }
+
+        .committee-overview h2 {
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-green);
+        }
+
+        .committee-overview p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Mandate Section */
+        .mandate-section {
+            padding: 60px 0;
+            background-color: var(--light-green);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-green);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .mandate-content {
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .mandate-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .mandate-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .mandate-list {
+            list-style-type: none;
+            margin: 30px 0;
+        }
+
+        .mandate-list li {
+            padding: 12px 0 12px 40px;
+            position: relative;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .mandate-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mandate-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 25px;
+            height: 25px;
+            background-color: var(--light-green);
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Members Section */
+        .members-section {
+            padding: 80px 0;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .member-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--secondary-green);
+        }
+
+        .member-card.chairperson {
+            border-top: 5px solid var(--earth-brown);
+            position: relative;
+        }
+
+        .member-card.chairperson::before {
+            content: "Chairperson";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--earth-brown);
+            color: var(--text-light);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 107, 82, 0.25);
+        }
+
+        .member-image-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid var(--light-green);
+            background-color: var(--light-green);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card.chairperson .member-image-container {
+            border-color: rgba(139, 115, 85, 0.3);
+            background-color: rgba(139, 115, 85, 0.1);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-image {
+            transform: scale(1.05);
+        }
+
+        .image-placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary-green);
+            font-size: 3.5rem;
+            opacity: 0.7;
+        }
+
+        .member-card.chairperson .image-placeholder {
+            color: var(--earth-brown);
+        }
+
+        .member-details h3 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+
+        .member-details .position {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .member-card.chairperson .member-details .position {
+            color: var(--earth-brown);
+        }
+
+        .member-details .role {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: rgba(232, 245, 240, 0.5);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* Committee Functions */
+        .functions-section {
+            padding: 60px 0;
+            background-color: var(--light-green);
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .function-card {
+            background: var(--text-light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .function-icon {
+            background: var(--light-green);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+        }
+
+        .function-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .function-card p {
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Back to Council Button */
+        .back-button {
+            display: inline-block;
+            background-color: var(--secondary-green);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .committee-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .member-image-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .member-details h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .committee-info {
+                flex-direction: column;
+            }
+            
+            .members-grid, .functions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mandate-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1 id="committee-name">Sealing, Resource Mobilization and Academic Affairs Committee</h1>
+            <p class="committee-subtitle" id="committee-description">A specialized committee of the University Council focusing on ###.</p>
+        </div>
+    </header>
+
+    <!-- Committee Info Section -->
+    <section class="container">
+        <div class="committee-info">
+            <div class="committee-meta">
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="meta-content">
+                        <h3>Committee Type</h3>
+                        <p>Standing Committee of Council</p>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="meta-content">
+                        <h3>Meeting Schedule</h3>
+                        <p>Quarterly meetings with additional sessions as needed</p>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="meta-content">
+                        <h3>Reports To</h3>
+                        <p>University Council</p>
+                    </div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="meta-content">
+                        <h3>Primary Focus</h3>
+                        <p id="committee-focus">[Committee Focus Area]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="committee-overview">
+                <h2>Committee Overview</h2>
+                <p id="committee-overview-text">The Sealing, Resource Mobilization and Academic Affairs Committee is a standing committee of the University Council established to provide specialized oversight and guidance in its area of responsibility. The committee plays a critical role in ensuring that the University's operations align with its strategic objectives and governance policies.</p>
+                <p>The committee consists of three Council members appointed based on their expertise and experience relevant to the committee's mandate. The Chairperson of the committee is responsible for leading meetings and ensuring the committee fulfills its responsibilities effectively.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mandate Section -->
+    <section class="mandate-section">
+        <div class="container">
+            <h2 class="section-title">Committee Mandate</h2>
+            <div class="mandate-content">
+                <h3>Primary Purpose and Authority</h3>
+                <p id="mandate-text">The Sealing, Resource Mobilization and Academic Affairs Committee is established by the University Council with the authority to oversee and make recommendations on matters related to [committee's area of focus]. The committee's mandate includes ensuring compliance with relevant policies, regulations, and best practices in its domain.</p>
+                
+                <h3 style="margin-top: 30px;">Specific Responsibilities</h3>
+                <!-- <ul class="mandate-list" id="responsibilities-list">
+                    <li>Review and recommend policies related to [committee focus area]</li>
+                    <li>Monitor implementation of approved policies and procedures</li>
+                    <li>Provide oversight on [specific committee functions]</li>
+                    <li>Review and recommend annual plans and budgets for approval</li>
+                    <li>Assess performance and outcomes against established targets</li>
+                    <li>Identify risks and recommend appropriate mitigation strategies</li>
+                    <li>Review and recommend reports for presentation to Council</li>
+                </ul> -->
+                <p>Reviewed Terms of Reference for the Sealing, Resource Mobilization and Academic Affairs Committee as follows:
+
+Sealing
+
+To consider and authorize on behalf of Council the application of the University Seal on academic Documents and any other document as the case may require and ensure security of the documents.
+Resource Mobilization
+
+Approve Policies to Guide resource mobilisation
+To provide strategic direction and oversight for resource mobilization efforts in TTU
+Ensure alignment of resource mobilization activities with TTU’s mission and strategic goals and compliance with legal and ethical standards;
+Support the development and implementation of resource mobilization initiatives
+Monitor and evaluate the effectiveness of resource mobilization strategies and initiatives.
+Academic Compliance
+
+Oversight on compliance with CUE guidelines.
+Receive and consider reports from Senate and make recommendations to Council on Academic, Research, innovation, and community outreach Matters.
+To develop and review statutes for the University
+To deal with any other matter that may be referred</p>
+                <p>The committee operates within the powers delegated by the University Council and reports regularly to the Council on its activities, findings, and recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section class="members-section">
+        <div class="container">
+            <h2 class="section-title">Committee Members</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 20px; font-size: 1.1rem;">
+                The committee comprises three Council members appointed based on their expertise and experience relevant to the committee's mandate.
+            </p>
+            
+            <div class="members-grid" id="members-container">
+                <!-- Member cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee Functions -->
+    <section class="functions-section">
+        <div class="container">
+            <h2 class="section-title">Key Functions</h2>
+            <div class="functions-grid">
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Strategic Oversight</h3>
+                    <p>Provide guidance on strategic direction and monitor implementation of approved plans within the committee's area of responsibility.</p>
+                </div>
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Policy Review</h3>
+                    <p>Review existing policies and recommend new policies to ensure alignment with best practices and regulatory requirements.</p>
+                </div>
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Risk Management</h3>
+                    <p>Identify potential risks and recommend appropriate mitigation strategies to protect the University's interests.</p>
+                </div>
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Resource Oversight</h3>
+                    <p>Review financial and resource allocation to ensure efficient and effective use within the committee's domain.</p>
+                </div>
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Compliance Monitoring</h3>
+                    <p>Monitor compliance with relevant laws, regulations, and internal policies, recommending corrective actions as needed.</p>
+                </div>
+                <div class="function-card">
+                    <div class="function-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Performance Evaluation</h3>
+                    <p>Assess performance against established metrics and targets, recommending improvements to enhance outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Council Button -->
+    <div class="container" style="text-align: center;">
+        <a href="administration.html" class="back-button">
+            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> Back to University Council
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
+            <p>University Council Committees - Specialized Governance and Oversight</p>
+        </div>
+    </footer>
+
+</body>
+</html>

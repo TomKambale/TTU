@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Council | Natural Resources University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--text-light);
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path fill="white" d="M0,0 L100,0 L100,100 Z"/><path fill="white" d="M0,0 L0,100 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Council Structure */
+        .council-structure {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: -50px auto 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .council-card {
+            background: var(--text-light);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--secondary-green);
+        }
+
+        .council-card.chairman {
+            border-top: 5px solid var(--earth-brown);
+        }
+
+        .council-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 107, 82, 0.25);
+        }
+
+        .council-icon {
+            background: var(--light-green);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--primary-green);
+            font-size: 2.2rem;
+        }
+
+        .council-card.chairman .council-icon {
+            background-color: rgba(139, 115, 85, 0.1);
+            color: var(--earth-brown);
+        }
+
+        .council-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .council-card .position {
+            color: var(--secondary-green);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .council-card .name {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .council-card .committee {
+            color: var(--earth-brown);
+            font-style: italic;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--light-green);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--dark-green);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        /* Council Members Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .member-card {
+            background: var(--text-light);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--secondary-green);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .member-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .member-card .position {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .member-card .role {
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Committees Section */
+        .committees-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            .committees-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .committee-card {
+            background: var(--text-light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--earth-brown);
+        }
+
+        .committee-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light-green);
+        }
+
+        .committee-members {
+            list-style-type: none;
+        }
+
+        .committee-member {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .committee-member:last-child {
+            border-bottom: none;
+        }
+
+        .member-icon {
+            background: var(--light-green);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+
+        .member-details h4 {
+            color: var(--dark-green);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .member-details .position {
+            color: var(--earth-brown);
+            font-size: 0.95rem;
+        }
+
+        /* Council Table */
+        .council-table-container {
+            overflow-x: auto;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .council-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--text-light);
+        }
+
+        .council-table thead {
+            background: linear-gradient(to right, var(--primary-green), var(--secondary-green));
+            color: var(--text-light);
+        }
+
+        .council-table th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .council-table tbody tr {
+            border-bottom: 1px solid #eee;
+        }
+
+        .council-table tbody tr:nth-child(even) {
+            background-color: rgba(232, 245, 240, 0.3);
+        }
+
+        .council-table tbody tr:hover {
+            background-color: rgba(30, 107, 82, 0.05);
+        }
+
+        .council-table td {
+            padding: 16px 15px;
+            color: var(--text-dark);
+        }
+
+        .council-table .name {
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        .council-table .position {
+            color: var(--primary-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .council-structure {
+                margin-top: 30px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .council-card, .member-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <h1>University Council</h1>
+            <p class="subtitle">Governing body providing strategic direction and oversight for the University's mission and operations</p>
+        </div>
+    </header>
+
+    <!-- Council Structure -->
+    <div class="container">
+        <div class="council-structure">
+            <!-- Chairman of Council -->
+            <div class="council-card chairman">
+                <div class="council-image-container">
+                    <!-- Actual image would be here in production -->
+                    <img src="/src/chair.png" alt="Prof. Issaac Mbeche" class="council-image">
+                    
+                    <!-- Fallback placeholder for missing image -->
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="image-overlay"></div>
+                </div>
+                <h3>Chairman of Council</h3>
+                <div class="name">Prof. Issaac Mbeche</div>
+                <p class="committee">Council Chairperson</p>
+                <p>Providing leadership and guidance to the University Council in fulfilling its governance responsibilities.</p>
+            </div>
+            
+
+        </div>
+        <div class="container">
+            <!-- Vice Chancellor -->
+            <div class="council-card">
+                <div class="council-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Secretary to Council</h3>
+                <div class="name">Prof. Fred Simiyu Barasa</div>
+                <div class="position">Vice Chancellor</div>
+                <p>Chief Executive Officer and Secretary to the University Council, responsible for implementing Council decisions.</p>
+            </div>
+            
+            <!-- Council Committees -->
+            <div class="council-card">
+                <div class="council-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Council Committees</h3>
+                <p>The Council operates through specialized committees that oversee key areas of University governance and operations.</p>
+                <p class="committee">Four Standing Committees</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Council Chairpersons Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Council Chairpersons</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
+                Independent Council Members who chair the various Council Committees, providing specialized oversight in key areas of University governance.
+            </p>
+            
+            <div class="members-grid">
+                <!-- Chairperson 1 -->
+                <div class="member-card">
+                    <h3>Mr. Stephen Kilungya</h3>
+                    <div class="position">Independent Council Member</div>
+                    <div class="role">Chair – Human Resource & Development (HRD) Committee</div>
+                    <p class="committee" style="margin-top: 15px;">Oversees HR policies, staff development, and organizational capacity building.</p>
+                </div>
+                
+                <!-- Chairperson 2 -->
+                <div class="member-card">
+                    <h3>Mr. Nashon Nyona</h3>
+                    <div class="position">Independent Council Member</div>
+                    <div class="role">Chair – Audit, Governance and Risk Management (AGR) Committee</div>
+                    <p class="committee" style="margin-top: 15px;">Ensures financial integrity, governance compliance, and risk mitigation.</p>
+                </div>
+                
+                <!-- Chairperson 3 -->
+                <div class="member-card">
+                    <h3>Ms. Nahida Mohamed</h3>
+                    <div class="position">Independent Council Member</div>
+                    <div class="role">Chair – Finance, Development & General Purpose (FDGP) Committee</div>
+                    <p class="committee" style="margin-top: 15px;">Manages financial oversight, budgeting, and strategic development planning.</p>
+                </div>
+                
+                <!-- Chairperson 4 -->
+                <div class="member-card">
+                    <h3>Ms. Rabia Mere Salim</h3>
+                    <div class="position">Independent Council Member</div>
+                    <div class="role">Chair – Sealing, Resource Mobilization and Academic Affairs Committee</div>
+                    <p class="committee" style="margin-top: 15px;">Oversees academic standards, resource mobilization, and quality assurance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Council Members Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Council Members</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
+                The full composition of the University Council, including independent members and representatives from key stakeholders.
+            </p>
+            
+            <div class="council-table-container">
+                <table class="council-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">Name</th>
+                            <th width="60%">Position / Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="name">Prof. Isaac Meroka Mbeche</td>
+                            <td class="position">Chairman of Council</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Mr. Stephen Kilungya</td>
+                            <td>Independent Council Member and Chair – Human Resource & Development (HRD) Committee</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Mr. Nashon Nyona</td>
+                            <td>Independent Council Member and Chair – Audit, Governance and Risk Management (AGR) Committee</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Ms. Nahida Mohamed</td>
+                            <td>Independent Council Member and Chair – Finance, Development & General Purpose (FDGP) Committee</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Ms. Rabia Mere Salim</td>
+                            <td>Independent Council Member and Chair – Sealing, Resource Mobilization and Academic Affairs Committee</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Ms. Emma Kibiro</td>
+                            <td class="position">Independent Council Member</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Dr. David Watene</td>
+                            <td class="position">Alternate Member to the PS, Higher Education and Research</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Prof. Fred Simiyu Barasa</td>
+                            <td class="position">Vice Chancellor and Secretary to the Council</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Council Committees Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Council Committees</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
+                Specialized committees established by the Council to provide focused oversight in key functional areas.
+            </p>
+            
+            <div class="committees-container">
+                <!-- Committee 1 -->
+                <div class="committee-card">
+                    <h3>Human Resource and Development Committee</h3>
+                    <ul class="committee-members">
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Mr. Stephen Kilungya</h4>
+                                <div class="position">Chairperson</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Dr. David Watene</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Ms. Emma Kibiro</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Committee 2 -->
+                <div class="committee-card">
+                    <h3>Audit, Governance and Risk Management (AGR) Committee</h3>
+                    <ul class="committee-members">
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Mr. Nashon Nyona</h4>
+                                <div class="position">Chairperson</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Ms. Rabia Mere Salim</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Ms. Emma Kibiro</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Committee 3 -->
+                <div class="committee-card">
+                    <h3>Finance, Development & General Purpose (FDGP) Committee</h3>
+                    <ul class="committee-members">
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Ms. Nahida Mohamed</h4>
+                                <div class="position">Chairperson</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Dr. David Watene</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Mr. Stephen Kilungya</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Committee 4 -->
+                <div class="committee-card">
+                    <h3>Sealing, Resource Mobilization and Academic Affairs Committee</h3>
+                    <ul class="committee-members">
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Ms. Rabia Mere Salim</h4>
+                                <div class="position">Chairperson</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Mr. Nashon Nyona</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                        <li class="committee-member">
+                            <div class="member-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="member-details">
+                                <h4>Mr. Stephen Kilungya</h4>
+                                <div class="position">Member</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Natural Resources University. All rights reserved.</p>
+            <p>University Council - Governing Body for Strategic Direction and Oversight</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add simple hover effect for cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.council-card, .member-card, .committee-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                });
+            });
+            
+            // Add animation on scroll for committee cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe committee cards
+            const committeeCards = document.querySelectorAll('.committee-card');
+            committeeCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Add alternating row colors to table for better readability
+            const tableRows = document.querySelectorAll('.council-table tbody tr');
+            tableRows.forEach((row, index) => {
+                if (index % 2 === 0) {
+                    row.style.backgroundColor = 'rgba(232, 245, 240, 0.3)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

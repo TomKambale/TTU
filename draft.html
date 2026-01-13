@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taita Taveta University - 2025 KCSE Admissions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Navbar Styles */
+        .logo img {
+            height: 50px; /* Adjust to match your design */
+            width: auto; /* Maintains aspect ratio */
+            margin-right: 15px; /* Space between logo and text */
+            vertical-align: middle; /* Aligns image with text */
+        }
+        .navbar {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-green);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section with Congratulatory Message */
+        .hero-section {
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+        }
+        
+        .congratulations {
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: bounceIn 1.5s ease-out, glow 2s infinite alternate;
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            70% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(30, 107, 82, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(46, 204, 113, 0.8), 0 0 30px rgba(46, 204, 113, 0.4);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-green);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-dark);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px var(--shadow);
+            border: 2px solid var(--primary-green);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px var(--shadow);
+        }
+        
+        /* Departments Section */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+            border-radius: 2px;
+        }
+        
+        .departments-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .department-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .department-icon {
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .department-info {
+            padding: 1.5rem;
+        }
+        
+        .department-name {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+        
+        .department-description {
+            color: var(--text-dark);
+            margin-bottom: 1.2rem;
+        }
+        
+        .learn-more {
+            color: var(--secondary-green);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .learn-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .learn-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Facilities Section */
+        .facilities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .facility-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px var(--shadow);
+            position: relative;
+        }
+        
+        .facility-image {
+            height: 220px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .facility-card:hover .facility-image {
+            transform: scale(1.05);
+        }
+        
+        .facility-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(30, 107, 82, 0.9), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .facility-card:hover .facility-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .facility-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-green);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(30, 107, 82, 0.2);
+        }
+        
+        .carousel-slides {
+            display: flex;
+            width: 300%; /* 3 slides = 300% */
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+        
+        .carousel-slide {
+            position: relative;
+            width: 33.3333%; /* Each slide takes 1/3 of the container */
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay);
+            display: flex;
+            align-items: center;
+            padding: 0 5rem;
+        }
+        
+        .slide-content {
+            max-width: 600px;
+            color: var(--text-light);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+        
+        .carousel-slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .slide-tag {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .slide-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .slide-link {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-green);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slide-link:hover {
+            background-color: transparent;
+            color: var(--light-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation arrows */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn {
+            left: 2rem;
+        }
+        
+        .next-btn {
+            right: 2rem;
+        }
+        
+        /* Slide indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 10;
+        }
+        
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: var(--accent-green);
+            transform: scale(1.3);
+            border-color: white;
+        }
+        
+        /* Slide counter */
+        .slide-counter {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            z-index: 10;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 992px) {
+            .carousel-container {
+                height: 500px;
+            }
+            
+            .slide-overlay {
+                padding: 0 3rem;
+            }
+            
+            .slide-title {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 450px;
+                border-radius: 0;
+            }
+            
+            .slide-overlay {
+                padding: 0 2rem;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .slide-description {
+                font-size: 1.1rem;
+            }
+            
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .prev-btn {
+                left: 1rem;
+            }
+            
+            .next-btn {
+                right: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .carousel-container {
+                height: 400px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 1.2rem;
+            }
+            
+            .slide-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .slide-link {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Animation for automatic slideshow */
+        @keyframes fadeIn {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+        
+        .carousel-slide {
+            animation: fadeIn 1s ease;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .congratulations {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .congratulations {
+                font-size: 2rem;
+            }
+            
+            .departments-container,
+            .facilities-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <!-- <i class="fas fa-university"></i> -->
+                 <img src="/src/ttu logo edit.jpg" alt="Taita Taveta University Logo">
+                Taita Taveta
+     University
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#departments">Schools</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="library.html">Library</a></li>
+                <!-- target="_blank" -->
+                <li><a href="campustour.html">Campus Tour</a></li>
+                <li><a href="healthunit.html">Health Unit</a></li>
+                <li><a href="alumni.html">Alumni</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section with Congratulatory Message -->
+        <section id="home" class="hero-section">
+            <h1 class="congratulations">Congratulations, 2025 KCSE Graduates!</h1>
+            <p class="subtitle">You've successfully passed your exams and qualified for university education. Your journey to excellence starts here!</p>
+            <p class="hero-description">At Taita Taveta University, we celebrate your academic achievement and welcome you to explore the diverse opportunities that await. Join our community of scholars and innovators as you embark on the next chapter of your educational journey.</p>
+            <a href="#departments" class="cta-button">Explore Our Programs <i class="fas fa-arrow-right"></i></a>
+        </section>
+
+        <div class="carousel-container">
+        <!-- Slides container -->
+        <div class="carousel-slides">
+            <!-- Slide 1: Campus Life -->
+            <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <span class="slide-tag">Campus Life</span>
+                        <h2 class="slide-title">Your Home Away From Home</h2>
+                        <p class="slide-description">Experience vibrant campus life with modern residences, diverse student clubs, and social events that create lifelong friendships and unforgettable memories.</p>
+                        <a href="campus-life.html" class="slide-link">Explore Campus Life <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Academic Excellence -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <span class="slide-tag">Academic Excellence</span>
+                        <h2 class="slide-title">Shape Your Future With Us</h2>
+                        <p class="slide-description">Learn from leading experts with cutting-edge facilities and industry partnerships that prepare you for success in your chosen career path.</p>
+                        <a href="academic-programs.html" class="slide-link">View Our Programs <i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Career Success -->
+            <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');">
+                <div class="slide-overlay">
+                    <div class="slide-content">
+                        <span class="slide-tag">Career Success</span>
+                        <h2 class="slide-title">Launch Your Dream Career</h2>
+                        <p class="slide-description">Join our network of successful alumni with 94% employment rate within 6 months of graduation and strong industry connections across multiple sectors.</p>
+                        <a href="career-services.html" class="slide-link">See Career Outcomes <i class="fas fa-briefcase"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <button class="carousel-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Slide indicators -->
+        <div class="carousel-indicators">
+            <div class="indicator active" data-slide="0"></div>
+            <div class="indicator" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+        </div>
+        
+        <!-- Slide counter -->
+        <div class="slide-counter">
+            <span class="current-slide">1</span> / <span class="total-slides">3</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const slidesContainer = document.querySelector('.carousel-slides');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const indicators = document.querySelectorAll('.indicator');
+            const currentSlideElement = document.querySelector('.current-slide');
+            const totalSlidesElement = document.querySelector('.total-slides');
+            
+            // Configuration
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let autoSlideInterval;
+            const slideInterval = 5000; // 5 seconds
+            
+            // Set total slides in counter
+            totalSlidesElement.textContent = totalSlides;
+            
+            // Function to update slide position
+            function goToSlide(slideIndex) {
+                // Ensure index is within bounds
+                if (slideIndex < 0) slideIndex = totalSlides - 1;
+                if (slideIndex >= totalSlides) slideIndex = 0;
+                
+                // Update current slide
+                currentSlide = slideIndex;
+                
+                // Move slides container
+                slidesContainer.style.transform = `translateX(-${currentSlide * 33.3333}%)`;
+                
+                // Update active classes
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Update indicators
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+                
+                // Update counter
+                currentSlideElement.textContent = currentSlide + 1;
+                
+                // Reset auto-slide timer
+                resetAutoSlide();
+            }
+            
+            // Function for next slide
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+            
+            // Function for previous slide
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+            
+            // Function to start auto-sliding
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, slideInterval);
+            }
+            
+            // Function to reset auto-slide timer
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+            
+            // Event listeners for buttons
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Event listeners for indicators
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide'));
+                    goToSlide(slideIndex);
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+            
+            // Pause auto-slide on hover
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', function() {
+                clearInterval(autoSlideInterval);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', startAutoSlide);
+            
+            // Initialize auto-slide
+            startAutoSlide();
+            
+            // Initialize first slide
+            goToSlide(0);
+        });
+    </script>
+
+        <!-- Departments Section -->
+        <section id="departments">
+            <h2 class="section-title">Our Schools </h2>
+            <div class="departments-container">
+                <!-- Department 1 -->
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">School of Science and Informatics</h3>
+                        <p class="department-description">Cutting-edge programs in software engineering, data science, artificial intelligence, and cybersecurity. Our graduates are leaders in the tech industry.</p>
+                        <a href="https://schools.ttu.ac.ke/school/1/" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Department 2 -->
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">School of Mines and Engineering</h3>
+                        <p class="department-description">State-of-the-art programs in mining, civil, mechanical, and electrical engineering. Hands-on training with modern technology and industry practices.</p>
+                        <a href="#" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Department 3 -->
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">School of Business, Economics and Social Sciences</h3>
+                        <p class="department-description">Explore programs in business administration, economics, sociology, and political science. Prepare for leadership roles in the corporate and public sectors.</p>
+                        <a href="https://schools.ttu.ac.ke/school/3/" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Department 4 -->
+                <!-- <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">Business & Law</h3>
+                        <p class="department-description">Dynamic programs in business administration, economics, accounting, and law with strong industry connections and internship opportunities.</p>
+                        <a href="#" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div> -->
+                
+                <!-- Department 5 -->
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">School of Education</h3>
+                        <p class="department-description">Comprehensive teacher training and educational research programs. Develop the skills to shape future generations through innovative teaching methods.</p>
+                        <a href="https://schools.ttu.ac.ke/school/5/" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Department 6 -->
+                <div class="department-card">
+                    <div class="department-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="department-info">
+                        <h3 class="department-name">School of Agriculture, Earth and Environmental Sciences</h3>
+                        <p class="department-description">Sustainable programs in agricultural science, environmental studies, wildlife conservation, and food technology.</p>
+                        <a href="https://schools.ttu.ac.ke/school/2/" class="learn-more">Learn more <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section id="facilities">
+            <h2 class="section-title">Our World-Class Facilities</h2>
+            <div class="facilities-container">
+                <!-- Facility 1 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Modern Library & Research Center</h3>
+                        <p>Over 500,000 volumes, digital resources, and 24/7 study spaces for academic excellence.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 2 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Advanced Science Laboratories</h3>
+                        <p>State-of-the-art equipment for cutting-edge research in all scientific disciplines.</p>
+                    </div>
+                </div>
+                
+                <!-- J.J. Maghanga -->
+
+                <!-- Facility 3 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Sports & Recreation Complex</h3>
+                        <p>Olympic-sized pool, indoor courts, fitness center, and outdoor athletic fields.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 4 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Innovation & Technology Hub</h3>
+                        <p>Makerspaces, robotics labs, and collaboration zones for tech entrepreneurs.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 5 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1638828229405-8db92ff35af6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHN0dWRlbnQlMjBob3N0ZWx8ZW58MHx8MHx8fDA%3D');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Student Accommodation</h3>
+                        <p>Comfortable, secure, and modern residential facilities with 24/7 support services.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 6 -->
+                <div class="facility-card">
+                    <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="facility-overlay">
+                        <h3 class="facility-name">Performing Arts Center</h3>
+                        <p>Theaters, music studios, and exhibition spaces for creative expression.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+                <!-- J.J. Maghanga -->
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Taita Taveta
+         University</h3>
+                <p>Empowering the next generation of leaders, innovators, and change-makers through excellence in education, research, and community engagement.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#departments">Schools</a></li>
+                    <li><a href="#facilities">Campus Facilities</a></li>
+                    <li><a href="https://admissions.ttu.ac.ke/">Admissions</a></li>
+                    <li><a href="https://www.ttu.ac.ke/scholarships/">Scholarships & Financial Aid</a></li>
+                    <li><a href="https://reg.ttu.ac.ke/">Student Resources</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> Mariwenyi, Taita Taveta County</li>
+                    <li><i class="fas fa-phone"></i> +254 774 222 064</li>
+                    <li><i class="fas fa-envelope"></i> admissions@ttu.ac.ke</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2026 Taita Taveta University | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation enhancement for congratulatory message
+        document.addEventListener('DOMContentLoaded', function() {
+            const congratsElement = document.querySelector('.congratulations');
+            
+            // Add event listener to replay animation on click
+            congratsElement.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = 'bounceIn 1.5s ease-out, glow 2s infinite alternate';
+                }, 10);
+            });
+            
+            // Add scroll animation for department cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe department and facility cards
+            document.querySelectorAll('.department-card, .facility-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

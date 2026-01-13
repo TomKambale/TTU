@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Unit - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --health-blue: #1a73e8;
+            --health-light: #e8f0fe;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .health-header {
+            background-color: var(--health-blue);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .health-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(26, 115, 232, 0.7)), url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .health-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .health-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        .health-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .health-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .health-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .health-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .health-nav a i {
+            margin-right: 8px;
+        }
+        
+        .health-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .health-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* Department Head Section */
+        .department-head {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+            .department-head {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .head-photo {
+            text-align: center;
+        }
+        
+        .head-photo img {
+            /* width: 100%;
+            max-width: 300px;
+            border-radius: 50%;
+            border: 8px solid var(--light-green);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); */
+            height: 350px; /* Adjust to match your design */
+            width: auto; /* Maintains aspect ratio */
+            margin-right: 15px; /* Space between logo and text */
+            vertical-align: middle; /* Aligns image with text */
+        
+        }
+        
+        .head-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            border-left: 5px solid var(--health-blue);
+        }
+        
+        .head-info h2 {
+            color: var(--health-blue);
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+        
+        .head-title {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 3rem 0;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 6px 20px var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--secondary-green);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .service-icon {
+            font-size: 2.8rem;
+            color: var(--health-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .service-list {
+            list-style-type: none;
+        }
+        
+        .service-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .service-list i {
+            color: var(--accent-green);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        /* Laboratory Services */
+        .lab-services {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-left: 5px solid var(--health-blue);
+        }
+        
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .lab-item {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .lab-item i {
+            color: var(--health-blue);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Staff Section */
+        .staff-section {
+            padding: 3rem 0;
+        }
+        
+        .staff-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .staff-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .staff-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--light-green);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            border: 4px solid var(--secondary-green);
+        }
+        
+        .staff-name {
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .staff-role {
+            color: var(--secondary-green);
+            font-size: 0.9rem;
+        }
+        
+        /* History Section */
+        .history-section {
+            padding: 3rem 0;
+        }
+        
+        .history-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+        
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--secondary-green);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 80px;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--primary-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 15px var(--shadow);
+            border-left: 5px solid var(--accent-green);
+        }
+        
+        /* Department Facilities */
+        .facilities-section {
+            padding: 3rem 0;
+        }
+        
+        .facilities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .facility-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .facility-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .facility-item i {
+            font-size: 2.2rem;
+            color: var(--health-blue);
+            margin-bottom: 1rem;
+        }
+        
+        /* Emergency Info */
+        .emergency-info {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .emergency-info h3 {
+            color: #856404;
+            margin-bottom: 1rem;
+        }
+        
+        .emergency-contact {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #dc3545;
+            margin: 1rem 0;
+        }
+        
+        /* Footer */
+        .health-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .health-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .health-header p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .health-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .health-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .history-timeline::before {
+                left: 25px;
+            }
+            
+            .timeline-item {
+                padding-left: 70px;
+            }
+            
+            .timeline-year {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .health-container {
+                padding: 0 1rem;
+            }
+            
+            .services-container,
+            .staff-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="health-header">
+        <h1>TTU Health Unit</h1>
+        <p>Comprehensive healthcare services for the Taita Taveta University community</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="health-nav">
+        <ul>
+            <li><a href="#services"><i class="fas fa-stethoscope"></i> Services</a></li>
+            <li><a href="#lab"><i class="fas fa-flask"></i> Laboratory</a></li>
+            <li><a href="#staff"><i class="fas fa-user-md"></i> Our Staff</a></li>
+            <li><a href="#history"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#facilities"><i class="fas fa-clinic-medical"></i> Facilities</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="health-container">
+        <!-- Department Head Section -->
+        <section class="department-head">
+            <div class="head-photo">
+                <img src="/src/health-hod.jpg" alt="Dr. Wilson Charo Mukare">
+            </div>
+            <div class="head-info">
+                <h2>Dr. Wilson Charo Mukare</h2>
+                <div class="head-title">Head of Health Unit Department</div>
+                <p>Dr. Wilson Charo Mukare is a dedicated medical professional with extensive experience in university healthcare services. He oversees all medical operations at the TTU Health Unit, ensuring the highest standard of care for students, staff, and faculty members.</p>
+                <p>Under his leadership, the Health Unit has expanded its services and facilities to provide comprehensive healthcare to the university community.</p>
+            </div>
+        </section>
+
+        <!-- Services Offered -->
+        <section id="services" class="services-section">
+            <h2 class="section-title">Services Offered</h2>
+            <div class="services-container">
+                <!-- Consultation Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Medical Consultation</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Consultation and treatment of ailments</li>
+                        <li><i class="fas fa-check"></i> Antenatal services</li>
+                        <li><i class="fas fa-check"></i> Family planning services</li>
+                        <li><i class="fas fa-check"></i> General medical checkups</li>
+                        <li><i class="fas fa-check"></i> Referral services</li>
+                    </ul>
+                </div>
+                
+                <!-- Pharmacy Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Pharmacy Services</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Prescription dispensing</li>
+                        <li><i class="fas fa-check"></i> Over-the-counter medications</li>
+                        <li><i class="fas fa-check"></i> Chronic disease management</li>
+                        <li><i class="fas fa-check"></i> Medication counseling</li>
+                        <li><i class="fas fa-check"></i> Emergency medications</li>
+                    </ul>
+                </div>
+                
+                <!-- Emergency Care Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>Emergency & Observation</h3>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> 24/7 emergency services</li>
+                        <li><i class="fas fa-check"></i> Male observation room</li>
+                        <li><i class="fas fa-check"></i> Female observation room</li>
+                        <li><i class="fas fa-check"></i> Treatment room</li>
+                        <li><i class="fas fa-check"></i> First aid and emergency response</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laboratory Services -->
+        <section id="lab" class="lab-services">
+            <h2 class="section-title">Laboratory Services</h2>
+            <p>Our fully-equipped medical laboratory provides comprehensive diagnostic services with quick turnaround times.</p>
+            
+            <div class="lab-grid">
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Bs for malaria parasites</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Urinalysis</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Stool for microscopy</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Random and fasting blood sugars</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Hemoglobin levels</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Pregnancy test</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Blood grouping</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Widal test</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Sputum for AAFB's</span>
+                </div>
+                <div class="lab-item">
+                    <i class="fas fa-vial"></i>
+                    <span>Brucellosis testing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Staff Section -->
+        <section id="staff" class="staff-section">
+            <h2 class="section-title">Our Medical Team</h2>
+            <p>Meet our dedicated team of healthcare professionals committed to your wellbeing.</p>
+            
+            <div class="staff-container">
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="staff-name">Dr. Wilson Charo Mukare</div>
+                    <div class="staff-role">Medical Officer / Head of Department</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <div class="staff-name">Ms. Linda Mghanga</div>
+                    <div class="staff-role">Nurse</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="staff-name">Mr. Jeremiah Mbingu Mwololo</div>
+                    <div class="staff-role">Clinical Officer</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
+                    <div class="staff-name">Mr. Richard Gitimu</div>
+                    <div class="staff-role">Clinical Officer</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <div class="staff-name">Ms. Margaret Munyasia</div>
+                    <div class="staff-role">Nurse</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="staff-name">Mr. Patrick Ndegwa</div>
+                    <div class="staff-role">Pharmaceutical Technologist</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-nurse"></i>
+                    </div>
+                    <div class="staff-name">Ms. Syprose Wangao</div>
+                    <div class="staff-role">Nurse</div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="staff-name">Mr. Wayne Mwamburi</div>
+                    <div class="staff-role">Laboratory Technologist</div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; font-style: italic;">Plus additional clinical officers and nurses on locum basis</p>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history-section">
+            <h2 class="section-title">History of the Department</h2>
+            
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2008</div>
+                    <div class="timeline-content">
+                        <h3>Establishment</h3>
+                        <p>The Health Unit department was started at the opening of the Campus as one roomed department. It was later shifted east of the administration building which currently serves as the Estate department.</p>
+                        <p>During this time the department had one staff, a Clinical Officer who worked during the day and on call at night. All diseases were treated clinically because we did not have a medical laboratory then and for those diagnosis which needed laboratory investigation were sent to the District Hospital.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2009</div>
+                    <div class="timeline-content">
+                        <h3>Expansion and Development</h3>
+                        <p>In September, we received a Laboratory Technologist but due to lack of laboratory equipment the laboratory became operational the following month.</p>
+                        <p>On October 2009 the department received two more staffs (a Clinical Officer and a Nurse). At this point the department became operational 24hrs a day, 7 days a week.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h3>Leadership Enhancement</h3>
+                        <p>In September 2013, a Medical Officer was hired and currently heads the department. Other Staffs were later recruited: Pharmaceutical Technologist, Records Officer, Nurse and Cleaner/Messenger.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">Present</div>
+                    <div class="timeline-content">
+                        <h3>Current Operations</h3>
+                        <p>Apart from the permanent Staffs, we have Clinical Officers and Nurses on locum basis. The department now includes multiple sub-departments and provides comprehensive healthcare services to the university community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Department Facilities -->
+        <section id="facilities" class="facilities-section">
+            <h2 class="section-title">Department Facilities</h2>
+            <p>The Health Unit has evolved to include the following specialized sub-departments:</p>
+            
+            <div class="facilities-list">
+                <div class="facility-item">
+                    <i class="fas fa-file-medical"></i>
+                    <h4>Records</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-pills"></i>
+                    <h4>Pharmacy</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-stethoscope"></i>
+                    <h4>Consultation Room</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-flask"></i>
+                    <h4>Laboratory</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-capsules"></i>
+                    <h4>Drug Store</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-procedures"></i>
+                    <h4>Treatment Room</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-male"></i>
+                    <h4>Male Observation</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-female"></i>
+                    <h4>Female Observation</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-restroom"></i>
+                    <h4>Wash Room</h4>
+                </div>
+                <div class="facility-item">
+                    <i class="fas fa-briefcase"></i>
+                    <h4>Staff Office</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Information -->
+        <div class="emergency-info">
+            <h3><i class="fas fa-exclamation-triangle"></i> Emergency Medical Services</h3>
+            <p>The Health Unit operates 24 hours a day, 7 days a week for emergency cases.</p>
+            <div class="emergency-contact">EMERGENCY: Contact University Security (0774 222 064)</div>
+            <p>For non-emergency appointments and inquiries, visit during regular hours: 8:00 AM - 5:00 PM, Monday to Friday</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="health-footer">
+        <div class="footer-content">
+            <p>Taita Taveta University Health Unit © 2025. All Rights Reserved.</p>
+            <p>Committed to the health and wellbeing of the TTU community.</p>
+            <div class="copyright">
+                <p>Main Campus, Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a> | <a href="service-departments.html" style="color: var(--accent-green); text-decoration: none;">Service Departments</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.health-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset for sticky navbar
+                    const navbarHeight = document.querySelector('.health-nav').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.health-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.health-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .health-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+            
+            /* Animation for timeline items */
+            .timeline-item {
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            
+            .timeline-item.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Timeline animation on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Add hover effect to staff cards
+        document.querySelectorAll('.staff-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 6px 15px var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>

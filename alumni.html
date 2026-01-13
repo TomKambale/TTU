@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Association - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .alumni-header {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .alumni-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(13, 59, 42, 0.9), rgba(13, 59, 42, 0.7)), url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .alumni-header h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .alumni-header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .join-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark-green);
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--gold);
+            margin-top: 1.5rem;
+        }
+        
+        .join-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        .alumni-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .alumni-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .alumni-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .alumni-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .alumni-nav a i {
+            margin-right: 8px;
+        }
+        
+        .alumni-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .alumni-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* Who We Are Section */
+        .intro-section {
+            padding: 4rem 0;
+        }
+        
+        .intro-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Vision & Mission */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .vision-card, .mission-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            position: relative;
+            border-top: 5px solid var(--gold);
+        }
+        
+        .mission-card {
+            border-top: 5px solid var(--secondary-green);
+        }
+        
+        .vm-icon {
+            position: absolute;
+            top: -25px;
+            left: 30px;
+            background-color: var(--primary-green);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .vision-card h3, .mission-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Executive Board */
+        .board-section {
+            padding: 3rem 0;
+        }
+        
+        .board-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .board-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .board-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .board-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .board-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--light-green);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-green);
+            border: 5px solid var(--secondary-green);
+        }
+        
+        .board-name {
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .board-position {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Message from Chair */
+        .chair-message {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 3rem;
+            margin: 4rem 0;
+            border-left: 5px solid var(--gold);
+        }
+        
+        .chair-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .chair-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            border: 4px solid var(--gold);
+        }
+        
+        .chair-info h3 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .chair-info p {
+            color: var(--secondary-green);
+            font-weight: 600;
+        }
+        
+        .chair-quote {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+        }
+        
+        /* Membership Section */
+        .membership-section {
+            padding: 3rem 0;
+        }
+        
+        .membership-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .benefits-card, .fees-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .benefits-list {
+            list-style-type: none;
+            margin-top: 1.5rem;
+        }
+        
+        .benefits-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .benefits-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .benefits-list i {
+            color: var(--accent-green);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        /* Fee Structure */
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .fees-table th {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .fees-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .fees-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .fees-table tr:hover {
+            background-color: var(--light-green);
+        }
+        
+        .membership-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .gold-badge {
+            background-color: var(--gold);
+            color: #333;
+        }
+        
+        .silver-badge {
+            background-color: var(--silver);
+            color: #333;
+        }
+        
+        .bronze-badge {
+            background-color: var(--bronze);
+            color: white;
+        }
+        
+        /* Payment Details */
+        .payment-section {
+            padding: 3rem 0;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+        }
+        
+        .payment-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Alumni Network */
+        .network-section {
+            background-color: var(--dark-green);
+            color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .network-stats {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 1.5rem 0;
+        }
+        
+        /* Footer */
+        .alumni-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .alumni-header h1 {
+                font-size: 3rem;
+            }
+            
+            .alumni-header p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .alumni-header {
+                padding: 3rem 1rem;
+            }
+            
+            .alumni-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .alumni-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .alumni-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .chair-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .chair-avatar {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .board-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .alumni-container {
+                padding: 0 1rem;
+            }
+            
+            .vision-mission,
+            .membership-container,
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-content,
+            .chair-message,
+            .benefits-card,
+            .fees-card,
+            .payment-card {
+                padding: 1.5rem;
+            }
+            
+            .network-stats {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="alumni-header">
+        <h1>TTU Alumni Association</h1>
+        <p>A lifelong partnership between Taita Taveta University and its alumni community</p>
+        <a href="#membership" class="join-btn">Join Our Alumni Network <i class="fas fa-arrow-right"></i></a>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="alumni-nav">
+        <ul>
+            <li><a href="#who"><i class="fas fa-users"></i> Who We Are</a></li>
+            <li><a href="#board"><i class="fas fa-user-tie"></i> Executive Board</a></li>
+            <li><a href="#chair"><i class="fas fa-comment"></i> Chair's Message</a></li>
+            <li><a href="#membership"><i class="fas fa-id-card"></i> Membership</a></li>
+            <li><a href="#payment"><i class="fas fa-credit-card"></i> Payment</a></li>
+            <li><a href="#network"><i class="fas fa-network-wired"></i> Alumni Network</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="alumni-container">
+        <!-- Who We Are -->
+        <section id="who" class="intro-section">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="intro-content">
+                <p>A voluntary organization that aims to further lifelong partnership between Taita Taveta University and members of the Association.</p>
+                
+                <div class="vision-mission">
+                    <div class="vision-card">
+                        <div class="vm-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>OUR VISION</h3>
+                        <p>To become a strong external community of committed alumni, promoting the image of the University of excellence in training, research and innovation.</p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <div class="vm-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>OUR MISSION</h3>
+                        <p>To create a pool of leaders and professionals in the field of engineering, Business, Agriculture, Science and technology and engage in collective action of advancement of TTU at national, regional and international level.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Board -->
+        <section id="board" class="board-section">
+            <h2 class="section-title">Alumni Association Executive Board</h2>
+            <div class="board-intro">
+                <p>The Alumni Executive Board oversees the Alumni Association's efforts to advance and support alumni, students and the university. As the Taita Taveta University Alumni Association's governing body, the Board is composed of registered alumni whose demonstrated service and leadership display a strong understanding and commitment to our mission.</p>
+            </div>
+            
+            <div class="board-container">
+                <!-- Chairman -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="board-name">Mr. Richard W. Kibengo</div>
+                    <div class="board-position">Chairman</div>
+                    <p>Leading the alumni association with vision and dedication</p>
+                </div>
+                
+                <!-- Secretary General -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <div class="board-name">Ms. Caroline Mumo</div>
+                    <div class="board-position">Secretary General</div>
+                    <p>Overseeing administrative functions and communications</p>
+                </div>
+                
+                <!-- Treasurer -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="board-name">Mr. Leonard Langat</div>
+                    <div class="board-position">Treasurer</div>
+                    <p>Managing alumni association finances and budgeting</p>
+                </div>
+                
+                <!-- Vice Chair -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="board-name">Vice Chair</div>
+                    <div class="board-position">(Position Open)</div>
+                    <p>Supporting the chairman in leadership duties</p>
+                </div>
+                
+                <!-- Assistant Secretary -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <div class="board-name">Ms. Grace Mwaura</div>
+                    <div class="board-position">Assistant Secretary</div>
+                    <p>Assisting with association documentation and records</p>
+                </div>
+                
+                <!-- Special Group Representative -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="board-name">Mr. Godfrey Kalaghe</div>
+                    <div class="board-position">Special Group Representative</div>
+                    <p>Representing special interest groups within alumni</p>
+                </div>
+                
+                <!-- Director Corporate Affairs -->
+                <div class="board-card">
+                    <div class="board-avatar">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="board-name">Mr. George Kasamani</div>
+                    <div class="board-position">Director Corporate Affairs & Alumni Relations</div>
+                    <p>Managing corporate partnerships and alumni engagement</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message from Chair -->
+        <section id="chair" class="chair-message">
+            <div class="chair-header">
+                <div class="chair-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="chair-info">
+                    <h3>Mr. Richard W. Kibengo</h3>
+                    <p>Chairman, Taita Taveta University Alumni Association</p>
+                </div>
+            </div>
+            
+            <div class="chair-quote">
+                <p>"On behalf of the Taita Taveta Alumni Association Executive Board and as Chairman of the Alumni Association, I welcome you to our online platform!</p>
+                
+                <p>One of our goals is to preserve a mutually beneficial, enduring relationship among alums and with the University. As your representatives, we are constantly seeking meaningful ways to embrace your needs and unite our efforts.</p>
+                
+                <p>I urge you to become an active alum and share in the exciting activities and opportunities this organization has to offer. There are a variety of ways you can show appreciation and play a part in the success of this association. This includes attending events, cheering for our teams, staying connected to each other and the University, and of course, offering your time and gifts to help TTU students. Through this site you can: get involved with the Alumni Association, read about inspiring alumni accomplishments, find out about upcoming alumni activities, learn about on-campus events, volunteer and much more.</p>
+                
+                <p>Wherever you are, at whatever stage of life you are in, there's something here for you. I encourage you to share and use this site as one way to engage with Taita Taveta University Alumni Association and maintain your personal connection to the University.</p>
+                
+                <p>We are excited about the direction and future of the Taita Taveta University Alumni Association and look forward to serving and sharing information with you, throughout the year. Choose to support the Alumni Association."</p>
+            </div>
+            
+            <div style="text-align: right; font-weight: 600; color: var(--dark-green);">
+                <p>Mr. Richard W. Kibengo</p>
+                <p>Chairman, Taita Taveta University Alumni Association</p>
+            </div>
+        </section>
+
+        <!-- Membership Section -->
+        <section id="membership" class="membership-section">
+            <h2 class="section-title">Become a Member</h2>
+            
+            <div class="membership-container">
+                <!-- Benefits -->
+                <div class="benefits-card">
+                    <h3 style="color: var(--primary-green); margin-bottom: 1.5rem;">Member Benefits</h3>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-network-wired"></i> Networking Opportunities</li>
+                        <li><i class="fas fa-calendar-alt"></i> Alumni Events</li>
+                        <li><i class="fas fa-briefcase"></i> Career Opportunities</li>
+                        <li><i class="fas fa-link"></i> Linkages</li>
+                        <li><i class="fas fa-handshake"></i> Partnerships</li>
+                        <li><i class="fas fa-hands-helping"></i> Volunteer opportunities</li>
+                        <li><i class="fas fa-hands"></i> Community service</li>
+                        <li><i class="fas fa-university"></i> Staying connected to your alma mater</li>
+                        <li><i class="fas fa-user-graduate"></i> Student mentorship</li>
+                        <li><i class="fas fa-book"></i> Access to library services</li>
+                    </ul>
+                </div>
+                
+                <!-- Membership Fees -->
+                <div class="fees-card">
+                    <h3 style="color: var(--primary-green); margin-bottom: 1.5rem;">Membership Categories & Fees</h3>
+                    
+                    <table class="fees-table">
+                        <thead>
+                            <tr>
+                                <th>Membership Type</th>
+                                <th>Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>New Member Registration</td>
+                                <td>KES 2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Full Member Annual Subscription</td>
+                                <td>KES 1,500</td>
+                            </tr>
+                            <tr>
+                                <td>Associate Member Annual Subscription</td>
+                                <td>KES 1,000</td>
+                            </tr>
+                            <tr>
+                                <td>Honorary Member Annual Subscription</td>
+                                <td>KES 5,000</td>
+                            </tr>
+                            <tr>
+                                <td>Life Membership <span class="membership-badge gold-badge">Gold</span></td>
+                                <td>KES 100,000</td>
+                            </tr>
+                            <tr>
+                                <td>Life Membership <span class="membership-badge silver-badge">Silver</span></td>
+                                <td>KES 50,000</td>
+                            </tr>
+                            <tr>
+                                <td>Life Membership <span class="membership-badge bronze-badge">Bronze</span></td>
+                                <td>KES 25,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Details -->
+        <section id="payment" class="payment-section">
+            <h2 class="section-title">Payment Details</h2>
+            
+            <div class="payment-methods">
+                <!-- M-Pesa -->
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>M-Pesa Payment</h3>
+                    <p>Pay through M-Pesa Paybill Number:</p>
+                    <div style="background-color: var(--light-green); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--dark-green);">Paybill: 522522</p>
+                        <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-green);">Account Number: 1224713222</p>
+                    </div>
+                </div>
+                
+                <!-- Bank Transfer -->
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Bank Transfer</h3>
+                    <p>Pay through cheque or direct deposit payable to:</p>
+                    <div style="background-color: var(--light-green); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; text-align: left;">
+                        <p style="font-weight: 700; margin-bottom: 0.5rem;">Taita Taveta University Alumni Association</p>
+                        <p>Kenya Commercial Bank, Voi Branch</p>
+                        <p style="font-weight: 600; color: var(--primary-green);">Account No: 1224713222</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alumni Network -->
+        <section id="network" class="network-section">
+            <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1rem;">Join Our Growing Alumni Network</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">From your time as a student to your post-graduate experience as an alumni, TTU's support and amenities continue, as a result of your connection to the TTU Alumni Network.</p>
+            
+            <div class="network-stats">5,000+</div>
+            <p style="font-size: 1.3rem; font-weight: 600;">Alumni and Counting</p>
+            
+            <a href="#membership" class="join-btn" style="margin-top: 2rem;">Join Now <i class="fas fa-user-plus"></i></a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="alumni-footer">
+        <div class="footer-content">
+            <p>Taita Taveta University Alumni Association © 2025. All Rights Reserved.</p>
+            <p>Connecting alumni, supporting students, advancing the university.</p>
+            <div class="copyright">
+                <p>Main Campus, Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a> | Email: alumni@ttu.ac.ke</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.alumni-nav a, .join-btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for sticky navbar
+                        const navbarHeight = document.querySelector('.alumni-nav').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.alumni-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.alumni-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .alumni-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+            
+            /* Animation for board cards */
+            .board-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            
+            .board-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Animation for cards on scroll
+        const boardCards = document.querySelectorAll('.board-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        boardCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Simulate membership registration (in a real implementation, this would link to a registration form)
+        document.querySelectorAll('.join-btn').forEach(button => {
+            if (button.getAttribute('href') === '#membership') {
+                button.addEventListener('click', function(e) {
+                    // Already handled by smooth scrolling
+                });
+            }
+        });
+        
+        // Add hover effect to board cards
+        document.querySelectorAll('.board-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (this.classList.contains('visible')) {
+                    this.style.transform = 'translateY(-10px)';
+                } else {
+                    this.style.transform = 'translateY(30px)';
+                }
+                this.style.boxShadow = '0 8px 25px var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarships & Financial Aid - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --gold: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .scholarships-header {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scholarships-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(13, 59, 42, 0.9), rgba(13, 59, 42, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .scholarships-header h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .scholarships-header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark-green);
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--gold);
+            margin-top: 1.5rem;
+        }
+        
+        .apply-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        .scholarships-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .scholarships-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .scholarships-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .scholarships-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .scholarships-nav a i {
+            margin-right: 8px;
+        }
+        
+        .scholarships-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .scholarships-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* Introduction */
+        .intro-section {
+            padding: 4rem 0;
+        }
+        
+        .intro-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            margin-bottom: 3rem;
+        }
+        
+        .intro-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box {
+            background-color: var(--light-green);
+            border-left: 5px solid var(--gold);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin: 0;
+        }
+        
+        /* Scholarship Sources */
+        .sources-section {
+            padding: 3rem 0;
+        }
+        
+        .sources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .source-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .source-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .source-header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .source-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .source-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .source-content {
+            padding: 2rem;
+        }
+        
+        .source-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            border-bottom: 2px solid var(--primary-green);
+        }
+        
+        /* Requirements */
+        .requirements-section {
+            padding: 3rem 0;
+        }
+        
+        .requirements-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            margin-top: 2rem;
+            border-top: 5px solid var(--accent-green);
+        }
+        
+        .requirements-list {
+            list-style-type: none;
+            margin-top: 1.5rem;
+        }
+        
+        .requirements-list li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.1rem;
+        }
+        
+        .requirements-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .requirements-list i {
+            color: var(--accent-green);
+            margin-right: 15px;
+            margin-top: 3px;
+            font-size: 1.2rem;
+        }
+        
+        /* Guidance & Advice */
+        .guidance-section {
+            padding: 3rem 0;
+        }
+        
+        .guidance-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .guidance-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .guidance-text {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .guidance-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .guidance-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .guidance-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Featured Student */
+        .featured-section {
+            padding: 4rem 0;
+            background-color: var(--light-green);
+            margin: 4rem 0;
+            border-radius: 10px;
+        }
+        
+        .featured-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .featured-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+        
+        .featured-container p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .student-quote {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--gold);
+        }
+        
+        .student-quote::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--light-green);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 3rem 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-details {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-details div {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-details i {
+            color: var(--secondary-green);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background-color: var(--dark-green);
+            color: white;
+            border-radius: 10px;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        /* Footer */
+        .scholarships-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .scholarships-header h1 {
+                font-size: 3rem;
+            }
+            
+            .scholarships-header p {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .scholarships-header {
+                padding: 3rem 1rem;
+            }
+            
+            .scholarships-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .scholarships-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .scholarships-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .sources-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-content,
+            .requirements-box,
+            .guidance-text,
+            .contact-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .scholarships-container {
+                padding: 0 1rem;
+            }
+            
+            .featured-icon {
+                font-size: 3rem;
+            }
+            
+            .student-quote {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="scholarships-header">
+        <h1>Scholarships & Financial Aid</h1>
+        <p>Funding your future at Taita Taveta University</p>
+        <a href="#contact" class="apply-btn">Apply for Scholarships <i class="fas fa-arrow-right"></i></a>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="scholarships-nav">
+        <ul>
+            <li><a href="#intro"><i class="fas fa-info-circle"></i> Overview</a></li>
+            <li><a href="#sources"><i class="fas fa-hand-holding-usd"></i> Scholarship Sources</a></li>
+            <li><a href="#requirements"><i class="fas fa-check-circle"></i> Requirements</a></li>
+            <li><a href="#guidance"><i class="fas fa-lightbulb"></i> Guidance</a></li>
+            <li><a href="#featured"><i class="fas fa-star"></i> Featured Student</a></li>
+            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="scholarships-container">
+        <!-- Introduction -->
+        <section id="intro" class="intro-section">
+            <h2 class="section-title">Scholarships at TTU</h2>
+            <div class="intro-content">
+                <p>Taita Taveta University offers a variety of scholarships and fellowships designed to help you and your family pay for university. Scholarships and grants are types of gift aid that do not have to be repaid. They may take the form of University scholarships, state grants, or outside scholarships.</p>
+                
+                <div class="highlight-box">
+                    <p><i class="fas fa-gift" style="margin-right: 10px;"></i> Scholarships and grants are <strong>gift aid</strong> that do not have to be repaid</p>
+                </div>
+                
+                <p>Our financial aid programs are designed to ensure that qualified students can access quality education regardless of their financial background. We believe that financial constraints should not be a barrier to achieving your academic dreams.</p>
+            </div>
+        </section>
+
+        <!-- Scholarship Sources -->
+        <section id="sources" class="sources-section">
+            <h2 class="section-title">Scholarship Sources</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Explore the various scholarship opportunities available to TTU students</p>
+            
+            <div class="sources-container">
+                <!-- TTU Scholarships -->
+                <div class="source-card">
+                    <div class="source-header">
+                        <div class="source-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h3>TTU's Scholarships</h3>
+                    </div>
+                    <div class="source-content">
+                        <p>Taita Taveta University offers a variety of scholarships and fellowships designed to help you and your family pay for university. Scholarships and grants are types of gift aid that do not have to be repaid.</p>
+                        <p>Our internal scholarships include merit-based awards, need-based grants, and specialized scholarships for students in particular fields of study such as engineering, business, agriculture, and science.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- County Grant Programs -->
+                <div class="source-card">
+                    <div class="source-header">
+                        <div class="source-icon">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3>County Grant Programs</h3>
+                    </div>
+                    <div class="source-content">
+                        <p>Taita Taveta County Government offers several grant programs for local students pursuing higher education. These grants are designed to support students from the county in accessing university education.</p>
+                        <p>Eligibility typically requires proof of residency in Taita Taveta County, demonstrated financial need, and maintenance of satisfactory academic progress.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Government Scholarships -->
+                <div class="source-card">
+                    <div class="source-header">
+                        <div class="source-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <h3>Government Scholarships</h3>
+                    </div>
+                    <div class="source-content">
+                        <p>The Kenyan government, through various ministries and agencies, provides scholarship opportunities for university students. These include the Higher Education Loans Board (HELB), Constituency Development Fund (CDF) bursaries, and Ministry of Education scholarships.</p>
+                        <p>These programs support students based on academic merit, financial need, and alignment with national development priorities.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements -->
+        <section id="requirements" class="requirements-section">
+            <h2 class="section-title">Scholarship Requirements</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;">As long as you're in need and you meet the following requirements:</p>
+            
+            <div class="requirements-box">
+                <ul class="requirements-list">
+                    <li>
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <strong>Full-time Student Status:</strong> You must be registered as a full-time student at Taita Taveta University.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Timely Financial Aid Application:</strong> You must have applied for financial aid by the specified deadline for the academic year.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <strong>Satisfactory Academic Progress:</strong> You must be meeting the Satisfactory Academic Progress (SAP) standards as defined by the university.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-balance-scale"></i>
+                        <div>
+                            <strong>Consistent Financial Need:</strong> You must have approximately the same amount of financial need that you had in prior years (for renewal scholarships).
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong>Complete Documentation:</strong> You must submit all required documentation, including financial statements, academic records, and personal statements as required by the specific scholarship.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Guidance & Advice -->
+        <section id="guidance" class="guidance-section">
+            <h2 class="section-title">Guidance and Advice</h2>
+            
+            <div class="guidance-content">
+                <div class="guidance-text">
+                    <p>The University's high quality training is affirmed by the graduates as they hit the job market with their professionalism, innovativeness and ethical conduct making them stand out from the rest.</p>
+                    
+                    <p>The hospitable and friendly community around Taita Taveta welcomes students from all walks of life to study at the Home of Ideas. Our financial aid advisors are available to help you navigate the scholarship application process and identify opportunities that match your profile.</p>
+                    
+                    <p>We recommend that students begin their scholarship search early, maintain strong academic records, and carefully follow application instructions for each funding opportunity.</p>
+                    
+                    <div style="background-color: var(--light-green); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
+                        <h4 style="color: var(--dark-green); margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Pro Tip:</h4>
+                        <p style="margin: 0;">Apply for multiple scholarships! Even smaller awards can add up to significantly reduce your educational expenses.</p>
+                    </div>
+                </div>
+                <div class="guidance-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="TTU Campus">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Student -->
+        <section id="featured" class="featured-section">
+            <div class="featured-container">
+                <div class="featured-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h2 class="section-title" style="color: var(--dark-green); margin-top: 0;">Featured Scholarship Student</h2>
+                
+                <div class="student-quote">
+                    <p>"The sponsorship programme provides a unique opportunity for tomorrow's leaders to build a global network of continuing professional significance and also to establish social, cultural, academic, or commercial partnerships with TTU."</p>
+                </div>
+                
+                <p>Our scholarship recipients represent the best of TTU - academically talented, financially deserving, and committed to making a difference in their communities. Meet some of our outstanding scholarship students:</p>
+                
+                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: white; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary-green);">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Merit-Based Scholar</h4>
+                        <p>School of Engineering</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: white; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary-green);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Need-Based Grant</h4>
+                        <p>School of Business</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; background-color: white; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary-green);">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">County Scholarship</h4>
+                        <p>Local Student Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact For Scholarship</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">We are open on Monday – Friday at 8am and 5pm, except on holidays.</p>
+            
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Our Office</h3>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-building"></i>
+                            <div>
+                                <strong>Admission, Student Affairs & Examinations Center</strong><br>
+                                Main Campus<br>
+                                Admissions Office,<br>
+                                P.O. Box 635 -80300, Voi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Methods -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                (+254) 0774 222 064
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                admissions@ttu.ac.ke
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Office Hours:</strong><br>
+                                Mon-Fri: 8:00 AM - 5:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Quick Resources</h3>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-file-download"></i>
+                            <div>
+                                <a href="#" style="color: var(--primary-green); text-decoration: none; font-weight: 600;">
+                                    Scholarship Application Form
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-question-circle"></i>
+                            <div>
+                                <a href="#" style="color: var(--primary-green); text-decoration: none; font-weight: 600;">
+                                    Frequently Asked Questions
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <a href="#" style="color: var(--primary-green); text-decoration: none; font-weight: 600;">
+                                    Scholarship Deadlines
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <div>
+                                <a href="#" style="color: var(--primary-green); text-decoration: none; font-weight: 600;">
+                                    Other Financial Aid Options
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Ready to Apply for Scholarships?</h2>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem;">Don't let financial constraints hold you back from achieving your academic dreams. Explore our scholarship opportunities today.</p>
+            <a href="#contact" class="apply-btn" style="background-color: white; color: var(--dark-green);">
+                Start Your Application <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="scholarships-footer">
+        <div class="footer-content">
+            <p>Taita Taveta University Scholarships & Financial Aid © 2025. All Rights Reserved.</p>
+            <p>Investing in students, building futures.</p>
+            <div class="copyright">
+                <p>Main Campus, Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a> | Phone: (+254) 0774 222 064 | Email: admissions@ttu.ac.ke</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.scholarships-nav a, .apply-btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for sticky navbar
+                        const navbarHeight = document.querySelector('.scholarships-nav').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.scholarships-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.scholarships-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .scholarships-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+            
+            /* Animation for source cards */
+            .source-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            
+            .source-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Animation for cards on scroll
+        const sourceCards = document.querySelectorAll('.source-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        sourceCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Simulate "Read More" functionality
+        document.querySelectorAll('.read-more').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const cardTitle = this.closest('.source-card').querySelector('h3').textContent;
+                alert(`In a complete implementation, this would navigate to a detailed page about ${cardTitle}. For now, please contact the admissions office for more information.`);
+            });
+        });
+        
+        // Add hover effect to source cards
+        document.querySelectorAll('.source-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 8px 25px var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>

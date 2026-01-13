@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .about-header {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(13, 59, 42, 0.9), rgba(13, 59, 42, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .about-header h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .about-header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .explore-btn {
+            display: inline-block;
+            background-color: var(--earth-brown);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--earth-brown);
+            margin-top: 1.5rem;
+        }
+        
+        .explore-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        .about-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .about-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .about-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .about-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-nav a i {
+            margin-right: 8px;
+        }
+        
+        .about-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* History Section */
+        .history-section {
+            padding: 4rem 0;
+        }
+        
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .history-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .history-text {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .history-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .history-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            gap: 1.5rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--light-green);
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .history-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            height: 400px;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Schools Section */
+        .schools-section {
+            padding: 3rem 0;
+            background-color: var(--light-green);
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+        
+        .schools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .school-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 6px 20px var(--shadow);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--earth-brown);
+        }
+        
+        .school-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .school-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .school-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        /* Philosophy, Mission, Vision */
+        .philosophy-section {
+            padding: 3rem 0;
+        }
+        
+        .philosophy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .philosophy-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .philosophy-icon {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .philosophy-card h3 {
+            color: var(--dark-green);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .philosophy-card p {
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* Core Values */
+        .values-section {
+            padding: 3rem 0;
+        }
+        
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 6px 20px var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--secondary-green);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Strategic Pillars */
+        .pillars-section {
+            padding: 4rem 0;
+        }
+        
+        .pillars-container {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+        
+        .pillar-house {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .pillar-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--earth-brown);
+        }
+        
+        .pillar-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pillar-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .foundation-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .foundation-card {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            border-top: 5px solid var(--accent-green);
+        }
+        
+        /* Location Section */
+        .location-section {
+            padding: 4rem 0;
+            background-color: var(--light-green);
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+        
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .location-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .location-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .location-info h3 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .location-details {
+            margin-top: 1.5rem;
+        }
+        
+        .location-details div {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .location-details i {
+            color: var(--primary-green);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .location-map {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow);
+            height: 400px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-weight: 600;
+            background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .location-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .map-label {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        /* Footer */
+        .about-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-header h1 {
+                font-size: 3rem;
+            }
+            
+            .about-header p {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .pillar-house,
+            .foundation-pillars {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-header {
+                padding: 3rem 1rem;
+            }
+            
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .pillar-house,
+            .foundation-pillars {
+                grid-template-columns: 1fr;
+            }
+            
+            .schools-container,
+            .philosophy-container,
+            .values-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-container {
+                padding: 0 1rem;
+            }
+            
+            .history-text,
+            .school-card,
+            .philosophy-card,
+            .value-card,
+            .pillar-card,
+            .foundation-card,
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="about-header">
+        <h1>About Taita Taveta University</h1>
+        <p>Discover our history, philosophy, and commitment to education, research, and sustainable development</p>
+        <a href="#history" class="explore-btn">Explore Our Journey <i class="fas fa-arrow-right"></i></a>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="about-nav">
+        <ul>
+            <li><a href="#history"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#schools"><i class="fas fa-university"></i> Schools</a></li>
+            <li><a href="#philosophy"><i class="fas fa-brain"></i> Philosophy</a></li>
+            <li><a href="#values"><i class="fas fa-star"></i> Core Values</a></li>
+            <li><a href="#pillars"><i class="fas fa-columns"></i> Strategic Pillars</a></li>
+            <li><a href="#location"><i class="fas fa-map-marker-alt"></i> Location</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="about-container">
+        <!-- History Section -->
+        <section id="history" class="history-section">
+            <h2 class="section-title">TTU's History</h2>
+            
+            <div class="history-content">
+                <div class="history-text">
+                    <p>TTU opened her gates in 2007 as Jomo Kenyatta University of Agriculture and Technology (JKUAT) Taita Taveta Campus and later in 2011 was upgraded to a Constituent until 7th October 2016 when it was given a charter to be a fully fledged university.</p>
+                    
+                    <p>Due to her very attractive courses, the population in the University has risen to 2000 students undertaking Masters', Undergraduate, Diploma and Certificate programs. The University has a constant presence of international scholars through its established international linkages with reputable Universities across the world.</p>
+                    
+                    <p>Taita Taveta University (TTU) programs are guided by its Mission and Vision, and is proud as a mining and mineral processing engineer's hub.</p>
+                    
+                    <div class="history-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">2007</div>
+                            <div class="stat-label">Founded as JKUAT Campus</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2016</div>
+                            <div class="stat-label">Chartered as Full University</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2,000+</div>
+                            <div class="stat-label">Students Enrolled</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Schools</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="history-image">
+                 <img src="/src/admin1.jpg" alt="Taita Taveta University Administration">
+                Taita Taveta University
+                </div>
+            </div>
+        </section>
+
+        <!-- Schools Section -->
+        <section id="schools" class="schools-section">
+            <h2 class="section-title" style="color: var(--dark-green); text-align: center;">Our Academic Schools</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">TTU has five schools offering diverse programs in various fields of study</p>
+            
+            <div class="schools-container">
+                <!-- School 1 -->
+                <div class="school-card">
+                    <div class="school-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>School of Mines and Engineering</h3>
+                    <p>Leading hub for mining and mineral processing engineering education and research in the region.</p>
+                </div>
+                
+                <!-- School 2 -->
+                <div class="school-card">
+                    <div class="school-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>School of Business, Economics and Social Sciences</h3>
+                    <p>Developing business leaders and social scientists equipped to address contemporary economic challenges.</p>
+                </div>
+                
+                <!-- School 3 -->
+                <div class="school-card">
+                    <div class="school-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>School of Science and Informatics</h3>
+                    <p>Advancing scientific knowledge and technological innovation through cutting-edge research and education.</p>
+                </div>
+                
+                <!-- School 4 -->
+                <div class="school-card">
+                    <div class="school-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>School of Agriculture, Earth and Environmental Sciences</h3>
+                    <p>Promoting sustainable agriculture and environmental conservation through science-based solutions.</p>
+                </div>
+                
+                <!-- School 5 -->
+                <div class="school-card">
+                    <div class="school-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>School of Education</h3>
+                    <p>Training quality educators and educational leaders to transform teaching and learning practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy, Mission, Vision -->
+        <section id="philosophy" class="philosophy-section">
+            <h2 class="section-title">Our Guiding Principles</h2>
+            
+            <div class="philosophy-container">
+                <!-- Philosophy -->
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Our Philosophy</h3>
+                    <p>Offering quality education, training, research, and outreach programs to empower communities for the improvement of their social well-being while assuring environmental sustainability.</p>
+                </div>
+                
+                <!-- Mission -->
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>The mission of the University is to be a University for research, education, teaching, and community services in management of mineral and natural resources.</p>
+                </div>
+                
+                <!-- Vision -->
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>The vision is to be an educated and transformed society in the sustainability of natural resources.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section id="values" class="values-section">
+            <h2 class="section-title">Our Core Values</h2>
+            
+            <div class="values-container">
+                <!-- Value 1 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Result Oriented</h3>
+                    <p>Budgeting and planning is geared towards achieving desired results with minimum expenses.</p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>All work is done to ensure products of the highest quality are achieved.</p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Transparency & Accountability</h3>
+                    <p>All dealings should be open and accountable to stakeholders.</p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovativeness</h3>
+                    <p>In the face of many challenges, innovation is championed to ensure set targets are achieved.</p>
+                </div>
+                
+                <!-- Value 5 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Professionalism & Ethical Conduct</h3>
+                    <p>Staff are required to uphold the highest professional and ethical standards in their assignment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Pillars -->
+        <section id="pillars" class="pillars-section">
+            <h2 class="section-title">Strategic Pillars</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">The strategy house presents the strategic focus for TTU showing the key pillars (Key result Areas) which the strategy is built on. At the apex is the Vision and Mission supported by three main pillars of Research, Academics, and Outreach. An institutional capacity, Resource mobilization and corporate governance forms the foundational pillars for the strategic plan.</p>
+            
+            <div class="pillars-container">
+                <!-- Main Pillars -->
+                <div class="pillar-house">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Academics</h3>
+                        <p>Excellence in teaching, learning, and curriculum development to produce highly competent graduates.</p>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Research</h3>
+                        <p>Innovative research addressing local, regional, and global challenges, particularly in natural resource management.</p>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Outreach</h3>
+                        <p>Community engagement and service that translates knowledge into practical solutions for societal development.</p>
+                    </div>
+                </div>
+                
+                <!-- Foundation Pillars -->
+                <div class="foundation-pillars">
+                    <div class="foundation-card">
+                        <h3>Institutional Capacity</h3>
+                        <p>Developing human resources, infrastructure, and systems to support university operations and growth.</p>
+                    </div>
+                    
+                    <div class="foundation-card">
+                        <h3>Resource Mobilization</h3>
+                        <p>Diversifying funding sources and optimizing resource utilization for sustainable development.</p>
+                    </div>
+                    
+                    <div class="foundation-card">
+                        <h3>Corporate Governance</h3>
+                        <p>Ensuring ethical leadership, transparency, and accountability in all university affairs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="location-section">
+            <h2 class="section-title" style="color: var(--dark-green); text-align: center;">TTU Location</h2>
+            
+            <div class="location-container">
+                <div class="location-info">
+                    <h3>Serene Environment for Learning</h3>
+                    <p>Taita Taveta University (TTU) is a fast-growing Institution located in Taita Taveta County on Voi-Mwatate road, about 8 kilometers from the Nairobi-Mombasa highway.</p>
+                    
+                    <p>It lies in a serene environment bordering Tsavo East National Park on the east and Tsavo West National Park on the North West, the home of the Red elephants. This unique location provides an ideal setting for research and study in environmental sciences, wildlife management, and sustainable tourism.</p>
+                    
+                    <div class="location-details">
+                        <div>
+                            <i class="fas fa-map-pin"></i>
+                            <div>
+                                <strong>Address:</strong><br>
+                                Taita Taveta University<br>
+                                Voi-Mwatate Road<br>
+                                Taita Taveta County, Kenya
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-road"></i>
+                            <div>
+                                <strong>Accessibility:</strong><br>
+                                8km from Nairobi-Mombasa Highway<br>
+                                Well-connected by road transport
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-tree"></i>
+                            <div>
+                                <strong>Unique Environment:</strong><br>
+                                Borders Tsavo East and Tsavo West National Parks<br>
+                                Home to diverse wildlife including Red elephants
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-map">
+                    <div class="map-label">
+                        <i class="fas fa-map-marked-alt" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-green);"></i>
+                        <h3>TTU Campus Location</h3>
+                        <p>Taita Taveta County, Kenya</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Near Tsavo National Parks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div style="text-align: center; padding: 4rem 0;">
+            <h2 style="font-size: 2.5rem; color: var(--dark-green); margin-bottom: 1.5rem;">Become Part of Our Story</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2.5rem;">Join a university committed to excellence in education, research, and sustainable development in the heart of Kenya's wildlife country.</p>
+            <a href="admissions.html" class="explore-btn" style="background-color: var(--primary-green);">
+                Apply to TTU <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="about-footer">
+        <div class="footer-content">
+            <p>Taita Taveta University © 2025. All Rights Reserved.</p>
+            <p>Where education meets nature, and innovation meets sustainability.</p>
+            <div class="copyright">
+                <p>Main Campus, Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a> | Email: info@ttu.ac.ke</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.about-nav a, .explore-btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for sticky navbar
+                        const navbarHeight = document.querySelector('.about-nav').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.about-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.about-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .about-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+            
+            /* Animation for cards */
+            .school-card,
+            .philosophy-card,
+            .value-card,
+            .pillar-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            
+            .school-card.visible,
+            .philosophy-card.visible,
+            .value-card.visible,
+            .pillar-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Animation for cards on scroll
+        const cards = document.querySelectorAll('.school-card, .philosophy-card, .value-card, .pillar-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add year to history stat
+        const currentYear = new Date().getFullYear();
+        const yearsOperating = currentYear - 2007;
+        document.querySelector('.stat-number').textContent = `${yearsOperating}+ Years`;
+        
+        // Add hover effect to cards
+        document.querySelectorAll('.school-card, .philosophy-card, .value-card, .pillar-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 6px 20px var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>

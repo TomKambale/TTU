@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Tours - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .tour-header {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tour-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(13, 59, 42, 0.9), rgba(13, 59, 42, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .tour-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .tour-header p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        .tour-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .tour-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .tour-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .tour-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tour-nav a i {
+            margin-right: 8px;
+        }
+        
+        .tour-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .tour-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* Appointment Form */
+        .appointment-section {
+            padding: 3rem 0;
+        }
+        
+        .appointment-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 992px) {
+            .appointment-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .appointment-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(30, 107, 82, 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--dark-green);
+        }
+        
+        .tour-info {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 2.5rem;
+            border-left: 5px solid var(--accent-green);
+        }
+        
+        .info-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-item i {
+            color: var(--primary-green);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 1.2rem;
+        }
+        
+        /* Special Tour Section */
+        .special-tour {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: 0 6px 20px var(--shadow);
+            border-top: 5px solid var(--secondary-green);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0;
+        }
+        
+        .faq-container {
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--dark-green);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--primary-green);
+        }
+        
+        /* Visitor Sections */
+        .visitor-section {
+            margin: 3rem 0;
+        }
+        
+        .visitor-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 15px var(--shadow);
+            border-left: 5px solid var(--primary-green);
+        }
+        
+        .visitor-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            background-color: var(--dark-green);
+            color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.3rem;
+            color: var(--accent-green);
+        }
+        
+        /* Footer */
+        .tour-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tour-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tour-header p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .tour-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tour-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .tour-container {
+                padding: 0 1rem;
+            }
+            
+            .appointment-form,
+            .tour-info,
+            .special-tour,
+            .visitor-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="tour-header">
+        <h1>TTU Campus Tour</h1>
+        <p>Experience our vibrant campus, world-class facilities, and welcoming community firsthand</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="tour-nav">
+        <ul>
+            <li><a href="#appointment"><i class="fas fa-calendar-check"></i> Make Appointment</a></li>
+            <li><a href="#special-tour"><i class="fas fa-star"></i> Special Tour</a></li>
+            <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQs</a></li>
+            <li><a href="#visitors"><i class="fas fa-users"></i> Visitors Info</a></li>
+            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="tour-container">
+        <!-- Appointment Section -->
+        <section id="appointment" class="appointment-section">
+            <h2 class="section-title">Make Appointment For TTU Campus Tour</h2>
+            
+            <div class="appointment-container">
+                <!-- Appointment Form -->
+                <div class="appointment-form">
+                    <h3>Book Your Campus Tour</h3>
+                    <p>Fill out the form below to schedule your personalized campus tour.</p>
+                    
+                    <form id="tourForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tourDate">Preferred Date *</label>
+                                <input type="date" id="tourDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tourTime">Preferred Time *</label>
+                                <select id="tourTime" required>
+                                    <option value="">Select time</option>
+                                    <option value="8:00 AM">8:00 AM</option>
+                                    <option value="9:00 AM">9:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="3:00 PM">3:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tourType">Tour Type *</label>
+                            <select id="tourType" required>
+                                <option value="">Select tour type</option>
+                                <option value="graduate">Graduate/Professional Student Tour</option>
+                                <option value="undergraduate">Undergraduate Tour</option>
+                                <option value="international">International Visitor Tour</option>
+                                <option value="group">Group Tour (5+ people)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="participants">Number of Participants *</label>
+                            <input type="number" id="participants" min="1" max="10" value="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interests">Areas of Interest (Select all that apply)</label>
+                            <div style="margin-top: 0.5rem;">
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="engineering" name="interests" value="engineering">
+                                    <label for="engineering" style="display: inline; font-weight: normal;">Engineering & Technology</label>
+                                </div>
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="business" name="interests" value="business">
+                                    <label for="business" style="display: inline; font-weight: normal;">Business & Social Sciences</label>
+                                </div>
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="education" name="interests" value="education">
+                                    <label for="education" style="display: inline; font-weight: normal;">Education</label>
+                                </div>
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="library" name="interests" value="library">
+                                    <label for="library" style="display: inline; font-weight: normal;">Library & Research Facilities</label>
+                                </div>
+                                <div style="margin-bottom: 0.5rem;">
+                                    <input type="checkbox" id="residence" name="interests" value="residence">
+                                    <label for="residence" style="display: inline; font-weight: normal;">Student Residences</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Additional Notes or Questions</label>
+                            <textarea id="message" rows="4" placeholder="Any special requirements or questions..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Book Campus Tour</button>
+                    </form>
+                </div>
+                
+                <!-- Tour Information -->
+                <div class="tour-info">
+                    <h3>Tour Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Tour Duration</h4>
+                            <p>The tour takes three to four hours.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <h4>Available Days</h4>
+                            <p>Monday – Friday at 8am and 5pm, except on holidays.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <h4>Who Should Attend</h4>
+                            <p>Prospective graduate and professional students. Undergraduate students are also welcome.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Meeting Point</h4>
+                            <p>Admission, Student Affairs & Examinations Center - Main Campus</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h4>International Visitors</h4>
+                            <p>We welcome international scholars through our established global linkages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Tour Section -->
+        <section id="special-tour">
+            <h2 class="section-title">Special Campus Tour</h2>
+            <div class="special-tour">
+                <p>Campus on a tour designed for prospective graduate and professional students. You will see how our university like, facilities, students and life in this university. Meet our graduate admissions representative to learn more about our graduate programs and decide what it the best for you.</p>
+                
+                <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 0.5rem;">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Campus Facilities</h4>
+                        <p>See our state-of-the-art labs, libraries, and learning spaces</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 0.5rem;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Student Life</h4>
+                        <p>Experience the vibrant community and campus culture</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 0.5rem;">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Meet Advisors</h4>
+                        <p>Connect with graduate admissions representatives</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 0.5rem;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 style="color: var(--dark-green);">Program Insights</h4>
+                        <p>Learn about graduate programs and career outcomes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long will the tour take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The tour takes three to four hours. This includes visits to academic buildings, student facilities, and time for Q&A with admissions representatives.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is there any parking nearby?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have visitor parking available at the Admissions Office. Please inform us when booking if you will require parking so we can reserve a spot for you.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I leave my bags or luggage at meeting point?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have secure storage facilities at the Admissions Office where you can leave your bags during the tour. Please inform us in advance if you plan to use this service.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Will the tour be cancelled due to weather?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tours proceed in most weather conditions. In case of extreme weather, we will contact you to reschedule. Indoor alternatives are available for heavy rain.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I bring guests on the tour?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can bring up to 2 guests. Please indicate the number of participants when booking your tour. For larger groups, please contact us directly.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the tour accessible for people with disabilities?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our campus is accessible. Please let us know about any accessibility requirements when booking so we can ensure your tour accommodates your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visitor Information -->
+        <section id="visitors" class="visitor-section">
+            <h2 class="section-title">Visitor Information</h2>
+            
+            <!-- Undergraduate Visitors -->
+            <div class="visitor-card">
+                <h3>Undergraduate Visitors</h3>
+                <p>This tour is intended for prospective graduate and professional students. All are welcome, but students interested in undergraduate programs may wish to visit TTU Undergraduate Admissions page for a more appropriate visit experience.</p>
+                <a href="#" style="display: inline-block; margin-top: 1rem; color: var(--primary-green); font-weight: 600; text-decoration: none;">
+                    Visit Undergraduate Admissions <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Complete Your Visit -->
+            <div class="visitor-card">
+                <h3>Complete Your Visit</h3>
+                <p>To learn more about the specific admissions process for your program, we recommend that you arrange to visit a specific graduate or professional school. We suggest that you connect with your specific school or department of interest ahead of time.</p>
+                <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Contact the department directly to arrange meetings with faculty</li>
+                    <li style="margin-bottom: 0.5rem;">Schedule appointments with academic advisors</li>
+                    <li style="margin-bottom: 0.5rem;">Attend a class in your field of interest (with prior arrangement)</li>
+                </ul>
+            </div>
+            
+            <!-- Foreign Visitors -->
+            <div class="visitor-card">
+                <h3>Foreign Visitors</h3>
+                <p>The University has a constant presence of international scholars through its established international linkages with reputable Universities across the world.</p>
+                <p style="margin-top: 1rem;">We provide:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Multilingual tour guides (available upon request)</li>
+                    <li style="margin-bottom: 0.5rem;">Information on visa requirements and international student services</li>
+                    <li style="margin-bottom: 0.5rem;">Connections with current international students</li>
+                    <li style="margin-bottom: 0.5rem;">Guidance on housing options for international students</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section id="contact">
+            <h2 class="section-title">Contact Information</h2>
+            
+            <div class="contact-info">
+                <h3>Campus Tour Office</h3>
+                <p>We are open on Monday – Friday at 8am and 5pm, except on holidays.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Admissions Office,<br>
+                            Admission, Student Affairs & Examinations Center - Main Campus<br>
+                            P.O. Box 635 -80300, Voi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>(+254) 0774 222 064</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>admissions@ttu.ac.ke</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="tour-footer">
+        <div class="footer-content">
+            <p>Taita Taveta University Campus Tours © 2025. All Rights Reserved.</p>
+            <p>Experience our campus, discover your future.</p>
+            <div class="copyright">
+                <p>Main Campus, Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('tourForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const tourDate = document.getElementById('tourDate').value;
+            const tourType = document.getElementById('tourType').value;
+            
+            // Format date for display
+            const dateObj = new Date(tourDate);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Show confirmation
+            alert(`Thank you, ${firstName} ${lastName}! Your campus tour request has been submitted.\n\nWe have sent a confirmation to ${email}.\n\nTour Details:\n- Date: ${formattedDate}\n- Type: ${tourType}\n\nWe will contact you within 24 hours to confirm your appointment.`);
+            
+            // Reset the form
+            document.getElementById('tourForm').reset();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+        
+        // Set minimum date for tour date (tomorrow)
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        
+        document.getElementById('tourDate').min = `${yyyy}-${mm}-${dd}`;
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.tour-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset for sticky navbar
+                    const navbarHeight = document.querySelector('.tour-nav').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.tour-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.tour-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .tour-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

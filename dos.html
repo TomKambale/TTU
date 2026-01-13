@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dean of Students - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --student-blue: #1e6b52;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+        }
+        
+        /* Header */
+        .dean-header {
+            background-color: var(--student-blue);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dean-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(26, 115, 232, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        
+        .dean-header h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .dean-header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--student-blue);
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid white;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Navigation */
+        .dean-nav {
+            background-color: var(--primary-green);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .dean-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .dean-nav li {
+            margin: 0 1.5rem;
+        }
+        
+        .dean-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dean-nav a i {
+            margin-right: 8px;
+        }
+        
+        .dean-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Main Content */
+        .dean-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-green);
+        }
+        
+        /* What We Do Section */
+        .services-section {
+            padding: 4rem 0;
+        }
+        
+        .services-intro {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            background-color: var(--light-green);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--student-blue);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--student-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--student-blue);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--student-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        
+        .service-card p {
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        /* Staff Section */
+        .staff-section {
+            padding: 3rem 0;
+        }
+        
+        .staff-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .staff-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .staff-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .staff-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--light-green);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-green);
+            border: 5px solid var(--student-blue);
+        }
+        
+        .staff-name {
+            font-weight: 700;
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .staff-position {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .staff-email {
+            color: var(--student-blue);
+            font-weight: 500;
+            word-break: break-all;
+        }
+        
+        .staff-email a {
+            color: var(--student-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .staff-email a:hover {
+            color: var(--primary-green);
+            text-decoration: underline;
+        }
+        
+        /* History Section */
+        .history-section {
+            padding: 3rem 0;
+        }
+        
+        .history-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            margin-top: 2rem;
+            border-left: 5px solid var(--accent-green);
+        }
+        
+        .history-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .history-highlight {
+            background-color: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--student-blue);
+        }
+        
+        .history-highlight p {
+            font-weight: 600;
+            color: var(--dark-green);
+            margin: 0;
+            font-style: italic;
+        }
+        
+        /* Important Announcements */
+        .announcements-section {
+            padding: 3rem 0;
+        }
+        
+        .announcements-container {
+            background-color: #fff8e1;
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .announcement-list {
+            list-style-type: none;
+            margin-top: 1.5rem;
+        }
+        
+        .announcement-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #ffeaa7;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .announcement-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .announcement-list i {
+            color: #ff9800;
+            margin-right: 15px;
+            margin-top: 3px;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Information */
+        .contact-section {
+            padding: 3rem 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Footer */
+        .dean-footer {
+            background-color: var(--dark-green);
+            color: #ddd;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .dean-header h1 {
+                font-size: 3rem;
+            }
+            
+            .dean-header p {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dean-header {
+                padding: 3rem 1rem;
+            }
+            
+            .dean-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .dean-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .dean-nav li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .staff-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .history-content,
+            .announcements-container,
+            .service-card,
+            .staff-card,
+            .contact-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .dean-container {
+                padding: 0 1rem;
+            }
+            
+            .staff-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dean-header">
+        <h1>Office of the Dean of Students</h1>
+        <p>Supporting student welfare, development, and success at Taita Taveta University</p>
+        <a href="#contact" class="contact-btn">Contact Our Office <i class="fas fa-arrow-right"></i></a>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="dean-nav">
+        <ul>
+            <li><a href="#services"><i class="fas fa-hands-helping"></i> Services</a></li>
+            <li><a href="#staff"><i class="fas fa-users"></i> Our Team</a></li>
+            <li><a href="#history"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="#announcements"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+            <li><a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dean-container">
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <h2 class="section-title">What We Do</h2>
+            <div class="services-intro">
+                <p>The Office of the Dean of Students is dedicated to enhancing the student experience at TTU by providing comprehensive support services, fostering personal development, and creating a vibrant campus community. We serve as advocates for students and work to ensure their holistic development during their time at the university.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Accommodation & Catering Services</h3>
+                    <p>Providing comfortable, safe, and affordable accommodation options for students, along with quality catering services that meet diverse dietary needs and preferences.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Co-curricular Programs</h3>
+                    <p>Establishing strong co-curricular programmes in sports and games, clubs and societies to promote talent development, teamwork, and leadership skills.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Guidance & Counseling</h3>
+                    <p>Ensuring availability of strong guidance and counseling programmes and providing timely counseling services for academic, personal, and psychological support.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career Development</h3>
+                    <p>Creating awareness of career opportunities to final year and other students through workshops, career fairs, and industry connections.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Mentorship Programs</h3>
+                    <p>Encouraging mentorship, working with university students and secondary schools surrounding the University, to enhance transition rates to institutions of higher learning.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Student Activities & Welfare</h3>
+                    <p>Coordinating students' activities, relations and welfare to ensure a balanced and fulfilling university experience for all students.</p>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <h3>Student Association Elections</h3>
+                    <p>Serving as Returning Officer for students Association Elections, ensuring free, fair, and transparent electoral processes.</p>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3>Prevention of Alcohol & Drug Abuse</h3>
+                    <p>Implementing programs and initiatives to prevent alcohol and drug abuse among students through education, awareness, and support services.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Staff Section -->
+        <section id="staff" class="staff-section">
+            <h2 class="section-title">Our Dedicated Team</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">Meet the professionals committed to supporting student success and well-being at TTU</p>
+            
+            <div class="staff-container">
+                <!-- Dean -->
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="staff-name">Sophie Chuaga</div>
+                    <div class="staff-position">Dean of Students</div>
+                    <div class="staff-email">
+                        <a href="mailto:sophie.chuaga@ttu.ac.ke">sophie.chuaga@ttu.ac.ke</a>
+                    </div>
+                </div>
+                
+                <!-- Student Counsellor -->
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="staff-name">TO BE UPDATED</div>
+                    <div class="staff-position">Student Counsellor I</div>
+                    <div class="staff-email">
+                        <a href="mailto:#councelling@ttu.ac.ke">TOBEUPDATED@ttu.ac.ke</a>
+                    </div>
+                </div>
+                
+                <!-- Sports Officer I -->
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="staff-name">Robert Ndambo Ngeti</div>
+                    <div class="staff-position">Sports and Games Officer I</div>
+                    <div class="staff-email">
+                        <a href="mailto:mwambambarnn@ttuc.ac.ke">mwambambarnn@ttuc.ac.ke</a>
+                    </div>
+                </div>
+                
+                <!-- Sports Officer II -->
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="staff-name">Michael Riwa</div>
+                    <div class="staff-position">Sports and Games Officer II</div>
+                    <div class="staff-email">
+                        <a href="mailto:sports@ttu.ac.ke">sports@ttu.ac.ke</a>
+                    </div>
+                </div>
+                
+                <!-- Secretary -->
+                <div class="staff-card">
+                    <div class="staff-avatar">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="staff-name">Joyce Mwakilomba</div>
+                    <div class="staff-position">Secretary</div>
+                    <div class="staff-email">
+                        <a href="mailto:joy.mwakilomba@ttu.ac.ke">joy.mwakilomba@ttu.ac.ke</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history-section">
+            <h2 class="section-title">History of the Department</h2>
+            
+            <div class="history-content">
+                <p>The Students Welfare Department was established to assist students and staff on moral, spiritual, personal, and relationship issues affecting them in the University. This has grown over time as the population has continued to grow.</p>
+                
+                <p>Initially operating with limited staff and resources, the department has expanded its services to meet the evolving needs of an increasingly diverse student population. From its humble beginnings, the office has developed into a comprehensive student support system addressing academic, social, emotional, and developmental aspects of student life.</p>
+                
+                <div class="history-highlight">
+                    <p><i class="fas fa-quote-left" style="margin-right: 10px;"></i> Our commitment has always been to create a supportive environment where every student can thrive academically, socially, and personally.</p>
+                </div>
+                
+                <p>Today, the Office of the Dean of Students continues to evolve, implementing new programs and services to address contemporary student needs while maintaining its core mission of supporting student welfare and development. The department remains committed to fostering an inclusive, supportive, and engaging campus community for all TTU students.</p>
+            </div>
+        </section>
+
+        <!-- Announcements Section -->
+        <section id="announcements" class="announcements-section">
+            <h2 class="section-title">Important Announcements</h2>
+            
+            <div class="announcements-container">
+                <h3 style="color: #856404; margin-bottom: 1rem;"><i class="fas fa-exclamation-circle"></i> Student Notices</h3>
+                <ul class="announcement-list">
+                    <li>
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <strong>Student Association Elections:</strong> Nomination period opens next Monday. All interested students should collect nomination forms from our office.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-utensils"></i>
+                        <div>
+                            <strong>Catering Services Feedback:</strong> We welcome feedback on catering services. Please submit your suggestions through the online portal or suggestion boxes in dining halls.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-house-user"></i>
+                        <div>
+                            <strong>Accommodation Applications:</strong> Applications for hostel accommodation for the next academic year will open in two weeks. Watch for announcements.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <strong>Counselling Services:</strong> Confidential counselling sessions are available by appointment. Walk-in hours: Tuesday and Thursday, 2-4 PM.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>Drug Abuse Awareness Week:</strong> Join us for workshops and activities during Drug Abuse Awareness Week starting next month.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contact Our Office</h2>
+            
+            <div class="contact-container">
+                <!-- Office Hours -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Office Hours</h3>
+                    <p>We are available to assist students during the following hours:</p>
+                    <div style="margin-top: 1.5rem; text-align: left;">
+                        <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM</p>
+                        <p><strong>Weekends:</strong> By appointment only</p>
+                        <p><strong>Emergency Contact:</strong> Available 24/7 through University Security</p>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p>Find us at :</p>
+                    <div style="margin-top: 1.5rem; text-align: left;">
+                        <p><strong>Office:</strong> B6, Runda Section</p>
+                        <p><strong>Counselling Center:</strong> B6, Runda Section</p>
+                        <p><strong>Sports Office:</strong> B6, Runda Section</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Contact -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Get In Touch</h3>
+                    <p>We're here to help with any student-related concerns</p>
+                    <div style="margin-top: 1.5rem; text-align: left;">
+                        <p><strong>General Inquiries:</strong> deanstudents@ttu.ac.ke</p>
+                        <p><strong>Counselling Services:</strong> counselling@ttu.ac.ke</p>
+                        <p><strong>Sports & Activities:</strong> sports@ttu.ac.ke</p>
+                        <p><strong>Accommodation:</strong> accommodation@ttu.ac.ke</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div style="background-color: var(--student-blue); color: white; border-radius: 10px; padding: 4rem 2rem; margin: 4rem 0; text-align: center;">
+            <h2 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">Need Assistance?</h2>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto 2.5rem;">Our office is here to support you throughout your university journey. Don't hesitate to reach out for help, guidance, or to share your concerns.</p>
+            <a href="mailto:deanstudents@ttu.ac.ke" class="contact-btn" style="background-color: white; color: var(--student-blue);">
+                <i class="fas fa-envelope"></i> Email Us Now
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dean-footer">
+        <div class="footer-content">
+            <p>Office of the Dean of Students © 2025. All Rights Reserved.</p>
+            <p>Supporting student success, welfare, and holistic development.</p>
+            <div class="copyright">
+                <p>Taita Taveta University | <a href="index.html" style="color: var(--accent-green); text-decoration: none;">Return to Homepage</a> | Main Campus, Administration Building</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.dean-nav a, .contact-btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for sticky navbar
+                        const navbarHeight = document.querySelector('.dean-nav').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.dean-nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = document.querySelector('.dean-nav').offsetHeight;
+                
+                if (scrollY >= (sectionTop - navbarHeight - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .dean-nav a.active {
+                background-color: rgba(255, 255, 255, 0.2) !important;
+                color: var(--light-green) !important;
+                font-weight: 700;
+            }
+            
+            /* Animation for service cards */
+            .service-card, .staff-card {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            
+            .service-card.visible, .staff-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Animation for cards on scroll
+        const cards = document.querySelectorAll('.service-card, .staff-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Add hover effect to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.2)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 8px 25px var(--shadow)';
+            });
+        });
+        
+        // Staff card hover effect
+        document.querySelectorAll('.staff-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px)';
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (this.classList.contains('visible')) {
+                    this.style.transform = 'translateY(-10px)';
+                } else {
+                    this.style.transform = 'translateY(30px)';
+                }
+                this.style.boxShadow = '0 8px 25px var(--shadow)';
+            });
+        });
+        
+        // Email link handling
+        document.querySelectorAll('.staff-email a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = this.getAttribute('href').replace('mailto:', '');
+                alert(`This would open your email client to send a message to ${email}. For demonstration purposes, this alert is shown instead.`);
+            });
+        });
+    </script>
+</body>
+</html>

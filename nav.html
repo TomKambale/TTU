@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTU University - Dropdown Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fdfb;
+            padding: 20px;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--light-green);
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-green);
+        }
+        
+        .demo-header h1 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+        
+        .demo-header p {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Main Navigation */
+        .navbar {
+            background-color: var(--primary-green);
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 1rem 0;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        /* Desktop Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 1.5rem 1.2rem;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-green);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border-top: 3px solid var(--accent-green);
+        }
+        
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.9rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item i {
+            margin-right: 10px;
+            color: var(--secondary-green);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            padding-left: 1.8rem;
+        }
+        
+        /* Mega Dropdown */
+        .mega-dropdown {
+            position: static !important;
+        }
+        
+        .mega-dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            border-top: 3px solid var(--accent-green);
+        }
+        
+        .mega-dropdown:hover .mega-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .mega-dropdown-column h3 {
+            color: var(--dark-green);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 2px solid var(--light-green);
+        }
+        
+        .mega-dropdown-column a {
+            display: block;
+            padding: 0.7rem 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mega-dropdown-column a i {
+            margin-right: 10px;
+            color: var(--secondary-green);
+            width: 20px;
+            text-align: center;
+        }
+        
+        .mega-dropdown-column a:hover {
+            color: var(--primary-green);
+            padding-left: 10px;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Mobile Menu */
+        @media (max-width: 1024px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background-color: var(--primary-green);
+                width: 100%;
+                height: calc(100vh - 70px);
+                transition: left 0.5s ease;
+                overflow-y: auto;
+                padding: 2rem 0;
+                align-items: flex-start;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                width: 100%;
+            }
+            
+            .nav-link {
+                padding: 1.2rem 2rem;
+                width: 100%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            /* Mobile Dropdown */
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-radius: 0;
+                border-top: none;
+                min-width: 100%;
+                margin-left: 1rem;
+            }
+            
+            .dropdown-menu::before {
+                display: none;
+            }
+            
+            .dropdown-item {
+                color: rgba(255, 255, 255, 0.9);
+                padding: 0.8rem 2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .dropdown-item:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: white;
+            }
+            
+            /* Mobile Mega Dropdown */
+            .mega-dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(0, 0, 0, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+                padding: 0;
+                display: block;
+                grid-template-columns: 1fr;
+                border-top: none;
+            }
+            
+            .mega-dropdown-column {
+                padding: 0 2rem;
+            }
+            
+            .mega-dropdown-column h3 {
+                color: rgba(255, 255, 255, 0.9);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 1rem;
+            }
+            
+            .mega-dropdown-column a {
+                color: rgba(255, 255, 255, 0.8);
+                padding: 0.7rem 0;
+            }
+            
+            .mega-dropdown-column a:hover {
+                color: white;
+                background-color: transparent;
+            }
+            
+            /* Active dropdowns */
+            .dropdown-active .dropdown-menu {
+                max-height: 500px;
+            }
+            
+            .dropdown-active .mega-dropdown-content {
+                max-height: 2000px;
+                padding: 1rem 0;
+            }
+            
+            .dropdown-toggle {
+                position: relative;
+            }
+            
+            .dropdown-toggle::after {
+                content: '\f078';
+                font-family: 'Font Awesome 5 Free';
+                font-weight: 900;
+                position: absolute;
+                right: 2rem;
+                transition: transform 0.3s ease;
+            }
+            
+            .dropdown-active .dropdown-toggle::after {
+                transform: rotate(180deg);
+            }
+        }
+        
+        /* Demo Content */
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        .content h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+        }
+        
+        .instruction-box {
+            background-color: var(--light-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .instruction-box h3 {
+            color: var(--dark-green);
+            margin-bottom: 10px;
+        }
+        
+        .code-snippet {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-snippet .comment {
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>Taita Taveta University Dropdown Navigation</h1>
+        <p>A responsive, multi-level dropdown navigation menu with mega-menu support. Works on desktop and mobile devices.</p>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <i class="fas fa-university"></i>
+                Taita Taveta University
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <!-- Home -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                
+                <!-- About TTU (Dropdown) -->
+                <li class="nav-item dropdown-toggle">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-info-circle"></i> About TTU
+                        <i class="fas fa-chevron-down" style="margin-left: 8px; font-size: 0.8rem;"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="about.html" class="dropdown-item">
+                            <i class="fas fa-university"></i> About University
+                        </a>
+                        <a href="history.html" class="dropdown-item">
+                            <i class="fas fa-history"></i> History
+                        </a>
+                        <a href="mission.html" class="dropdown-item">
+                            <i class="fas fa-bullseye"></i> Mission & Vision
+                        </a>
+                        <a href="administration.html" class="dropdown-item">
+                            <i class="fas fa-users-cog"></i> Administration
+                        </a>
+                        <a href="governance.html" class="dropdown-item">
+                            <i class="fas fa-landmark"></i> Governance
+                        </a>
+                    </div>
+                </li>
+                
+                <!-- Academics (Mega Dropdown) -->
+                <li class="nav-item mega-dropdown dropdown-toggle">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-graduation-cap"></i> Academics
+                        <i class="fas fa-chevron-down" style="margin-left: 8px; font-size: 0.8rem;"></i>
+                    </a>
+                    <div class="mega-dropdown-content">
+                        <div class="mega-dropdown-column">
+                            <h3>Schools & Departments</h3>
+                            <a href="https://schools.ttu.ac.ke/school/1/">
+                                <i class="fas fa-laptop-code"></i> School of Science and Informatics
+                            </a>
+                            <a href="https://schools.ttu.ac.ke/school/3/">
+                                <i class="fas fa-chart-line"></i> School of Business, Economics and Social Sciences
+                            </a>
+                            <a href="school-engineering.html">
+                                <i class="fas fa-cogs"></i> School of Mines and Engineering
+                            </a>
+                            <a href="https://schools.ttu.ac.ke/school/5/">
+                                <i class="fas fa-chalkboard-teacher"></i> School of Education
+                            </a>
+                            <a href="https://schools.ttu.ac.ke/school/2/">
+                                <i class="fas fa-seedling"></i> School of Agriculture, Earth and Environmental Sciences
+                            </a>
+                        </div>
+                        
+                        <div class="mega-dropdown-column">
+                            <h3>Academic Programs</h3>
+                            <a href="certificates.html">
+                                <i class="fas fa-certificate"></i> Certificates
+                            </a>
+                            <a href="diplomas.html">
+                                <i class="fas fa-file-alt"></i> Diplomas
+                            </a>
+                            <a href="undergraduate.html">
+                                <i class="fas fa-user-graduate"></i> Undergraduate
+                            </a>
+                            <a href="postgraduate.html">
+                                <i class="fas fa-graduation-cap"></i> Postgraduate
+                            </a>
+                        </div>
+                        
+                        <div class="mega-dropdown-column">
+                            <h3>Academic Resources</h3>
+                            <a href="library.html">
+                                <i class="fas fa-book"></i> Library
+                            </a>
+                            <a href="research.html">
+                                <i class="fas fa-search"></i> Research
+                            </a>
+                            <a href="e-learning.html">
+                                <i class="fas fa-laptop"></i> E-Learning
+                            </a>
+                            <a href="calendar.html">
+                                <i class="fas fa-calendar-alt"></i> Academic Calendar
+                            </a>
+                        </div>
+                        
+                        <div class="mega-dropdown-column">
+                            <h3>Student Support</h3>
+                            <a href="registrar.html">
+                                <i class="fas fa-file-contract"></i> Registrar's Office
+                            </a>
+                            <a href="examinations.html">
+                                <i class="fas fa-clipboard-check"></i> Examinations
+                            </a>
+                            <a href="career-services.html">
+                                <i class="fas fa-briefcase"></i> Career Services
+                            </a>
+                            <a href="academic-advising.html">
+                                <i class="fas fa-hands-helping"></i> Academic Advising
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- Admissions (Dropdown) -->
+                <li class="nav-item dropdown-toggle">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-file-signature"></i> Admissions
+                        <i class="fas fa-chevron-down" style="margin-left: 8px; font-size: 0.8rem;"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="admissions.html" class="dropdown-item">
+                            <i class="fas fa-info-circle"></i> Admissions Overview
+                        </a>
+                        <a href="how-to-apply.html" class="dropdown-item">
+                            <i class="fas fa-list-ol"></i> How to Apply
+                        </a>
+                        <a href="requirements.html" class="dropdown-item">
+                            <i class="fas fa-check-circle"></i> Requirements
+                        </a>
+                        <a href="deadlines.html" class="dropdown-item">
+                            <i class="fas fa-calendar-times"></i> Deadlines
+                        </a>
+                        <a href="fees.html" class="dropdown-item">
+                            <i class="fas fa-money-check-alt"></i> Fees & Financing
+                        </a>
+                        <a href="campustour.html" class="dropdown-item">
+                            <i class="fas fa-university"></i> Campus Tour
+                        </a>
+                    </div>
+                </li>
+                
+                <!-- Campus Life (Dropdown) -->
+                <li class="nav-item dropdown-toggle">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i> Campus Life
+                        <i class="fas fa-chevron-down" style="margin-left: 8px; font-size: 0.8rem;"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="healthunit.html" class="dropdown-item">
+                            <i class="fas fa-clinic-medical"></i> Health Unit
+                        </a>
+                        <a href="student-clubs.html" class="dropdown-item">
+                            <i class="fas fa-futbol"></i> Clubs & Societies
+                        </a>
+                        <a href="sports.html" class="dropdown-item">
+                            <i class="fas fa-running"></i> Sports & Recreation
+                        </a>
+                        <a href="housing.html" class="dropdown-item">
+                            <i class="fas fa-bed"></i> Student Housing
+                        </a>
+                        <a href="dining.html" class="dropdown-item">
+                            <i class="fas fa-utensils"></i> Dining
+                        </a>
+                        <a href="events.html" class="dropdown-item">
+                            <i class="fas fa-calendar-check"></i> Events
+                        </a>
+                    </div>
+                </li>
+                
+                <!-- Alumni -->
+                <li class="nav-item">
+                    <a href="alumni.html" class="nav-link">
+                        <i class="fas fa-user-graduate"></i> Alumni
+                    </a>
+                </li>
+                
+                <!-- Contact -->
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i> Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="content">
+        <h2>Dropdown Navigation Menu for TTU University</h2>
+        <p>This is a fully responsive dropdown navigation menu with the following features:</p>
+        
+        <div class="instruction-box">
+            <h3>Features:</h3>
+            <ul>
+                <li><strong>Responsive Design:</strong> Works on desktop, tablet, and mobile devices</li>
+                <li><strong>Multi-level Dropdowns:</strong> Regular dropdowns with nested links</li>
+                <li><strong>Mega Menu:</strong> For the Academics section with multiple columns</li>
+                <li><strong>Mobile-Friendly:</strong> Hamburger menu for mobile with click-to-expand dropdowns</li>
+                <li><strong>TTU Branding:</strong> Uses your university's green color scheme</li>
+                <li><strong>Smooth Animations:</strong> CSS transitions for dropdown appearance</li>
+                <li><strong>Accessibility:</strong> Proper ARIA attributes and keyboard navigation support</li>
+            </ul>
+        </div>
+        
+        <h3>How to Integrate with Your Existing Site:</h3>
+        <p>To add this dropdown navigation to your existing TTU website, follow these steps:</p>
+        
+        <div class="code-snippet">
+            <span class="comment">// 1. Copy the HTML structure from the &lt;nav class="navbar"&gt; section</span><br>
+            <span class="comment">// 2. Copy the CSS from the &lt;style&gt; tag (navbar-related styles only)</span><br>
+            <span class="comment">// 3. Copy the JavaScript from the &lt;script&gt; tag at the bottom</span><br>
+            <span class="comment">// 4. Update the links to match your actual page URLs</span><br>
+            <span class="comment">// 5. Customize the dropdown items based on your site structure</span>
+        </div>
+        
+        <h3>Desktop Behavior:</h3>
+        <p>On desktop screens (width > 1024px), dropdowns appear on hover. The mega dropdown for Academics shows a multi-column layout with categorized links.</p>
+        
+        <h3>Mobile Behavior:</h3>
+        <p>On mobile screens (width ≤ 1024px), the menu collapses into a hamburger icon. Dropdowns expand on click with smooth animations.</p>
+        
+        <h3>Customization Tips:</h3>
+        <ul>
+            <li>Change colors by modifying the CSS variables at the top of the &lt;style&gt; tag</li>
+            <li>Add/remove menu items by editing the HTML structure</li>
+            <li>Adjust breakpoints in the media query for different screen sizes</li>
+            <li>Replace Font Awesome icons with your own images or different icon sets</li>
+        </ul>
+        
+        <div class="instruction-box">
+            <h3>Test the Navigation:</h3>
+            <p>Resize your browser window to see the responsive behavior. On mobile size, click the hamburger icon to open the menu, then click on "Academics" or other dropdown items to expand them.</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Mobile Dropdown Toggle
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            // For mobile only
+            if (window.innerWidth <= 1024) {
+                const link = toggle.querySelector('.nav-link');
+                
+                link.addEventListener('click', (e) => {
+                    // Prevent default only if it's a dropdown toggle
+                    if (link.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
+                    
+                    // Close other dropdowns
+                    dropdownToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            otherToggle.classList.remove('dropdown-active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    toggle.classList.toggle('dropdown-active');
+                });
+            }
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                if (!e.target.closest('.navbar') && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    
+                    // Close all dropdowns
+                    dropdownToggles.forEach(toggle => {
+                        toggle.classList.remove('dropdown-active');
+                    });
+                }
+            }
+        });
+        
+        // Close dropdowns when clicking on a link (for mobile)
+        const allLinks = document.querySelectorAll('.nav-link, .dropdown-item');
+        allLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    // Close mobile menu
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    
+                    // Close all dropdowns
+                    dropdownToggles.forEach(toggle => {
+                        toggle.classList.remove('dropdown-active');
+                    });
+                }
+            });
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                // Reset mobile menu state on desktop
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                
+                // Close all dropdowns
+                dropdownToggles.forEach(toggle => {
+                    toggle.classList.remove('dropdown-active');
+                });
+            }
+        });
+        
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close mobile menu on ESC
+                if (window.innerWidth <= 1024 && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    
+                    // Close all dropdowns
+                    dropdownToggles.forEach(toggle => {
+                        toggle.classList.remove('dropdown-active');
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

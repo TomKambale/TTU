@@ -35,14 +35,9 @@
       }
 
       .container {
-            padding: 0 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px var(--shadow);
-        /* max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px; */
+        padding: 0 20px;
       }
 
       /* Header Styles */
@@ -89,29 +84,6 @@
       }
 
       /* Council Structure */
-      /* New styling */
-      /* Council Card Image */
-.council-image {
-  width: 260px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 8px; /* square with soft edges */
-  margin-bottom: 20px;
-}
-
-/* Horizontal council layout */
-.council-row {
-  display: flex;
-  gap: 30px;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-
-/* Ensure equal alignment */
-.council-row .council-card {
-  text-align: center;
-}
       .council-structure {
         display: flex;
         flex-wrap: wrap;
@@ -137,8 +109,6 @@
 
       .council-card.chairman {
         border-top: 5px solid var(--earth-brown);
-        min-width: 300px;
-        max-width: 350px;
       }
 
       .council-card:hover {
@@ -262,129 +232,11 @@
 
       /* Committees Section */
       .committees-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 50px;
-}
-/* Committee horizontal rows */
-/* .committee-row {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-/* Chairpersons row 
-.committee-row.chairs .member-card {
-  flex: 1;
-  max-width: 260px;
-}
-
-/* Members row 
-.committee-row.members .member-card {
-  flex: 1;
-  max-width: 300px;
-}
-
-/* Mobile stacking 
-@media (max-width: 768px) {
-  .committee-row {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .committee-row .member-card {
-    max-width: 100%;
-  }
-} */
-
-/* Committee horizontal rows */
-.committee-row {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-/* Chairpersons row */
-.committee-row.chairs .member-card {
-  flex: 1;
-  max-width: 260px;
-}
-
-/* Members row */
-.committee-row.members .member-card {
-  flex: 1;
-  max-width: 300px;
-}
-
-/* Mobile stacking */
-@media (max-width: 768px) {
-  .committee-row {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .committee-row .member-card {
-    max-width: 100%;
-  }
-}
-.committee-row.chairs {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-  flex-wrap: nowrap; /* IMPORTANT: keeps them on one line */
-}
-
-/* Force members into one horizontal row */
-.committee-row.members {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 30px;
-  flex-wrap: nowrap;
-}
-
-/* Equal card sizing */
-.committee-row .council-card {
-  flex: 1 1 0;
-  max-width: 260px;
-}
-
-/* Slightly wider cards for members row */
-.committee-row.members .council-card {
-  max-width: 300px;
-}
-
-/* Responsive fallback */
-@media (max-width: 1200px) {
-  .committee-row.chairs,
-  .committee-row.members {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 768px) {
-  .committee-row.chairs,
-  .committee-row.members {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .committee-row .council-card {
-    max-width: 100%;
-  }
-}
-      /* .committees-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
         gap: 30px;
         margin-top: 50px;
-      } */
+      }
 
       @media (max-width: 600px) {
         .committees-container {
@@ -560,22 +412,22 @@
 
     <!-- Council Structure -->
     <div class="container">
-     <div class="council-structure">
-        <!-- Chairman of Council 
+      <div class="council-structure">
+        <!-- Chairman of Council -->
          <a href="members/mbeche.html" style="text-decoration:none;color:inherit;">
                   <div class="council-card chairman">
           <div class="council-image-container">
-            <!-- Actual image would be here in production 
+            <!-- Actual image would be here in production -->
             <img
               src="/src/chair.png"
               alt="Prof. Issaac Mbeche"
               class="council-image"
             />
 
-            <!-- Fallback placeholder for missing image 
-            <div class="image-placeholder">
+            <!-- Fallback placeholder for missing image -->
+            <!-- <div class="image-placeholder">
               <i class="fas fa-user-tie"></i>
-            </div>
+            </div> -->
             <div class="image-overlay"></div>
           </div>
           <h3>Chairman of Council</h3>
@@ -589,12 +441,13 @@
          </a>
       </div>
       <div class="container">
-         Vice Chancellor 
+        <!-- Vice Chancellor -->
          <p></p>
         <div class="council-card">
-          <div class="council-icon">
+          <!-- <div class="council-icon">
             <i class="fas fa-user-graduate"></i>
-          </div>
+          </div> -->
+          <img src="/src/rabia.jpg" alt="Prof. Fred Simiyu Barasa" class="council-image" />
           <h3>Secretary to Council</h3>
           <div class="name">Prof. Fred Simiyu Barasa</div>
           <div class="position">Vice Chancellor</div>
@@ -602,7 +455,7 @@
             Chief Executive Officer and Secretary to the University Council,
             responsible for implementing Council decisions.
           </p>
-        </div> -->
+        </div>
 
         <!-- Council Committees -->
         <!-- <div class="council-card">
@@ -618,166 +471,88 @@
         </div>
       </div>
     </div> -->
-<!-- Council Structure -->
-<!-- <div class="container"> -->
-  <!-- <div class="council-structure"> -->
-
-    <!-- Chairperson -->
-    <a href="/mbeche.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img
-          src="/src/chair.png"
-          alt="Prof. Isaac Mbeche"
-          class="council-image"
-        />
-        <h3>Chairperson</h3>
-        <div class="name">Prof. Isaac Meroka Mbeche</div>
-        <p class="committee">Chairman of University Council</p>
-        <p>
-          Provides overall leadership and strategic direction to the University
-          Council.
-        </p>
-      </div>
-    </a>
-
-    <!-- Committee Chairpersons -->
-
 
     <!-- Council Chairpersons Section -->
-<!-- <section class="section">
-  <div class="container">
-    <h2 class="section-title">Chairpersons of Council Committees</h2>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Chairpersons of Council Committees </h2>
+        <p
+          style="
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+          "
+        >
+          Independent Council Members who chair the various Council Committees,
+          providing specialized oversight in key areas of University governance.
+        </p>
 
-    <p style="text-align:center;max-width:800px;margin:0 auto 40px;font-size:1.1rem;">
-      Independent Council Members who chair the various Council Committees,
-      providing specialized oversight in key areas of University governance.
-    </p>
+        <div class="members-grid">
+          <!-- Chairperson 1 -->
+          <div class="member-card">
+            <img src="/src/kilungya.jpg" alt="Mr. Stephen Kilungya" class="council-image" />
+            <h3>Mr. Stephen Kilungya</h3>
+            <div class="position">Independent Council Member</div>
+            <div class="role">
+              Chair – Human Resource & Development (HRD) Committee
+            </div>
+            <p class="committee" style="margin-top: 15px">
+              Oversees HR policies, staff development, and organizational
+              capacity building.
+            </p>
+          </div>
 
-    <div class="members-grid">
+          <!-- Chairperson 2 -->
+          <div class="member-card">
+            <img src="/src/nyona.jpg" alt="Mr. Nashon Nyona" class="council-image" />
+            <h3>Mr. Nashon Nyona</h3>
+            <div class="position">Independent Council Member</div>
+            <div class="role">
+              Chair – Audit, Governance and Risk Management (AGR) Committee
+            </div>
+            <p class="committee" style="margin-top: 15px">
+              Ensures financial integrity, governance compliance, and risk
+              mitigation.
+            </p>
+          </div>
 
-      <div class="member-card">
-        <img src="/src/kilungya.jpg" alt="Mr. Stephen Kilungya" class="council-image" />
-        <h3>Mr. Stephen Kilungya</h3>
-        <div class="position">Independent Council Member</div>
-        <div class="role">
-          Chair – Human Resource & Development (HRD) Committee
+          <!-- Chairperson 3 -->
+          <div class="member-card">
+            <img src="/src/nahida.jpg" alt="Ms. Nahida Mohamed" class="council-image" />
+            <h3>Ms. Nahida Mohamed</h3>
+            <div class="position">Independent Council Member</div>
+            <div class="role">
+              Chair – Finance, Development & General Purpose (FDGP) Committee
+            </div>
+            <p class="committee" style="margin-top: 15px">
+              Manages financial oversight, budgeting, and strategic development
+              planning.
+            </p>
+          </div>
+
+          <!-- Chairperson 4 -->
+          <div class="member-card">
+            <img src="/src/rabia.jpg" alt="Ms. Rabia Mere Salim" class="council-image" />
+            <h3>Ms. Rabia Mere Salim</h3>
+            <div class="position">Independent Council Member</div>
+            <div class="role">
+              Chair – Sealing, Resource Mobilization and Academic Affairs
+              Committee
+            </div>
+            <p class="committee" style="margin-top: 15px">
+              Oversees academic standards, resource mobilization, and quality
+              assurance.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="member-card">
-        <img src="/src/nyona.jpg" alt="Mr. Nashon Nyona" class="council-image" />
-        <h3>Mr. Nashon Nyona</h3>
-        <div class="position">Independent Council Member</div>
-        <div class="role">
-          Chair – Audit, Governance and Risk Management (AGR) Committee
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img src="/src/nahida.jpg" alt="Ms. Nahida Mohamed" class="council-image" />
-        <h3>Ms. Nahida Mohamed</h3>
-        <div class="position">Independent Council Member</div>
-        <div class="role">
-          Chair – Finance, Development & General Purpose (FDGP) Committee
-        </div>
-      </div>
-
-      <div class="member-card">
-        <img src="/src/rabia.jpg" alt="Ms. Rabia Mere Salim" class="council-image" />
-        <h3>Ms. Rabia Mere Salim</h3>
-        <div class="position">Independent Council Member</div>
-        <div class="role">
-          Chair – Sealing, Resource Mobilization and Academic Affairs Committee
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section> -->
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Chairpersons of Council Committees</h2>
-
-    <!-- Committee Chairpersons -->
-    <div class="committee-row chairs">
-
-    <a href="/kilungya.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/kilungya.png" class="council-image" alt="Mr. Stephen Kilungya" />
-        <h3>Mr. Stephen Kilungya</h3>
-        <div class="position">Independent Council Member and Chair </div>
-        <div class="role">– Human Resource &
-                  Development (HRD) Committee</div>
-      </div>
-      </a>
-
-      <a href="/nashon.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/nyona.png" class="council-image" alt="Mr. Nashon Nyona" />
-        <h3>Mr. Nashon Nyona</h3>
-        <div class="position">Independent Council Member and Chair </div>
-        <div class="role">– Audit, Governance and
-                  Risk Management (AGR) Committee</div>
-      </div>
-      </a>
-
-      <a href="/nahida.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/nahida.png" class="council-image" alt="Ms. Nahida Mohamed" />
-        <h3>Ms. Nahida Mohamed</h3>
-        <div class="position">Independent Council Member and Chair </div>
-        <div class="role">– Finance, Development &
-                  General Purpose (FDGP) Committee</div>
-      </div>
-      </a>
-
-      <a href="/rabia.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/rabia.png" class="council-image" alt="Ms. Rabia Mere Salim" />
-        <h3>Ms. Rabia Mere Salim</h3>
-        <div class="position">Independent Council Member and Chair </div>
-        <div class="role">– Sealing, Resource
-                  Mobilization and Academic Affairs Committee</div>
-      </div>
-      </a>
-
-    </div>
-
-    <h2 class="section-title">Council Members</h2>
-    <!-- Other Committee Members -->
-    <div class="committee-row members">
-
-      <a href="/kibirio.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/kibirio.png" class="council-image" alt="Ms. Emma Kibiro" />
-        <h3>Ms. Emma Kibiro</h3>
-        <div class="position">Committee Member</div>
-      </div>
-      </a>
-
-      <a href="/watene.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/watene.png" class="council-image" alt="Dr. David Watene" />
-        <h3>Dr. David Watene</h3>
-        <div class="position">Alternate Member to the PS, Higher Education and Research</div>
-      </div>
-      </a>
-
-      <a href="/vc.html" style="text-decoration:none;color:inherit;">
-      <div class="council-card chairman">
-        <img src="/src/vc.png" class="council-image" alt="Prof. Fred Simiyu Barasa" />
-        <h3>Prof. Fred Simiyu Barasa</h3>
-        <div class="position">Vice Chancellor and Secretary to the Council</div>
-      </div>
-      </a>
-
-    </div>
-
-  </div>
-</section>
     <!-- Council Members Section -->
     <section class="section">
       <div class="container">
+        <div class="committee-row members">
         <h2 class="section-title">Council Members</h2>
         <p
           style="
@@ -852,6 +627,7 @@
           </table>
         </div>
       </div>
+      </div>
     </section>
 
     <!-- Council Committees Section -->
@@ -874,7 +650,7 @@
           <!-- Committee 1 -->
           <div class="committee-card">
             <a href="hrcommittee.html" style="text-decoration:none;color:inherit;">
-              <h3>Human Resource and Development Committee</h3>
+                <h3>Human Resource and Development Committee</h3>
               <ul class="committee-members">
                 <li class="committee-member">
                   <div class="member-icon">
@@ -909,7 +685,7 @@
 
           <!-- Committee 2 -->
           <div class="committee-card">
-            <a href="audit.html" style="text-decoration:none;color:inherit;">
+            <a href="#.html" style="text-decoration:none;color:inherit;">
             <h3>Audit, Governance and Risk Management (AGR) Committee</h3>
             <ul class="committee-members">
               <li class="committee-member">
@@ -945,7 +721,7 @@
 
           <!-- Committee 3 -->
           <div class="committee-card">
-            <a href="finance.html" style="text-decoration:none;color:inherit;">
+            <a href="#.html" style="text-decoration:none;color:inherit;">
             <h3>Finance, Development & General Purpose (FDGP) Committee</h3>
             <ul class="committee-members">
               <li class="committee-member">
@@ -981,11 +757,10 @@
 
           <!-- Committee 4 -->
           <div class="committee-card">
-            <a href="sealing.html" style="text-decoration:none;color:inherit;">
+            <a href="#.html" style="text-decoration:none;color:inherit;">
               <h3>
                 Sealing, Resource Mobilization and Academic Affairs Committee
               </h3>
-            </a>
             <ul class="committee-members">
               <li class="committee-member">
                 <div class="member-icon">
@@ -1022,14 +797,17 @@
     </section>
 
     <!-- Footer -->
-<footer>
-        <div class="container">
-            <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
-            <p>University Council Committees - Specialized Governance and Oversight</p>
-        </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
+        <p>
+          University Council - Governing Body for Strategic Direction and
+          Oversight
+        </p>
+      </div>
     </footer>
 
-    <!-- <script>
+    <script>
       // Add simple hover effect for cards
       document.addEventListener("DOMContentLoaded", function () {
         const cards = document.querySelectorAll(
@@ -1074,6 +852,6 @@
           }
         });
       });
-    </script> -->
+    </script>
   </body>
 </html>

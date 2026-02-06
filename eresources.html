@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Information Resources - TTU Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+            --library-beige: #f5f1e8;
+            --library-gold: #b38b59;
+            --digital-blue: #1a5f7a;
+            --digital-light-blue: #e3f2fd;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.9;
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        /* Hero Section */
+        .eresources-hero {
+            background: linear-gradient(rgba(26, 95, 122, 0.9), rgba(26, 95, 122, 0.95)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .eresources-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .eresources-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .access-badge {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            color: var(--digital-blue);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+
+        /* Search Bar */
+        .search-section {
+            background-color: var(--light-green);
+            padding: 2.5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-green);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-green);
+        }
+
+        .search-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* Resource Categories */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background-color: var(--light-green);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--dark-green);
+        }
+
+        .tab-btn:hover {
+            background-color: var(--secondary-green);
+            color: white;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        /* Resource List Styles */
+        .resource-list-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            overflow: hidden;
+        }
+
+        .resource-list {
+            list-style-type: none;
+        }
+
+        .resource-item {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--light-green);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-item:hover {
+            background-color: var(--digital-light-blue);
+            transform: translateX(5px);
+        }
+
+        .resource-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .resource-item-main {
+            flex: 1;
+        }
+
+        .resource-item h3 {
+            color: var(--digital-blue);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .resource-item-url {
+            color: var(--secondary-green);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .resource-item-categories {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .category-tag {
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .resource-item-description {
+            margin-top: 1rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .resource-item-actions {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .access-link {
+            background-color: var(--secondary-green);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .access-link:hover {
+            background-color: var(--primary-green);
+        }
+
+        .subject-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1rem;
+        }
+
+        .subject-tag {
+            background-color: #e8f0fe;
+            color: var(--digital-blue);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Special Access Section */
+        .special-access {
+            background-color: var(--library-beige);
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            border: 2px dashed var(--secondary-green);
+        }
+
+        .special-access h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .access-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+        }
+
+        .access-item h4 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .login-info {
+            font-size: 0.9rem;
+            color: var(--earth-brown);
+            background-color: #fff8e1;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--library-gold);
+            margin-top: 1rem;
+        }
+
+        /* Results Count */
+        .results-count {
+            margin-bottom: 1rem;
+            color: var(--digital-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-green);
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li i {
+            margin-right: 10px;
+            color: var(--accent-green);
+        }
+
+        .contact-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .eresources-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .resource-item {
+                padding: 1.5rem;
+            }
+            
+            .resource-item-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .special-access {
+                padding: 1.5rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-btn {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>TTU Library E-Resources</h1>
+                    <p>Electronic Information Resources Portal</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="library.html" >Back to Library</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="eresources-hero">
+        <div class="container">
+            <h1>Electronic Information Resources</h1>
+            <p>Access to thousands of academic journals, e-books, databases, and research materials across all disciplines</p>
+            <div class="access-badge">Available 24/7 to TTU Students & Staff</div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container search-container">
+            <h2 style="color: var(--dark-green); text-align: center; margin-bottom: 1.5rem;">Search E-Resources</h2>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search databases, journals, or subjects...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="tab-btn active" data-category="all">All Resources</button>
+            <button class="tab-btn" data-category="databases">Academic Databases</button>
+            <button class="tab-btn" data-category="journals">E-Journals</button>
+            <button class="tab-btn" data-category="un-agencies">UN Agencies</button>
+            <button class="tab-btn" data-category="open-access">Open Access</button>
+            <button class="tab-btn" data-category="kenya">Kenya Resources</button>
+        </div>
+
+        <!-- Results Count -->
+        <div class="results-count" id="resultsCount">
+            Loading resources...
+        </div>
+
+        <!-- Resources List -->
+        <div class="resource-list-container">
+            <ul class="resource-list" id="resourceList">
+                <!-- Emerald Insight -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Emerald Insight</h3>
+                            <div class="resource-item-url">www.emeraldinsight.com</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="https://www.emeraldinsight.com" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Strength in Accounting and Finance, Economics, Management, Education, Engineering, Human Resources, Computer Science, Public Policy, Sociology, Tourism, Hospitality and Transport.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Business</span>
+                            <span class="subject-tag">Management</span>
+                            <span class="subject-tag">Social Sciences</span>
+                            <span class="subject-tag">Engineering</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Cambridge University Press -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Cambridge University Press Journals</h3>
+                            <div class="resource-item-url">Cambridge University Press Journals Online</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Publishes over 300 peer-reviewed academic journals in Politics, Linguistics, Social Science, Humanities, Law, Mathematics, Science and Medicine.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Multidisciplinary</span>
+                            <span class="subject-tag">Peer-Reviewed</span>
+                            <span class="subject-tag">Science</span>
+                            <span class="subject-tag">Humanities</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- IEEE -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>IEEE Xplore</h3>
+                            <div class="resource-item-url">Institute of Electrical & Electronics Engineers</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Content includes: Cloud Computing, Robotics & Automation, Vehicular Technology, Smart Grid Research, Communications and Networking, Circuit Theory, Computer Architecture, Computer Aided Design, Computer Graphics, Control Systems, Cybernetics, Cryptography, Waves and Electromagnetism.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Engineering</span>
+                            <span class="subject-tag">Technology</span>
+                            <span class="subject-tag">Computer Science</span>
+                            <span class="subject-tag">Electronics</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- EBSCO Host -->
+                <li class="resource-item" data-category="databases">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>EBSCO Host Research Databases</h3>
+                            <div class="resource-item-url">EBSCO Host Platform</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Covers most branches of humanities and social sciences. Strong in business, nursing, medicine and allied health sciences. Comprehensive collection of academic journals, magazines, and reports.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Healthcare</span>
+                            <span class="subject-tag">Business</span>
+                            <span class="subject-tag">Social Sciences</span>
+                            <span class="subject-tag">Humanities</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- JSTOR -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>JSTOR</h3>
+                            <div class="resource-item-url">Multi-disciplinary Database</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Multi-disciplinary database covering Anthropology, Archeology, Architecture, Biological Sciences, Botany & Plant Science, Business, Economics, Education, Finance, Ecology, History, Political Science, Language, Literature, Arts, Art History, Music, Mathematics, Social Sciences and Zoology.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Multidisciplinary</span>
+                            <span class="subject-tag">Archives</span>
+                            <span class="subject-tag">Academic Journals</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Google Scholar -->
+                <li class="resource-item" data-category="open-access">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Google Scholar</h3>
+                            <div class="resource-item-url">scholar.google.com</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Open Access</span>
+                                <span class="category-tag">Search Engine</span>
+                            </div>
+                        </div>
+                        <a href="https://scholar.google.com" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>A freely available web search engine that provides access to scholarly literature across disciplines including abstracts, articles and e-books. Comprehensive coverage of academic publications worldwide.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Free Access</span>
+                            <span class="subject-tag">Multidisciplinary</span>
+                            <span class="subject-tag">Search Engine</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- World Bank e-Library -->
+                <li class="resource-item" data-category="databases,un-agencies">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>World Bank e-Library</h3>
+                            <div class="resource-item-url">World Bank Publications</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">UN Agency</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Holds materials in Agriculture, Development, Environment, Energy, International Economics, Trade, Macroeconomics, Rural Development, Transport, Water Resources, Water Supply and Sanitation.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Development</span>
+                            <span class="subject-tag">Economics</span>
+                            <span class="subject-tag">Agriculture</span>
+                            <span class="subject-tag">Environment</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- WHO -->
+                <li class="resource-item" data-category="un-agencies">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>World Health Organization (WHO)</h3>
+                            <div class="resource-item-url">WHO Online Resources</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">UN Agency</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Global Health Matters, WHO reports, Online Journals, WHO Programs on Health. Comprehensive health information from the United Nations specialized agency for international public health.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Health</span>
+                            <span class="subject-tag">Medicine</span>
+                            <span class="subject-tag">Public Health</span>
+                            <span class="subject-tag">UN Agency</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Kenya Government -->
+                <li class="resource-item" data-category="kenya">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Kenya Government Portal</h3>
+                            <div class="resource-item-url">Official Kenya Government Portal</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Kenya Resources</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Gateway to all government ministries and departments. Official government information, services, publications, and legal documents.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Government</span>
+                            <span class="subject-tag">Kenya</span>
+                            <span class="subject-tag">Legal</span>
+                            <span class="subject-tag">Official</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- DOAJ -->
+                <li class="resource-item" data-category="open-access">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Directory of Open Access Journals</h3>
+                            <div class="resource-item-url">DOAJ - doaj.org</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Open Access</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>DOAJ aims to increase the visibility and ease of use of open access scientific and scholarly journals, thereby promoting their increased usage and impact. Comprehensive resource covering all open access scientific and scholarly journals that use a quality control system.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Open Access</span>
+                            <span class="subject-tag">Free</span>
+                            <span class="subject-tag">Journals</span>
+                            <span class="subject-tag">Peer-Reviewed</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Nature Publishing -->
+                <li class="resource-item" data-category="journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Nature Publishing Group</h3>
+                            <div class="resource-item-url">Nature Journals Online</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Covers Life Sciences, Chemistry, Physical Sciences, Clinical practice and research, and Earth and Environment.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Science</span>
+                            <span class="subject-tag">Nature</span>
+                            <span class="subject-tag">Research</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- OARE -->
+                <li class="resource-item" data-category="un-agencies,open-access">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>OARE (Online Access to Research Environment)</h3>
+                            <div class="resource-item-url">UNEP & Yale University Collaboration</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">UN Agency</span>
+                                <span class="category-tag">Open Access</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Environmental information research in over 1,000 scientific journals coordinated by UNEP and Yale University. Covers biology, biotechnology, genetics, environmental disasters, remote sensing, hydrology, marine biology, and biodiversity.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Environment</span>
+                            <span class="subject-tag">UNEP</span>
+                            <span class="subject-tag">Free Access</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Kenya Law -->
+                <li class="resource-item" data-category="kenya">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Kenya Law / Kenya Gazette</h3>
+                            <div class="resource-item-url">Official Government Publications</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Kenya Resources</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Official Government newspaper and legal repository. Contains laws, bills, legal notices, and government announcements.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Law</span>
+                            <span class="subject-tag">Kenya</span>
+                            <span class="subject-tag">Government</span>
+                            <span class="subject-tag">Legal</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Institute of Physics -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Institute of Physics</h3>
+                            <div class="resource-item-url">IOP Publishing</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Provides access to journals, magazines, e-books in physics. Holds useful materials for education and research. Covers Applied physics, Computer science, Condensed matter and materials science, High energy and nuclear physics, Mathematics, applied mathematics and mathematical physics, Measurement science and sensors, Medical and biological sciences, Optical, atomic and molecular physics.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Physics</span>
+                            <span class="subject-tag">Science</span>
+                            <span class="subject-tag">Research</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Oxford English Dictionary -->
+                <li class="resource-item" data-category="databases">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Oxford English Dictionary Online</h3>
+                            <div class="resource-item-url">OED Online</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>An authority on English language with over 600,000 words. Provides evolution and meaning of words, including historical development and current usage.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Language</span>
+                            <span class="subject-tag">Dictionary</span>
+                            <span class="subject-tag">Reference</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Taylor and Francis Journals -->
+                <li class="resource-item" data-category="journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Taylor and Francis Journals</h3>
+                            <div class="resource-item-url">Taylor & Francis Online</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Strength in Computer Science, Mathematics and Statistics, Economics, Finance, Business, Physical Sciences, Hospitality, Humanities, Development Studies.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Computer Science</span>
+                            <span class="subject-tag">Mathematics</span>
+                            <span class="subject-tag">Business</span>
+                            <span class="subject-tag">Humanities</span>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Wiley Online Library -->
+                <li class="resource-item" data-category="databases,journals">
+                    <div class="resource-item-header">
+                        <div class="resource-item-main">
+                            <h3>Wiley Online Library</h3>
+                            <div class="resource-item-url">Wiley Online Platform</div>
+                            <div class="resource-item-categories">
+                                <span class="category-tag">Database</span>
+                                <span class="category-tag">Journals</span>
+                            </div>
+                        </div>
+                        <a href="#" target="_blank" class="access-link">
+                            <i class="fas fa-external-link-alt"></i> Access
+                        </a>
+                    </div>
+                    <div class="resource-item-description">
+                        <p>Business, Mathematics, Statistics, Chemistry, Computer science, Earth and environmental science, Education, Engineering, Law, Life sciences, Medicine, Physics and astronomy, Polymers and materials science, Psychology, Social sciences.</p>
+                        <div class="subject-tags">
+                            <span class="subject-tag">Multidisciplinary</span>
+                            <span class="subject-tag">Science</span>
+                            <span class="subject-tag">Business</span>
+                            <span class="subject-tag">Social Sciences</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Special Access Information -->
+        <div class="special-access">
+            <h3><i class="fas fa-key"></i> Special Access Information</h3>
+            <p>Some resources require special login credentials provided by the TTU Library. For assistance, contact the Digital Library section.</p>
+            
+            <div class="access-grid">
+                <div class="access-item">
+                    <h4>KOHA Access</h4>
+                    <p><strong>URL:</strong> https://koha.baobab-ebooks.com</p>
+                    <p><strong>Login:</strong> SMagori</p>
+                    <p><strong>Password:</strong> Taita2021</p>
+                </div>
+                
+                <div class="access-item">
+                    <h4>Research4Life Programs</h4>
+                    <p>AGORA, HINARI, OARE & ARDI provide developing countries with free or low cost access to academic content.</p>
+                    <p>Contact library for login credentials.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>E-Resources Support</h3>
+                    <p>For assistance with electronic resources, database access, or technical issues, contact the Digital Library section.</p>
+                    <p><strong>Support Hours:</strong> Mon-Fri, 8:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:library@ttu.ac.ke" class="contact-link">library@ttu.ac.ke</a></li>
+                        <li><i class="fas fa-phone"></i> +254-XXX-XXX-XXX</li>
+                        <li><i class="fas fa-user-tie"></i> Digital Library Section</li>
+                        <li><i class="fas fa-map-marker-alt"></i> TTU Main Library, Voi, Kenya</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><i class="fas fa-database"></i> Database A-Z List</li>
+                        <li><i class="fas fa-book-reader"></i> E-Book Collections</li>
+                        <li><i class="fas fa-newspaper"></i> E-Journal Finder</li>
+                        <li><i class="fas fa-question-circle"></i> Research Help Desk</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Taita Taveta University Library - Electronic Resources Portal. All rights reserved.</p>
+                <p>Access to these resources is restricted to TTU students, faculty, and staff.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resourceItems = document.querySelectorAll('.resource-item');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            // Update results count
+            function updateResultsCount(visibleCount) {
+                resultsCount.textContent = `Showing ${visibleCount} of ${resourceItems.length} resources`;
+            }
+            
+            // Initialize with all items visible
+            updateResultsCount(resourceItems.length);
+            
+            // Tab filtering functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    let visibleCount = 0;
+                    
+                    // Filter resources
+                    resourceItems.forEach(item => {
+                        const itemCategories = item.getAttribute('data-category');
+                        
+                        if (category === 'all' || itemCategories.includes(category)) {
+                            item.style.display = 'flex';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateX(0)';
+                            }, 10);
+                            visibleCount++;
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateX(-20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                    
+                    updateResultsCount(visibleCount);
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                resourceItems.forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const description = item.querySelector('.resource-item-description').textContent.toLowerCase();
+                    const tags = Array.from(item.querySelectorAll('.subject-tag')).map(tag => tag.textContent.toLowerCase());
+                    const categories = Array.from(item.querySelectorAll('.category-tag')).map(tag => tag.textContent.toLowerCase());
+                    
+                    if (searchTerm === '' || 
+                        title.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        tags.some(tag => tag.includes(searchTerm)) ||
+                        categories.some(cat => cat.includes(searchTerm))) {
+                        item.style.display = 'flex';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateX(0)';
+                        }, 10);
+                        visibleCount++;
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateX(-20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                updateResultsCount(visibleCount);
+            }
+            
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Clear search when input is cleared
+            searchInput.addEventListener('input', function() {
+                if (this.value === '') {
+                    performSearch();
+                }
+            });
+
+            // Initial animation for items
+            resourceItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 100 + index * 50);
+            });
+
+
+            // Update copyright year
+            const yearSpan = document.querySelector('.copyright p');
+            if (yearSpan) {
+                const currentYear = new Date().getFullYear();
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', currentYear);
+            }
+        });
+    </script>
+</body>
+</html>

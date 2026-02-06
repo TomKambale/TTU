@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office of the Vice Chancellor - Taita Taveta University</title>
+    <style>
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .page-navigation {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary-green);
+            border-bottom: 3px solid var(--secondary-green);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: var(--dark-green);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            color: var(--secondary-green);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .profile-photo {
+            flex: 0 0 250px;
+            max-width: 650px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .staff-list {
+            background-color: var(--light-green);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+            
+            .profile-photo {
+                flex: 0 0 auto;
+                max-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Taita Taveta University</h1>
+            <p class="subtitle">Excellence in Education, Research and Innovation</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-navigation">
+            <a href="vice-chancellor.html" class="nav-link active">Office of the Vice Chancellor</a>
+            <a href="dvc-aro.html" class="nav-link">Office of the DVC (ARO)</a>
+            <a href="dvc-afp.html" class="nav-link">Office of the DVC (AFP)</a>
+        </div>
+
+        <div class="content">
+            <h1>Office of the Vice Chancellor</h1>
+            
+            <h2>Message From The Vice Chancellor</h2>
+            
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <img src="./src/vc.png" alt="Prof. Fred Simiyu Barasa">
+                </div>
+                <div class="profile-info">
+                    <h3>Prof. Fred Simiyu Barasa</h3>
+                    <p>I warmly welcome you to Taita Taveta University located in Taita Taveta County in the Coast region. The University currently has four schools namely; School of Mines and Engineering, School of Business Economics and Social Sciences, School of Science and Informatics and School of Agriculture, Earth and Environmental Sciences. Each school provides competitive courses in line with Kenya's Vision 2030 and the Millennium Development Goals and also with the labor market. Our flagship course is in Mining and Mineral Processing Engineering and we pride ourselves as the University of mining in Kenya aiming to be a regional leader in this sector considering our location in mineral rich area.</p>
+                    <p>For ideas and suggestions on how we can improve our services to Kenyans please send your comments and general enquiries to <a href="mailto:vc@ttu.ac.ke">vc@ttu.ac.ke</a> or visit our website: <a href="https://www.ttu.ac.ke" target="_blank">www.ttu.ac.ke</a>. We welcome you to explore our website, interact with us and visit us at TTU located near Voi. Most important recommend us to your friends and relatives who are looking for a training opportunity.</p>
+                </div>
+            </div>
+            
+            <h2>Profile of the Vice Chancellor</h2>
+            <p>Professor Fred Simiyu Barasa is a Kenyan and DAAD Scholar who holds a PhD in Comparative and International Education from the University of Natal (South Africa). He is also an alumnus of Kenyatta University (Kenya) where he obtained his first two degrees -- a Bachelor of Education (Science) and a Master of Education. He is a holder in undergraduate studies in Physics, Chemistry and Education from Kenyatta University, and later undertaken master and doctoral studies with research focus on technical education and vocational training.</p>
+            <p>He has a wide teaching, research and management experience at university level. Previously, he has served as the Executive Director/CEO of the African Council for Distance Education (ACDE), which is a continental standard setting and unifying body of African Open and Distance Learning universities and the African Union lead implementing agency for distance education and e-learning.</p>
+            <p>He has also served as Dean of the School of Education, Arts and Theology at Kabarak University and held several senior management positions at Egerton University, including being founding Director of the College of Distance Education, serving as Dean of the Faculty of Education and Human Resources and Chairman of the Department of Educational Foundations.</p>
+            <p>Further, Professor Barasa served as Manager for Academic Program Development and Management at the African Virtual University (AVU), and has several years of working experience in development of distance learning materials and management of learner support systems in dual and mixed mode contexts in African universities.</p>
+            <p>Moreover, he has been commissioned by various international development organizations and governments in Africa as an advisor and lead education consultant in quality assurance, program monitoring and evaluation, teacher management and development, education policy analysis and development, as well as analysis of education system efficiency and effectiveness. In addition, he has not only been recognized by various universities and organizations across Africa and worldwide, and has also made significant scholarly contributions through publishing in and serving as editor of internationally reputable journals.</p>
+            
+            <h2>What We Do</h2>
+            <p>The VC's office is responsible for guiding the University towards attainment of its Vision, & Mission and realization of its Philosophy, Motto & Core values. The office is also tasked with managing people, data and processes and creating a climate hospitable to education and good work environment.</p>
+            
+            <div class="staff-list">
+                <h3>List of Staff in the Department</h3>
+                <p><strong>Secretary:</strong> Ms. Consolata Mwaruta.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
+            <p>P.O. Box 635 - 80300, Voi - Kenya | Phone: +254 721 113 302</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorate of Administration, Planning and Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .director-info {
+            background-color: var(--dark-green);
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 107, 82, 0.85), rgba(30, 107, 82, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+
+        .overview-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .overview-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background-color: var(--light-green);
+            border-left: 5px solid var(--secondary-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Functions Section */
+        .functions-section {
+            background-color: var(--light-green);
+            padding: 4rem 0;
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .function-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .function-card i {
+            color: var(--secondary-green);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .function-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Departments Section */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .department-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--earth-brown);
+            transition: all 0.3s ease;
+        }
+
+        .department-card:hover {
+            border-top-color: var(--primary-green);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .department-card i {
+            color: var(--earth-brown);
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .department-card h3 {
+            color: var(--dark-green);
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-green);
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li i {
+            margin-right: 10px;
+            color: var(--accent-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .functions-grid, .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Taita Taveta University</h1>
+                    <p>Directorate of Administration, Planning and Development</p>
+                </div>
+            </div>
+            <div class="director-info">
+                <p><strong>Director:</strong> Mr. Habib Mruttu</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Directorate of Administration, Planning and Development</h1>
+            <p>Facilitating optimal utilization of human and non-human resources to realize the University's strategic objectives</p>
+            <div class="year-badge">Established in 2018</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Overview Section -->
+        <section class="content-section">
+            <h2 class="section-title">Overview</h2>
+            <div class="overview-content">
+                <p>In order to address the challenges of administration, planning and development, Taita Taveta University established the Directorate of Administration Planning and Development (D, APD) in 2018.</p>
+                
+                <div class="highlight-box">
+                    <p>The Directorate facilitates the optimal utilization of human and non-human resources in an effort to realize the objectives as envisaged in the University Master Plan, Strategic Plan (2023-2028) and Citizen Service Delivery Charter.</p>
+                </div>
+                
+                <p>Through strategic planning and efficient administration, the directorate ensures that the university's resources are effectively aligned with its mission and vision for sustainable growth and development.</p>
+            </div>
+        </section>
+
+        <!-- Functions Section -->
+        <section class="functions-section">
+            <div class="container">
+                <h2 class="section-title">Specific Functions of the Directorate</h2>
+                <p>The Directorate is charged with specific functions which include:</p>
+                
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Recruitment & Placement</h3>
+                        <p>Overseeing the recruitment, placement, induction and training of university staff to ensure the right talent is in the right position.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Promotions & Discipline</h3>
+                        <p>Managing staff promotions and disciplinary matters in accordance with university policies and labor laws.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-archive"></i>
+                        <h3>Personnel Registry</h3>
+                        <p>Maintaining accurate and secure personnel records and registry systems for all university staff.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-building"></i>
+                        <h3>Facilities Management</h3>
+                        <p>Management and maintenance of the University facilities to support academic and administrative functions.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-award"></i>
+                        <h3>Quality Management</h3>
+                        <p>Overseeing the University Quality Management System to ensure continuous improvement in service delivery.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Accommodation & Catering</h3>
+                        <p>Provision of quality and affordable accommodation and catering services for students and staff.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments Section -->
+        <section class="content-section">
+            <h2 class="section-title">Departments</h2>
+            <p>The Administration, Planning and Development Directorate is composed of the following Departments:</p>
+            
+            <div class="departments-grid">
+                <div class="department-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Department of Facilities</h3>
+                    <p>Responsible for the maintenance and management of all university facilities and infrastructure.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Department of Catering and Accommodation</h3>
+                    <p>Ensuring quality and affordable accommodation and catering services for the university community.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Department of Planning Development and Central Services</h3>
+                    <p>Strategic planning and development initiatives to support university growth and objectives.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Department of Human Resources</h3>
+                    <p>Managing recruitment, staff development, promotions, and personnel registry services.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Directorate Leadership</h3>
+                    <p><strong>Director:</strong> Mr. Habib Mruttu</p>
+                    <p>The directorate is committed to excellence in administration, planning and development services.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Taita Taveta University, Voi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254-XXX-XXX-XXX</li>
+                        <li><i class="fas fa-envelope"></i> dapd@ttu.ac.ke</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Strategic Documents</h3>
+                    <ul>
+                        <li><i class="fas fa-file-alt"></i> University Master Plan</li>
+                        <li><i class="fas fa-chart-bar"></i> Strategic Plan (2023-2028)</li>
+                        <li><i class="fas fa-handshake"></i> Citizen Service Delivery Charter</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Taita Taveta University - Directorate of Administration, Planning and Development. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.function-card, .department-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0.7';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

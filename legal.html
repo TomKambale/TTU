@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate & Legal Affairs Department - Taita Taveta University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+            --legal-blue: #1e6b52;
+            --legal-light-blue: #e3f2fd;
+            --accent-gold: #d4af37;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--legal-blue);
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .legal-hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.95)), url('https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .legal-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .dept-badge {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: var(--legal-blue);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            color: var(--legal-blue);
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+
+        .legal-title:after {
+            background-color: var(--accent-gold);
+        }
+
+        .leadership-profile {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 4rem;
+            border: 1px solid var(--light-green);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light-green);
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--legal-blue), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            flex-shrink: 0;
+            border: 5px solid var(--accent-gold);
+        }
+
+        .profile-info h2 {
+            color: var(--legal-blue);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-info .title {
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .profile-info .qualifications {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Qualifications Section */
+        .qualifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+
+        .qualification-card {
+            background-color: var(--legal-light-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+
+        .qualification-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .qualification-card i {
+            color: var(--legal-blue);
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .qualification-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .qualification-card p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 4rem 0;
+            background-color: var(--light-green);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .certification-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .certification-card i {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certification-card h3 {
+            color: var(--legal-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .certification-card p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .certification-date {
+            display: inline-block;
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Department Functions */
+        .functions-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .functions-intro {
+            background-color: var(--legal-light-blue);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            border-left: 5px solid var(--legal-blue);
+        }
+
+        .functions-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .function-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            border: 1px solid var(--light-green);
+        }
+
+        .function-item i {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .function-item h3 {
+            color: var(--legal-blue);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .function-item p {
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--legal-blue);
+            color: var(--text-light);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+        }
+
+        .contact-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .legal-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .qualifications-grid, .certifications-grid, .functions-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .leadership-profile, .functions-intro {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Taita Taveta University</h1>
+                    <p>Corporate & Legal Affairs Department</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Legal Resources</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <div class="container">
+            <h1>Corporate & Legal Affairs Department</h1>
+            <p>Providing expert legal counsel and corporate governance support to advance the University's mission and strategic objectives</p>
+            <div class="dept-badge">Legal Excellence & Corporate Governance</div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="container">
+            <h2 class="section-title legal-title">Department Leadership</h2>
+            
+            <div class="leadership-profile">
+                <div class="profile-header">
+                    <div class="profile-img">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2>Mr. Hannington Ouko</h2>
+                        <span class="title">Head of Corporate & Legal Affairs Department</span>
+                        <span class="qualifications">Advocate of the High Court of Kenya</span>
+                    </div>
+                </div>
+                
+                <div class="profile-details">
+                    <p>Mr. Hannington Ouko is an accomplished legal professional with extensive expertise in corporate law, financial services regulation, and public accountability frameworks. He leads the Corporate & Legal Affairs Department at Taita Taveta University, providing strategic legal counsel and ensuring compliance with all statutory and regulatory requirements.</p>
+                </div>
+            </div>
+            
+            <h3 class="section-title legal-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Academic Qualifications</h3>
+            
+            <div class="qualifications-grid">
+                <div class="qualification-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Bachelor of Arts (B.A Hons)</h3>
+                    <p>Social Anthropology, Government/Public Administration, Philosophy/Logic from University of Nairobi. This interdisciplinary foundation provides a comprehensive understanding of social systems, governance structures, and logical reasoning.</p>
+                </div>
+                
+                <div class="qualification-card">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h3>Bachelor of Law (LL.B Hons)</h3>
+                    <p>University of Nairobi. Comprehensive legal education covering all fundamental areas of law, legal theory, and practical application in the Kenyan context.</p>
+                </div>
+                
+                <div class="qualification-card">
+                    <i class="fas fa-magnifying-glass-chart"></i>
+                    <h3>Master of Laws (LL.M)</h3>
+                    <p>Specialization in Financial Services, Public Finance & Public Accountability Laws – University of Nairobi. Advanced expertise in financial regulation, public sector finance management, and accountability frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications-section">
+        <div class="container">
+            <h2 class="section-title legal-title">Professional Certifications & Memberships</h2>
+            
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <i class="fas fa-file-certificate"></i>
+                    <h3>Post Graduate Diploma in Law (PGDL)</h3>
+                    <p>The Kenya School of Law - Professional legal training qualifying for admission to the Bar</p>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Advocate of the High Court of Kenya</h3>
+                    <p>Signed the Roll of Advocates on 28/3/2012. Current Practicing Certificate for Year 2021.</p>
+                    <div class="certification-date">Since 2012</div>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-stamp"></i>
+                    <h3>Commissioner for Oaths and Notary Public</h3>
+                    <p>Legally authorized to administer oaths and certify documents for official use.</p>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Certified Public Secretary (ICPS)</h3>
+                    <p>Professional certification in corporate governance and secretarial practice.</p>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Certified Professional Mediator (MTI)</h3>
+                    <p>Accredited to Court Annexed Mediation Unit at the Judiciary of Kenya. Specialized training in alternative dispute resolution.</p>
+                </div>
+                
+                <div class="certification-card">
+                    <i class="fas fa-university"></i>
+                    <h3>Diploma in Banking & Finance</h3>
+                    <p>ACIB/AKIB and (Part) CPSK Section III - Specialized knowledge in banking operations and financial management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Functions Section -->
+    <section class="functions-section">
+        <div class="container">
+            <h2 class="section-title legal-title">Department Functions & Responsibilities</h2>
+            
+            <div class="functions-intro">
+                <p>The Corporate & Legal Affairs Department provides comprehensive legal services and corporate governance support to Taita Taveta University. Our mandate encompasses legal advisory, contract management, compliance oversight, and corporate governance to ensure the University operates within the legal framework and achieves its strategic objectives.</p>
+            </div>
+            
+            <div class="functions-list">
+                <div class="function-item">
+                    <i class="fas fa-file-contract"></i>
+                    <div>
+                        <h3>Contract Management</h3>
+                        <p>Drafting, reviewing, and negotiating all University contracts, agreements, and legal documents to protect institutional interests.</p>
+                    </div>
+                </div>
+                
+                <div class="function-item">
+                    <i class="fas fa-gavel"></i>
+                    <div>
+                        <h3>Legal Advisory Services</h3>
+                        <p>Providing expert legal advice to University management, Senate, Council, and all departments on various legal matters.</p>
+                    </div>
+                </div>
+                
+                <div class="function-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h3>Compliance & Risk Management</h3>
+                        <p>Ensuring University compliance with all applicable laws, regulations, and policies, and managing legal risks.</p>
+                    </div>
+                </div>
+                
+                <div class="function-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <div>
+                        <h3>Dispute Resolution</h3>
+                        <p>Managing litigation matters and providing mediation services to resolve disputes efficiently and cost-effectively.</p>
+                    </div>
+                </div>
+                
+                <div class="function-item">
+                    <i class="fas fa-landmark"></i>
+                    <div>
+                        <h3>Corporate Governance</h3>
+                        <p>Supporting the University Council and management in implementing sound corporate governance practices.</p>
+                    </div>
+                </div>
+                
+                <div class="function-item">
+                    <i class="fas fa-user-tie"></i>
+                    <div>
+                        <h3>Intellectual Property Management</h3>
+                        <p>Protecting and managing the University's intellectual property rights, including patents, trademarks, and copyrights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Corporate & Legal Affairs</h3>
+                    <p>Providing legal excellence and corporate governance support to advance Taita Taveta University's mission and strategic objectives.</p>
+                    <p><strong>Office Hours:</strong> Monday - Friday, 8:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Taita Taveta University, Voi, Kenya</li>
+                        <li><i class="fas fa-phone"></i> +254-XXX-XXX-XXX</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:legal@ttu.ac.ke" class="contact-link">legal@ttu.ac.ke</a></li>
+                        <li><i class="fas fa-user-tie"></i> <a href="mailto:hannington.ouko@ttu.ac.ke" class="contact-link">Mr. Hannington Ouko</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal Resources</h3>
+                    <ul>
+                        <li><i class="fas fa-file-pdf"></i> University Statutes & Policies</li>
+                        <li><i class="fas fa-folder-open"></i> Contract Templates</li>
+                        <li><i class="fas fa-book"></i> Legal Compliance Guides</li>
+                        <li><i class="fas fa-handshake"></i> Mediation Services</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Taita Taveta University - Corporate & Legal Affairs Department. All rights reserved.</p>
+                <p>This website is for informational purposes only and does not constitute legal advice.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.qualification-card, .certification-card, .function-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0.8';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Active navigation link
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Add current year to copyright
+            const yearSpan = document.querySelector('.copyright');
+            if (yearSpan) {
+                const currentYear = new Date().getFullYear();
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', currentYear);
+            }
+        });
+    </script>
+</body>
+</html>

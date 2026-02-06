@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library - Taita Taveta University</title>
+    <title>Taita Taveta University Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         :root {
             --primary-green: #1e6b52;
             --secondary-green: #2d8c6f;
@@ -15,909 +22,1030 @@
             --text-dark: #333333;
             --text-light: #ffffff;
             --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+            --library-beige: #f5f1e8;
+            --library-gold: #b38b59;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+
         body {
             color: var(--text-dark);
             line-height: 1.6;
-            background-color: #f9fdfb;
+            background-color: #f9f9f9;
         }
-        
-        /* Header & Navigation */
-        .library-header {
-            background-color: var(--dark-green);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        .library-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(13, 59, 42, 0.9), rgba(13, 59, 42, 0.7)), url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-        
-        .library-header h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-        
-        .library-header p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-        
-        .library-nav {
+
+        /* Header Styles */
+        header {
             background-color: var(--primary-green);
-            padding: 1rem 2rem;
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px var(--shadow);
         }
-        
-        .library-nav ul {
+
+        .header-content {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles */
+        .nav-links {
+            display: flex;
             list-style: none;
-            flex-wrap: wrap;
+            gap: 25px;
         }
-        
-        .library-nav li {
-            margin: 0 1.5rem;
+
+        .nav-item {
+            position: relative;
         }
-        
-        .library-nav a {
-            color: white;
+
+        .nav-link {
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link:hover {
+            opacity: 0.9;
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        .nav-link i.fa-chevron-down {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-item:hover .nav-link i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 8px 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
             transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
+            z-index: 100;
+            border-top: 3px solid var(--accent-green);
+        }
+        
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+        
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.9rem 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
         }
         
-        .library-nav a i {
-            margin-right: 8px;
+        .dropdown-item:last-child {
+            border-bottom: none;
         }
         
-        .library-nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+        .dropdown-item i {
+            margin-right: 10px;
+            color: var(--secondary-green);
+            width: 20px;
+            text-align: center;
         }
         
-        /* Main Content */
-        .library-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .dropdown-item:hover {
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            padding-left: 1.8rem;
         }
-        
-        /* Welcome Section */
-        .welcome-section {
+
+        /* Hero Section */
+        .library-hero {
+            background: linear-gradient(rgba(30, 107, 82, 0.85), rgba(30, 107, 82, 0.9)), url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .library-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .library-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-badge {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .contact-badge:hover {
+            background-color: var(--secondary-green);
+        }
+
+        /* Content Sections */
+        .content-section {
             padding: 4rem 0;
         }
-        
+
         .section-title {
-            font-size: 2.5rem;
             color: var(--primary-green);
+            font-size: 2rem;
             margin-bottom: 2rem;
-            position: relative;
             padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
         }
-        
-        .section-title::after {
+
+        .section-title:after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -3px;
             left: 0;
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-green);
+            width: 100px;
+            height: 3px;
+            background-color: var(--library-gold);
         }
-        
-        .welcome-content {
-            font-size: 1.15rem;
-            margin-bottom: 2rem;
-        }
-        
-        .library-stats {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 3rem 0;
-            gap: 1.5rem;
-        }
-        
-        .stat-card {
+
+        /* About Section */
+        .about-content {
             background-color: white;
+            padding: 2.5rem;
             border-radius: 10px;
-            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background-color: var(--light-green);
+            border-radius: 8px;
+            padding: 1.8rem 1.5rem;
             text-align: center;
-            box-shadow: 0 6px 15px var(--shadow);
-            flex: 1;
-            min-width: 200px;
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow);
         }
-        
-        .stat-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .stat-icon {
-            font-size: 3rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-        
+
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--dark-green);
-            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
         }
-        
+
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-dark);
+            font-weight: 500;
         }
-        
+
         .library-sections {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
         }
-        
+
         .section-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 6px 15px var(--shadow);
-            transition: all 0.3s ease;
-            border-left: 5px solid var(--primary-green);
+            background-color: var(--library-beige);
+            border-radius: 8px;
+            padding: 1.8rem;
+            border-left: 5px solid var(--library-gold);
         }
-        
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px var(--shadow);
-        }
-        
+
         .section-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
+            color: var(--dark-green);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
         }
-        
-        /* Mission & Vision */
-        .mission-vision {
+
+        /* Vision & Mission */
+        .vision-mission-section {
+            background-color: var(--light-green);
+            padding: 4rem 0;
+        }
+
+        .vision-mission-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
+            gap: 30px;
         }
-        
-        .vision-card, .mission-card {
+
+        .vm-card {
             background-color: white;
             border-radius: 10px;
             padding: 2.5rem;
-            box-shadow: 0 8px 20px var(--shadow);
-            position: relative;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
         }
-        
-        .vision-card {
-            border-top: 5px solid var(--accent-green);
+
+        .vm-card i {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .mission-card {
-            border-top: 5px solid var(--secondary-green);
-        }
-        
-        .card-icon {
-            position: absolute;
-            top: -25px;
-            left: 30px;
-            background-color: var(--primary-green);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .vm-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
-        
+
+        .vm-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
         /* Strategic Goals */
-        .goals-section {
-            padding: 4rem 0;
-        }
-        
-        .goals-container {
+        .goals-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
-        
+
         .goal-card {
             background-color: white;
             border-radius: 10px;
             padding: 2rem;
-            box-shadow: 0 6px 15px var(--shadow);
-            border-left: 5px solid var(--secondary-green);
+            box-shadow: 0 5px 15px var(--shadow);
+            border-top: 5px solid var(--secondary-green);
         }
-        
+
         .goal-number {
             display: inline-block;
-            background-color: var(--light-green);
-            color: var(--primary-green);
+            background-color: var(--primary-green);
+            color: white;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             text-align: center;
             line-height: 40px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        /* Important Information */
-        .important-info {
-            background-color: var(--light-green);
-            border-radius: 10px;
-            padding: 2.5rem;
-            margin: 4rem 0;
-            border-left: 5px solid var(--accent-green);
-        }
-        
-        .important-info h2 {
-            color: var(--dark-green);
-            margin-bottom: 1.5rem;
-        }
-        
-        .info-list {
-            list-style-type: none;
-        }
-        
-        .info-list li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(30, 107, 82, 0.1);
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .info-list i {
-            color: var(--primary-green);
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-        
-        /* Quick Links */
-        .quick-links {
-            padding: 4rem 0;
-        }
-        
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .link-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: all 0.3s ease;
-            border-left: 4px solid var(--primary-green);
-        }
-        
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow);
-        }
-        
-        .link-card a {
-            color: var(--dark-green);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .link-card a:hover {
-            color: var(--primary-green);
-        }
-        
-        .link-card i {
-            color: var(--secondary-green);
-            transition: transform 0.3s ease;
-        }
-        
-        .link-card:hover i {
-            transform: translateX(5px);
-        }
-        
-        /* Library Services */
-        .services-section {
-            padding: 4rem 0;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 1.8rem;
-            text-align: center;
-            box-shadow: 0 6px 15px var(--shadow);
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px var(--shadow);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-green);
+            font-weight: bold;
             margin-bottom: 1.2rem;
         }
-        
-        /* Contact & Feedback */
-        .contact-section {
-            background-color: var(--dark-green);
-            color: white;
-            padding: 4rem 2rem;
-            margin-top: 4rem;
-            text-align: center;
+
+        .goal-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
-        
-        .contact-section h2 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-email {
-            font-size: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .contact-email a {
-            color: var(--light-green);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .feedback-form {
-            max-width: 600px;
-            margin: 2rem auto 0;
-            text-align: left;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border-radius: 5px;
-            border: 1px solid #ccc;
+
+        .goal-card p {
+            color: var(--text-dark);
             font-size: 1rem;
         }
-        
-        .submit-btn {
-            background-color: var(--accent-green);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+
+        /* Important Info & Quick Links */
+        .info-links-section {
+            background-color: var(--library-beige);
+            padding: 4rem 0;
         }
-        
-        .submit-btn:hover {
-            background-color: var(--primary-green);
+
+        .info-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
-        
-        /* Footer */
-        .library-footer {
-            background-color: var(--dark-green);
-            color: #ddd;
-            padding: 3rem 2rem 2rem;
+
+        .important-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .important-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .plagiarism-notice {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .quick-links {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .quick-links h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .links-list {
+            list-style-type: none;
+        }
+
+        .links-list li {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-green);
+        }
+
+        .links-list li:last-child {
+            border-bottom: none;
+        }
+
+        .links-list a {
+            color: var(--secondary-green);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .links-list a:hover {
+            color: var(--primary-green);
+        }
+
+        .links-list i {
+            color: var(--accent-green);
+        }
+
+        /* Services & Staff */
+        .services-staff-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .service-item {
+            background-color: var(--light-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .staff-hours-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .staff-card {
+            background-color: var(--library-beige);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
             text-align: center;
         }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+
+        .staff-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--secondary-green);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
         }
-        
+
+        .staff-card h3 {
+            color: var(--dark-green);
+            margin-bottom: 5px;
+            font-size: 1.4rem;
+        }
+
+        .staff-title {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hours-card {
+            background-color: var(--light-green);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .hours-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .hours-list {
+            list-style-type: none;
+        }
+
+        .hours-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-green);
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li i {
+            margin-right: 10px;
+            color: var(--accent-green);
+        }
+
+        .contact-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-green);
+        }
+
         .copyright {
-            margin-top: 2rem;
+            text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
             font-size: 0.9rem;
+            opacity: 0.7;
         }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .library-header h1 {
-                font-size: 2.8rem;
-            }
-            
-            .library-nav ul {
-                justify-content: space-around;
-            }
-            
-            .library-nav li {
-                margin: 0.5rem;
-            }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-        
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .library-header {
-                padding: 2rem 1rem;
-            }
-            
-            .library-header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .mission-vision {
-                grid-template-columns: 1fr;
-            }
-            
-            .library-nav ul {
+            .header-content {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                gap: 20px;
             }
             
-            .library-nav li {
-                margin: 0.5rem 0;
+            .mobile-menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--primary-green);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 5px 15px var(--shadow);
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-item {
                 width: 100%;
                 text-align: center;
             }
-        }
-        
-        @media (max-width: 576px) {
-            .library-container {
-                padding: 0 1rem;
+            
+            .nav-link {
+                padding: 1rem;
+                justify-content: center;
             }
             
-            .stat-card {
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(255, 255, 255, 0.1);
                 min-width: 100%;
+                border-top: none;
+                display: none;
             }
             
-            .library-stats {
-                flex-direction: column;
+            .dropdown-menu::before {
+                display: none;
+            }
+            
+            .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-item {
+                color: var(--text-light);
+                padding: 0.8rem 1rem;
+            }
+            
+            .dropdown-item:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            .library-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content, .vm-card, .goal-card, .important-info, .quick-links, .staff-card, .hours-card {
+                padding: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="library-header">
-        <h1>Taita Taveta University Library</h1>
-        <p>Located at Taita Taveta University main campus. A center of excellence for learning, research, and innovation.</p>
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Taita Taveta University Library</h1>
+                    <p>Gateway to Knowledge & Research</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <a href="Home.html" class="nav-link">Home</a>
+                    <!-- Resources Dropdown -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-database"></i> Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="eresources.html" class="dropdown-item">
+                                <i class="fas fa-laptop"></i> Electronic Information Resources
+                            </a>
+                            <a href="https://library.ttu.ac.ke/cgi-bin/koha/opac-library.pl" class="dropdown-item" target="_blank">
+                                <i class="fas fa-search"></i> Online Public Access Catalog (OPAC)
+                            </a>
+                            <a href="https://ir.ttu.ac.ke/" class="dropdown-item" target="_blank">
+                                <i class="fas fa-archive"></i> Institutional Repository
+                            </a>
+                            <a href="https://app.myloft.xyz/user/login" class="dropdown-item" target="_blank">
+                                <i class="fas fa-sign-in-alt"></i> Remote Access
+                            </a>
+                        </div>
+                    </li>
+               </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="library-nav">
-        <ul>
-            <li><a href="#welcome"><i class="fas fa-home"></i> Welcome</a></li>
-            <li><a href="#mission"><i class="fas fa-bullseye"></i> Mission & Vision</a></li>
-            <li><a href="#goals"><i class="fas fa-flag-checkered"></i> Strategic Goals</a></li>
-            <li><a href="#info"><i class="fas fa-info-circle"></i> Important Info</a></li>
-            <li><a href="#links"><i class="fas fa-link"></i> Quick Links</a></li>
-            <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
-        </ul>
-    </nav>
+    <!-- Hero Section -->
+    <section class="library-hero">
+        <div class="container">
+            <h1>About the Library</h1>
+            <p>Welcome to Taita Taveta University Library, located at Taita Taveta University main campus. We are reinventing our resources, services and systems to what a World Class Library can and aspire to be.</p>
+            <a href="mailto:library@ttu.ac.ke" class="contact-badge">
+                <i class="fas fa-envelope"></i> library@ttu.ac.ke
+            </a>
+        </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="library-container">
-        <!-- Welcome Section -->
-        <section id="welcome" class="welcome-section">
-            <h2 class="section-title">Welcome to Our Library</h2>
-            <div class="welcome-content">
-                <p>The Taita Taveta University Library has the following sections: <strong>User services, Technical section, Digital Library</strong> and <strong>Reprographic section</strong>. We are reinventing our resources, services and systems to what a World Class Library can and aspire to be. We are doing this as a way of anticipating and adapting to the changing needs of students and faculty.</p>
+    <!-- About Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">About the Library</h2>
+            
+            <div class="about-content">
+                <p>Welcome to Taita Taveta University Library, located at Taita Taveta University main campus. The Library has the following sections: User services, Technical section, Digital Library and Reprographic section.</p>
+                
+                <p>We are reinventing our resources, services and systems to what a World Class Library can and aspire to be. We are doing this as a way of anticipating and adapting to the changing needs of students and faculty.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">9,000</div>
+                        <div class="stat-label">Print Volumes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">35,000</div>
+                        <div class="stat-label">E-Journals</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50,000</div>
+                        <div class="stat-label">E-Books</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Library Sections</div>
+                    </div>
+                </div>
                 
                 <p>We are committed to support all teaching and research activities at TTU through delivery of high quality services to all information seekers. We invite you to share our passion for lifelong learning to join the Library in achieving her vision.</p>
                 
                 <p>Your continuous feedback is essential in helping us reinvent a Library for the future.</p>
-            </div>
-            
-            <!-- Library Sections -->
-            <h3 class="section-title">Library Sections</h3>
-            <div class="library-sections">
-                <div class="section-card">
-                    <h3>User Services</h3>
-                    <p>Frontline services including circulation, reference, and reader assistance.</p>
-                </div>
-                <div class="section-card">
-                    <h3>Technical Section</h3>
-                    <p>Acquisition, cataloging, classification and processing of information resources.</p>
-                </div>
-                <div class="section-card">
-                    <h3>Digital Library</h3>
-                    <p>Access to electronic resources, databases, and online research tools.</p>
-                </div>
-                <div class="section-card">
-                    <h3>Reprographic Section</h3>
-                    <p>Printing, photocopying, scanning, and binding services.</p>
-                </div>
-            </div>
-            
-            <!-- Library Statistics -->
-            <h3 class="section-title">Our Collection</h3>
-            <div class="library-stats">
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-book"></i>
+                
+                <h3 style="color: var(--primary-green); margin-top: 2rem; margin-bottom: 1rem;">Library Sections</h3>
+                <div class="library-sections">
+                    <div class="section-card">
+                        <h3>User Services</h3>
+                        <p>Circulation, reference services, and user assistance for all library patrons.</p>
                     </div>
-                    <div class="stat-number">9,000+</div>
-                    <div class="stat-label">Print Volumes</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-newspaper"></i>
+                    <div class="section-card">
+                        <h3>Technical Section</h3>
+                        <p>Acquisition, cataloging, and classification of library materials.</p>
                     </div>
-                    <div class="stat-number">35,000+</div>
-                    <div class="stat-label">E-Journals</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-laptop"></i>
+                    <div class="section-card">
+                        <h3>Digital Library</h3>
+                        <p>Access to electronic resources, databases, and online services.</p>
                     </div>
-                    <div class="stat-number">50,000+</div>
-                    <div class="stat-label">E-Books</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-database"></i>
+                    <div class="section-card">
+                        <h3>Reprographic Section</h3>
+                        <p>Photocopying, printing, and document reproduction services.</p>
                     </div>
-                    <div class="stat-label">Via KLISC</div>
-                    <div class="stat-label">(Kenya Library Information Services and Consortium)</div>
                 </div>
             </div>
-            
-            <!-- Organization & Access -->
-            <h3 class="section-title">Organization & Access to Information Resources</h3>
-            <div class="welcome-content">
-                <p>The <strong>Library of Congress Classification Scheme (LCCS)</strong> has been used to organize TTU information resources. <strong>KOHA Library Management System</strong> has been adopted in automation of Library functions.</p>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Mission & Vision -->
-        <section id="mission" class="mission-vision">
-            <div class="vision-card">
-                <div class="card-icon">
+    <!-- Vision & Mission -->
+    <section class="vision-mission-section">
+        <div class="container">
+            <div class="vision-mission-grid">
+                <div class="vm-card">
                     <i class="fas fa-eye"></i>
+                    <h3>Vision</h3>
+                    <p>Actively participate in teaching, learning and research by providing information resources and services to the University community.</p>
                 </div>
-                <h3>Vision</h3>
-                <p>Actively participate in teaching, learning and research by providing information resources and services to the University community.</p>
-            </div>
-            
-            <div class="mission-card">
-                <div class="card-icon">
-                    <i class="fas fa-rocket"></i>
+                
+                <div class="vm-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Mission Statement</h3>
+                    <p>To develop, organize and preserve quality information resources in various formats to broaden teaching, learning and research activities and to meet information needs of the University.</p>
                 </div>
-                <h3>Mission Statement</h3>
-                <p>To develop, organize and preserve quality information resources in various formats to broaden teaching, learning and research activities and to meet information needs of the University.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Strategic Goals -->
-        <section id="goals" class="goals-section">
+    <!-- Strategic Goals -->
+    <section class="content-section">
+        <div class="container">
             <h2 class="section-title">Strategic Goals</h2>
-            <div class="goals-container">
+            
+            <div class="goals-grid">
                 <div class="goal-card">
                     <div class="goal-number">1</div>
                     <h3>Quality Information Resources</h3>
                     <p>To acquire, organize and maintain quality information resources in print and digital format to meet teaching and research needs of the University College.</p>
                 </div>
+                
                 <div class="goal-card">
                     <div class="goal-number">2</div>
                     <h3>User-Focused Services</h3>
                     <p>To provide user focused library service to meet needs and expectations of the user community.</p>
                 </div>
+                
                 <div class="goal-card">
                     <div class="goal-number">3</div>
                     <h3>Increase Library Usage</h3>
-                    <p>Increase library usage among university community.</p>
+                    <p>Increase library usage among university community through awareness and accessibility improvements.</p>
                 </div>
+                
                 <div class="goal-card">
                     <div class="goal-number">4</div>
-                    <h3>Organizational Framework</h3>
-                    <p>To develop an organizational framework to enhance library administration and functions.</p>
+                    <h3>Organizational Development</h3>
+                    <p>To develop an organizational framework to enhance library administration and functions for efficient service delivery.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Important Information -->
-        <section id="info" class="important-info">
-            <h2>Important Information to all TTU Students</h2>
-            <ul class="info-list">
-                <li><i class="fas fa-check-circle"></i> All Taita Taveta University students are required to present their academic papers for plagiarism check at the Digital Library.</li>
-                <li><i class="fas fa-check-circle"></i> Ensure you provide your email address for feedback.</li>
-                <li><i class="fas fa-check-circle"></i> Only TTU students are allowed to submit papers for plagiarism checking.</li>
-            </ul>
-        </section>
-
-        <!-- Quick Links -->
-        <section id="links" class="quick-links">
-            <h2 class="section-title">Quick Links</h2>
-            <div class="links-grid">
-                <div class="link-card">
-                    <a href="https://core.ac.uk" target="_blank">
-                        Core Search Engine
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                    <p>The world's largest collection of open access research papers</p>
+    <!-- Important Info & Quick Links -->
+    <section class="info-links-section">
+        <div class="container">
+            <div class="info-links-container">
+                <div class="important-info">
+                    <h3>Important Information to all TTU Students</h3>
+                    <div class="plagiarism-notice">
+                        <p><strong>Plagiarism Check Requirement:</strong> All Taita Taveta University students are required to present their academic papers for plagiarism check at the Digital Library.</p>
+                    </div>
+                    <p><i class="fas fa-envelope"></i> Ensure you provide your email address for feedback</p>
+                    <p><i class="fas fa-user-check"></i> Only TTU students are allowed to submit</p>
+                    
+                    <h4 style="margin-top: 2rem; color: var(--primary-green);">Organization & Access</h4>
+                    <p>The Library of Congress Classification Scheme (LCCS) has been used to organize TTU information resources. KOHA Library Management System has been adopted in automation of Library functions.</p>
                 </div>
-                <div class="link-card">
-                    <a href="#" target="_blank">
-                        Institutional Repository
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://www.openarchives.org" target="_blank">
-                        Open Access Initiative (OAI)
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://www.plos.org" target="_blank">
-                        Public Library of Science (PLOS)
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://scholar.google.com" target="_blank">
-                        Google Scholar
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://books.google.com" target="_blank">
-                        Google Books
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://doaj.org" target="_blank">
-                        Directory of Open Access Journals (DOAJ)
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-                <div class="link-card">
-                    <a href="https://www.doabooks.org" target="_blank">
-                        Directory of Open Access Books (DOAB)
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+                
+                <div class="quick-links">
+                    <h3>Quick Links</h3>
+                    <ul class="links-list">
+                        <li><a href="#"><i class="fas fa-search"></i> Core Search Engine - World's largest collection of open access research papers</a></li>
+                        <li><a href="#"><i class="fas fa-database"></i> Institutional Repository</a></li>
+                        <li><a href="#"><i class="fas fa-lock-open"></i> Open Access Initiative (OAI)</a></li>
+                        <li><a href="#"><i class="fas fa-book-medical"></i> Public Library of Science (plos.org)</a></li>
+                        <li><a href="#"><i class="fas fa-graduation-cap"></i> Google Scholar (scholar.google.com)</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Google Books (books.google.com)</a></li>
+                        <li><a href="#"><i class="fas fa-journal-whills"></i> Directory of Open Access Journals (DOAJ)</a></li>
+                        <li><a href="#"><i class="fas fa-book-reader"></i> Directory of Open Access Books (DOAB)</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Library Services -->
-        <section id="services" class="services-section">
-            <h2 class="section-title">Library Services</h2>
+    <!-- Services & Staff -->
+    <section class="services-staff-section">
+        <div class="container">
+            <h2 class="section-title">Library Services & Staff</h2>
+            
+            <h3 style="color: var(--primary-green); margin-bottom: 1.5rem;">Library Services</h3>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Circulation of Library Materials</h3>
-                    <p>Borrowing and returning of books and other library materials.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Interlibrary Loans</h3>
-                    <p>Access to materials from other libraries through our partnership network.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-print"></i>
-                    </div>
-                    <h3>Reprographic Services</h3>
-                    <p>Printing, photocopying, scanning and document reproduction.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Information Literacy</h3>
-                    <p>Training on research skills, citation, and effective use of library resources.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h3>Online Information Services</h3>
-                    <p>Access to databases, e-journals, e-books and digital resources.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>Binding Services</h3>
-                    <p>Professional binding of theses, dissertations, and other documents.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact & Feedback -->
-        <section class="contact-section">
-            <h2>Contact Us & Feedback</h2>
-            <p>Your continuous feedback is essential in helping us reinvent a Library for the future.</p>
-            
-            <div class="contact-email">
-                <i class="fas fa-envelope"></i>
-                <a href="mailto:library@ttu.ac.ke">library@ttu.ac.ke</a>
+                <div class="service-item">Circulation of Library Materials</div>
+                <div class="service-item">Interlibrary Loans</div>
+                <div class="service-item">Reprographic Services</div>
+                <div class="service-item">Information Literacy</div>
+                <div class="service-item">Online Information Services</div>
+                <div class="service-item">Binding Services</div>
             </div>
             
-            <div class="feedback-form">
-                <h3>Send Us Your Feedback</h3>
-                <form id="feedbackForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
+            <div class="staff-hours-container">
+                <div class="staff-card">
+                    <div class="staff-img">
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Your Feedback or Question</label>
-                        <textarea id="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Feedback</button>
-                </form>
+                    <h3>Steve Magori</h3>
+                    <span class="staff-title">Head of Department</span>
+                    <p><i class="fas fa-envelope"></i> smagori@ttu.ac.ke</p>
+                </div>
+                
+                <div class="hours-card">
+                    <h3>Opening Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday</span> <span>8:00 AM – 10:00 PM</span></li>
+                        <li><span>Saturday</span> <span>9:00 AM – 5:00 PM</span></li>
+                        <li><span>Sunday & Public Holidays</span> <span>Closed</span></li>
+                    </ul>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="library-footer">
-        <div class="footer-content">
-            <p>Taita Taveta University Library © 2025. All Rights Reserved.</p>
-            <p>Main Campus, Taita Taveta University</p>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Taita Taveta University Library</h3>
+                    <p>Gateway to knowledge, supporting teaching, learning and research through quality information resources and services.</p>
+                    <p><strong>Location:</strong> Main Campus, Taita Taveta University</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:library@ttu.ac.ke" class="contact-link">library@ttu.ac.ke</a></li>
+                        <li><i class="fas fa-phone"></i> +254-XXX-XXX-XXX</li>
+                        <li><i class="fas fa-user-tie"></i> <a href="mailto:smagori@ttu.ac.ke" class="contact-link">Mr. Steve Magori</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Taita Taveta University, Voi, Kenya</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Access</h3>
+                    <ul>
+                        <li><i class="fas fa-book"></i> Library Catalog</li>
+                        <li><i class="fas fa-desktop"></i> Digital Library</li>
+                        <li><i class="fas fa-database"></i> E-Resources</li>
+                        <li><i class="fas fa-question-circle"></i> Research Help</li>
+                    </ul>
+                </div>
+            </div>
+            
             <div class="copyright">
-                <p>Designed to support teaching, learning and research excellence.</p>
+                <p>&copy; 2026 Taita Taveta University Library. All rights reserved.</p>
+                <p>Part of Taita Taveta University - Advancing Knowledge Through Quality Education</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Form submission handling
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.getElementById('navLinks');
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For now, we'll just show an alert
-            alert(`Thank you for your feedback, ${name}! We appreciate your input.`);
-            
-            // Reset the form
-            document.getElementById('feedbackForm').reset();
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.library-nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Calculate offset for sticky navbar
-                    const navbarHeight = document.querySelector('.library-nav').offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Highlight current section in navigation
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.library-nav a');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                const navbarHeight = document.querySelector('.library-nav').offsetHeight;
-                
-                if (scrollY >= (sectionTop - navbarHeight - 100)) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Add active class styling to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            .library-nav a.active {
-                background-color: rgba(255, 255, 255, 0.2) !important;
-                color: var(--light-green) !important;
-                font-weight: 700;
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
             }
-        `;
-        document.head.appendChild(style);
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('nav') && !event.target.closest('#mobileMenuToggle')) {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+            
+            // Simple animation for cards when they come into view
+            const cards = document.querySelectorAll('.stat-card, .vm-card, .goal-card, .section-card, .service-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0.8';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+
+            // Active navigation link
+            const navItems = document.querySelectorAll('.nav-link');
+            navItems.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navItems.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        const icon = mobileMenuToggle.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            });
+
+            // Add current year to copyright
+            const copyrightText = document.querySelector('.copyright p');
+            if (copyrightText) {
+                const currentYear = new Date().getFullYear();
+                copyrightText.innerHTML = copyrightText.innerHTML.replace('2026', currentYear);
+            }
+        });
     </script>
 </body>
 </html>

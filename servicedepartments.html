@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taita Taveta University - Administration Departments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-green);
+            color: var(--text-light);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .director-info {
+            background-color: var(--dark-green);
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 107, 82, 0.85), rgba(30, 107, 82, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--light-green);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-green);
+        }
+
+        .overview-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .overview-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight-box {
+            background-color: var(--light-green);
+            border-left: 5px solid var(--secondary-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Functions Section */
+        .functions-section {
+            background-color: var(--light-green);
+            padding: 4rem 0;
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .function-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .function-card i {
+            color: var(--secondary-green);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .function-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Departments Section */
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+        }
+
+        .department-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            text-align: center;
+            border-top: 5px solid var(--earth-brown);
+            transition: all 0.3s ease;
+        }
+
+        .department-card:hover {
+            border-top-color: var(--primary-green);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .department-card i {
+            color: var(--earth-brown);
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .department-card h3 {
+            color: var(--dark-green);
+            font-size: 1.2rem;
+        }
+
+        /* Department Page Styles */
+        .department-page {
+            padding: 2rem 0;
+        }
+
+        .department-header {
+            background-color: var(--light-green);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .department-icon {
+            font-size: 4rem;
+            color: var(--primary-green);
+        }
+
+        .department-title h1 {
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .department-title p {
+            color: var(--dark-green);
+            font-size: 1.1rem;
+        }
+
+        .person-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .person-icon {
+            font-size: 4rem;
+            color: var(--earth-brown);
+        }
+
+        .person-info h2 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .person-info p {
+            color: var(--dark-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .person-title {
+            font-weight: bold;
+            color: var(--secondary-green) !important;
+        }
+
+        .activities-list {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+
+        .activities-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .activities-list li:last-child {
+            border-bottom: none;
+        }
+
+        .activities-list li i {
+            color: var(--accent-green);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .staff-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 1.5rem;
+        }
+
+        .staff-item {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+            border-left: 4px solid var(--secondary-green);
+        }
+
+        .contact-info {
+            background-color: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-green);
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.85;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li i {
+            margin-right: 10px;
+            color: var(--accent-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .functions-grid, .departments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .overview-content {
+                padding: 1.5rem;
+            }
+            
+            .department-header, .person-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-area">
+                    <div class="logo-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Taita Taveta University</h1>
+                        <p>Service Departments</p>
+                    </div>
+                </div>
+                <div class="director-info">
+                    <p>Service Division</p>
+                    <p>Leading Excellence in University Management</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Service Departments</h1>
+            <p>Explore the various administrative departments that ensure the smooth operation and management of Taita Taveta University.</p>
+            <div class="year-badge">Established 2007</div>
+        </div>
+    </section>
+
+    <!-- Department Navigation -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Browse Departments</h2>
+            <div class="departments-grid">
+                <a href="#finance" class="department-card">
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3>Finance Department</h3>
+                </a>
+                
+                <a href="#legal" class="department-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Corporate & Legal Affairs</h3>
+                </a>
+                
+                <a href="#procurement" class="department-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Procurement Department</h3>
+                </a>
+                
+                <a href="#audit" class="department-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Internal Audit Department</h3>
+                </a>
+                
+                <a href="#ict" class="department-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>ICT Department</h3>
+                </a>
+                
+                <a href="#security" class="department-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security Department</h3>
+                </a>
+                
+                <a href="#facilities" class="department-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Facilities Management</h3>
+                </a>
+                
+                <a href="#catering" class="department-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Catering Department</h3>
+                </a>
+                
+                <a href="#health" class="department-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health Unit</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finance Department -->
+    <section id="finance" class="department-page">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-money-check-alt"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Finance Department</h1>
+                    <p>Ensuring financial accountability and strategic resource management</p>
+                </div>
+            </div>
+            
+            <div class="person-card">
+                <div class="person-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="person-info">
+                    <h2>Mr. Peter Kisombe</h2>
+                    <p class="person-title">Acting Finance Officer</p>
+                    <p>The Finance Department of TTU is responsible for providing statutory and financial information for decision-making and for the control of the financial activities of TTU.</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <p>The following activities of the Finance Department are intended to define its operational objectives in line with the relevant TTU regulations and policies and include:</p>
+                
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Preparation and maintenance of financial books of accounts.</li>
+                    <li><i class="fas fa-check-circle"></i> Preparation of source documents including but not limited to payment vouchers, invoices, receipts, which are required to facilitate the management of receipts and expenditure activities.</li>
+                    <li><i class="fas fa-check-circle"></i> Preparation and maintenance of proper statutory reports/records.</li>
+                    <li><i class="fas fa-check-circle"></i> Preparation and management of the Pay and Benefit System.</li>
+                    <li><i class="fas fa-check-circle"></i> Preparation and publication of statutory statements (Annual Report).</li>
+                    <li><i class="fas fa-check-circle"></i> Preparation of Periodic management reports.</li>
+                    <li><i class="fas fa-check-circle"></i> Budgeting and Budgetary Control of financial activities. This shall include preparation of five-year business plan containing financial targets and performance indicators.</li>
+                    <li><i class="fas fa-check-circle"></i> Proper custody and management of assets and records.</li>
+                    <li><i class="fas fa-check-circle"></i> Cash flow and investments management.</li>
+                    <li><i class="fas fa-check-circle"></i> Facilitating Identification and implementation of income generating projects/programmes and preparing relevant financial reporting documents to external funding agencies.</li>
+                    <li><i class="fas fa-check-circle"></i> Management of loans and grants.</li>
+                    <li><i class="fas fa-check-circle"></i> Any other duties in line with the TTU regulations and policies.</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h3>History of the Department</h3>
+                    <p>The Finance Department is part of the Administration, Finance and Planning (AFP) Division of Taita Taveta University under the leadership of the Deputy Principal (AFP), with the Principal/CEO as the Accounting Officer. It is headed by the Acting Finance Officer assisted by the Acting Deputy Finance Officer, who work with a dedicated team of professional staff in the department.</p>
+                    <p>Activities within the Finance Department cover a wide range of functions such as basic bookkeeping, providing information, assisting managers in making strategic decisions, the day-to-day transactional accounting for the Institution and preparing the financial statements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate & Legal Affairs Department -->
+    <section id="legal" class="department-page functions-section">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Corporate & Legal Affairs Department</h1>
+                    <p>Providing legal expertise and corporate governance</p>
+                </div>
+            </div>
+            
+            <div class="person-card">
+                <div class="person-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="person-info">
+                    <h2>Mr. Hannington Ouko</h2>
+                    <p class="person-title">Advocate of the High Court of Kenya</p>
+                    <p>Commissioner for Oaths and Notary Public</p>
+                    
+                    <h3>Qualifications:</h3>
+                    <ul class="activities-list">
+                        <li><i class="fas fa-graduation-cap"></i> Bachelor of Arts B.A (Hons) Degree in Social Anthropology, Government/Public Administration, Philosophy/Logic from University of Nairobi</li>
+                        <li><i class="fas fa-graduation-cap"></i> Bachelor of Law LL.B (Hons) from University of Nairobi</li>
+                        <li><i class="fas fa-graduation-cap"></i> Master of Laws with specialization in Financial Services, Public Finance & Public Accountability Laws – University of Nairobi</li>
+                        <li><i class="fas fa-graduation-cap"></i> Post Graduate Diploma in Law [PGDL] from The Kenya School of Law</li>
+                        <li><i class="fas fa-graduation-cap"></i> (Part) Diploma in Banking & Finance – ACIB/AKIB and (Part) CPSK Section III)</li>
+                    </ul>
+                    
+                    <p>He is an Advocate of the High Court of Kenya and Commissioner for Oaths and Notary Public. He signed the Roll of Advocates on 28/3/2012. Current Practicing Certificate for Year 2021. He is a Certified Public Secretary (ICPS). He is also a Certified Professional Mediator (MTI) accredited to Court Annexed Mediation Unit at the Judiciary of Kenya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Procurement Department -->
+    <section id="procurement" class="department-page">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Procurement Department</h1>
+                    <p>Managing university procurement and supply chain activities</p>
+                </div>
+            </div>
+            
+            <div class="person-card">
+                <div class="person-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="person-info">
+                    <h2>Mr. Kamos Simon Ndiwa</h2>
+                    <p class="person-title">Head of Procurement Department</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Maintain a list of prequalified bidders</li>
+                    <li><i class="fas fa-check-circle"></i> Prepare, publish and distribute procurement & disposal opportunities</li>
+                    <li><i class="fas fa-check-circle"></i> Coordinate evaluation of tenders, quotations and request for proposals</li>
+                    <li><i class="fas fa-check-circle"></i> Issues bid documents to tenders</li>
+                    <li><i class="fas fa-check-circle"></i> Conduct periodic and annual stock taking</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h3>History of the Department</h3>
+                    <p>The department was established in 2011 when the college was a campus. The department currently has 6 members of staff, who are highly skilled and motivated in procurement and supply chain activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internal Audit Department -->
+    <section id="audit" class="department-page functions-section">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Internal Audit Department</h1>
+                    <p>Ensuring accountability and effective internal controls</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Provide secretarial services to the Audit Committee of the University Council</li>
+                    <li><i class="fas fa-check-circle"></i> Prepare and implement an audit annual work plan</li>
+                    <li><i class="fas fa-check-circle"></i> Providing independent assurance to the Audit Committee of the University Council and Management on the implementation and effectiveness of the internal control systems</li>
+                    <li><i class="fas fa-check-circle"></i> Evaluating the effectiveness of the system of risk identification and management and suggesting improvements as appropriate</li>
+                    <li><i class="fas fa-check-circle"></i> Fostering quality and continuous improvement in governance and risk management control processes</li>
+                    <li><i class="fas fa-check-circle"></i> Assessing the cost-effectiveness and efficiency in the utilization of resources for the achievement of the University's objectives</li>
+                    <li><i class="fas fa-check-circle"></i> Verifying the reliability and integrity of financial data</li>
+                    <li><i class="fas fa-check-circle"></i> Carrying out compliance audits with policies, laws, rules and regulations</li>
+                    <li><i class="fas fa-check-circle"></i> Ensuring that resources including assets are preserved and protected and used for the benefit of the University</li>
+                </ul>
+                
+                <div class="contact-info">
+                    <h3>Staff in the Office</h3>
+                    <p><strong>John Runga</strong> – Head of Internal Audit Department</p>
+                    <p><i class="fas fa-envelope"></i> Email: runga@ttu.ac.ke</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ICT Department -->
+    <section id="ict" class="department-page">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="department-title">
+                    <h1>ICT Department</h1>
+                    <p>The central hub for managing and supporting university ICT infrastructure</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">Mandate of the Department</h2>
+                <p>The Department of Information and Communication Technology (ICT) is the central hub for managing and supporting the university's ICT infrastructure, systems, and services. Our mandate is to:</p>
+                
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Develop and implement ICT policies, procedures, and standards to ensure efficient and secure operations.</li>
+                    <li><i class="fas fa-check-circle"></i> Manage ICT projects, including the deployment of new technologies and systems to support the university's academic, administrative, and research functions.</li>
+                    <li><i class="fas fa-check-circle"></i> Provide reliable and innovative ICT services to students, faculty, and staff.</li>
+                    <li><i class="fas fa-check-circle"></i> Offer user support and training to enhance digital literacy and ensure effective utilization of ICT resources.</li>
+                    <li><i class="fas fa-check-circle"></i> Ensure the security, integrity, and availability of the University's ICT systems and data.</li>
+                    <li><i class="fas fa-check-circle"></i> Identify and integrate emerging technologies to enhance University operations and services.</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h3>Office Location</h3>
+                    <p>The Department of ICT is located at: <strong>B7 Building in 'Runda' zone</strong></p>
+                    
+                    <h3>For inquiries, please contact:</h3>
+                    <p><i class="fas fa-envelope"></i> Email: support@ttu.ac.ke</p>
+                    <p><i class="fas fa-globe"></i> Website: https://ttu.ac.ke</p>
+                </div>
+                
+                <h3 class="section-title">Areas of Expertise</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <i class="fas fa-network-wired"></i>
+                        <h3>ICT Infrastructure Management</h3>
+                        <p>Overseeing the university's network, servers, and cloud systems.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Project Management</h3>
+                        <p>Leading ICT projects from planning to execution, ensuring timely and within-budget delivery.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>User Support and Training</h3>
+                        <p>Providing technical assistance and training programs to empower users with ICT tools and systems.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Cybersecurity and Data Protection</h3>
+                        <p>Implementing measures to safeguard the university's digital assets and sensitive information.</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Service Management</h3>
+                        <p>Delivering and maintaining ICT services such as email, learning management systems, and enterprise resource planning (ERP) systems.</p>
+                    </div>
+                </div>
+                
+                <h3 class="section-title">List of Staff</h3>
+                <p>The Department of ICT is staffed by a team of skilled professionals dedicated to supporting the University's ICT needs. Key staff members include:</p>
+                
+                <div class="person-card">
+                    <div class="person-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="person-info">
+                        <h2>Kibwana Zamani</h2>
+                        <p class="person-title">Head of Department</p>
+                        <p>Oversees the department's operations and strategic direction.</p>
+                        <p><i class="fas fa-envelope"></i> Email: manager.ict@ttu.ac.ke</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Department -->
+    <section id="security" class="department-page functions-section">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Security Department</h1>
+                    <p>Ensuring safety and protection of university members and assets</p>
+                </div>
+            </div>
+            
+            <div class="person-card">
+                <div class="person-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="person-info">
+                    <h2>Mr. Khamisi Matano</h2>
+                    <p class="person-title">Head of Security Department</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Protection of University resources</li>
+                    <li><i class="fas fa-check-circle"></i> Investigate crime, accidents and incidents</li>
+                    <li><i class="fas fa-check-circle"></i> Provide liaison services with other security agencies including the Kenya Police Service, KWS etc, as well as other emergency service handlers like the Fire Brigade, St. Johns Ambulance and the Kenya Red Cross etc.</li>
+                    <li><i class="fas fa-check-circle"></i> Handle students' welfare issues, emergencies, surveillance and security in the students' Halls of residence especially at night</li>
+                    <li><i class="fas fa-check-circle"></i> Safe custody and movement of University keys</li>
+                    <li><i class="fas fa-check-circle"></i> Develop and administer internal security and traffic policies and procedures including on special events</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <p>The Security department is committed to offer the best services to ensure the safety and protection the University members and assets. It has three Main Sections-Guards, Janitors and Caretakers and is currently headed by a Mr K. Matano assisted by a number of Supervisors working in shifts. The department also operates a 24hr, 7days a week Reports/Information Desk at the Supervisors' office located in the Amphitheatre Building and its officers remain on call round the clock.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Management Department -->
+    <section id="facilities" class="department-page">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Facilities Management Department</h1>
+                    <p>Maintaining and managing university facilities and infrastructure</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <p>Information about specific activities of the Facilities Management Department will be updated soon.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Department -->
+    <section id="catering" class="department-page functions-section">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Catering Department</h1>
+                    <p>Providing quality food services to the university community</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">What We Do</h2>
+                <ul class="activities-list">
+                    <li><i class="fas fa-check-circle"></i> Preparation, production and service of meals</li>
+                    <li><i class="fas fa-check-circle"></i> Menu compilation, interpretation and economic use of food materials</li>
+                    <li><i class="fas fa-check-circle"></i> Requisition and control of all food ingredients as per the menu</li>
+                    <li><i class="fas fa-check-circle"></i> Developing function and conference as well as excellent outside catering services</li>
+                    <li><i class="fas fa-check-circle"></i> Coordinating and executing cleanliness and hygiene procedures during operations</li>
+                    <li><i class="fas fa-check-circle"></i> Handling customer, student, and staff complaints and providing feedback to the public relations office</li>
+                    <li><i class="fas fa-check-circle"></i> We offer event catering such as outside catering services, conference, seminars, wedding receptions, and cocktail parties</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <h3>About Our Services</h3>
+                    <p>The Catering department is among the premier departments in the university because from the institution's inception in 2007 the kitchen stood tall in providing services to the students, staff and the community around.</p>
+                    <p>Progressively the department has been growing from a one-headed unit with few staff and providing services, only at the Mess for all people, to now a more extensive service provision from the mess catering for bonafide students at subsidized rates.</p>
+                    <p>Texas cafeteria caters for both students and staff and offers variety of meals and can also hosts special functions e.g. birthday, end of year parties religious and club gatherings.</p>
+                    <p>Makuti Restaurant (staff cafeteria) an ample candle lit wind, serene environment, a view of Sagalla hills. A thatched house reflecting the coastal tradition in the kind of delicacy it offers. It offers services to the university community and visitors from late breakfast, mid morning tea, lunch, and afternoon tea. In addition we also offer catering services for departmental bookings.</p>
+                    <p>We strive to build a brand image in the hospitality industry with improved services from our trained and experienced staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Unit -->
+    <section id="health" class="department-page">
+        <div class="container">
+            <div class="department-header">
+                <div class="department-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="department-title">
+                    <h1>Health Unit</h1>
+                    <p>Providing comprehensive healthcare services to the university community</p>
+                </div>
+            </div>
+            
+            <div class="person-card">
+                <div class="person-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="person-info">
+                    <h2>Dr. Wilson Charo Mukare</h2>
+                    <p class="person-title">Medical Officer in Charge</p>
+                </div>
+            </div>
+            
+            <div class="overview-content">
+                <h2 class="section-title">Services Offered</h2>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <i class="fas fa-stethoscope"></i>
+                        <h3>Consultation and Treatment</h3>
+                        <p>Consultation and treatment of ailments</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-baby"></i>
+                        <h3>Antenatal Services</h3>
+                        <p>Comprehensive antenatal care</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-user-friends"></i>
+                        <h3>Family Planning</h3>
+                        <p>Family planning services</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-pills"></i>
+                        <h3>Pharmacy</h3>
+                        <p>Pharmaceutical services</p>
+                    </div>
+                    
+                    <div class="function-card">
+                        <i class="fas fa-flask"></i>
+                        <h3>Laboratory Services</h3>
+                        <p>Comprehensive laboratory testing</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Laboratory Services</h3>
+                    <div class="staff-list">
+                        <div class="staff-item">Bs for malaria parasites</div>
+                        <div class="staff-item">Urinalysis</div>
+                        <div class="staff-item">Stool for microscopy</div>
+                        <div class="staff-item">Random and fasting blood sugars</div>
+                        <div class="staff-item">Hemoglobin levels</div>
+                        <div class="staff-item">Pregnancy test</div>
+                        <div class="staff-item">Blood grouping</div>
+                        <div class="staff-item">Widal test</div>
+                        <div class="staff-item">Sputum for AAFB,s</div>
+                        <div class="staff-item">Brucellosis</div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title">Staff in the Department</h3>
+                <div class="staff-list">
+                    <div class="staff-item">Dr. Wilson Charo Mukare</div>
+                    <div class="staff-item">Ms. Linda Mghanga</div>
+                    <div class="staff-item">Mr. Jeremiah Mbingu Mwololo</div>
+                    <div class="staff-item">Mr. Richard Gitimu</div>
+                    <div class="staff-item">Ms. Margaret Munyasia</div>
+                    <div class="staff-item">Mr. Patrick Ndegwa</div>
+                    <div class="staff-item">Ms. Syprose Wangao</div>
+                    <div class="staff-item">Mr. Wayne Mwamburi</div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>History of the Department</h3>
+                    <p>The Health Unit department was started at the opening of the Campus as one roomed department. It was later shifted east of the administration a building which currently serves as the Estate department. During this time the department had one staff, a Clinical Officer who worked during the day and on call at night. All diseases were treated clinically because we did not have a medical laboratory then and for those diagnosis which needed laboratory investigation were sent to the District Hospital. It was until September that we received a Laboratory Technologist but due to lack of laboratory equipments the laboratory became operational the following month. On October 2009 the department received two more staffs (a Clinical Officer and a Nurse). At this point the department became operational 24hrs a day, 7 days a week. It has the following sub departments; records, pharmacy, outpatient consultation room, laboratory, drug store, treatment room, one male and one female observation rooms, wash room, and staffs office. In September 2013, a Medical Officer was hired and currently heads the department. Other Staffs were later recruited- Pharmaceutical Technologist, Records Officer, Nurse and Cleaner/ messenger. Apart from the permanent Staffs, we have Clinical Officers and Nurses on low cum basis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Taita Taveta University</h3>
+                    <p>Dedicated to excellence in education, research, and community service.</p>
+                    <p><i class="fas fa-map-marker-alt"></i> P.O. Box 635-80300, Voi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 729 223 260</p>
+                    <p><i class="fas fa-envelope"></i> info@ttu.ac.ke</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#finance">Finance Department</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#legal">Legal Affairs</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#procurement">Procurement</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#ict">ICT Department</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#health">Health Unit</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Administration Division</h3>
+                    <p>The Administration Division ensures the smooth operation and management of Taita Taveta University through its various departments.</p>
+                    <p>Each department plays a crucial role in supporting the academic mission of the university.</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Taita Taveta University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

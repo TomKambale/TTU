@@ -5,32 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Department - Taita Taveta University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Main Page CSS Variables - Matching the modern home page */
+        :root {
+            --primary-green: #006400;
+            --secondary-green: #228B22;
+            --light-green: #f0f9f0;
+            --dark-green: #004d00;
+            --accent-gold: #D4AF37;
+            --earth-brown: #8b7355;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --financial-blue: #D4AF37;
+            --financial-light-blue: #e8f0fe;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-green: #1e6b52;
-            --secondary-green: #2d8c6f;
-            --light-green: #e8f5f0;
-            --accent-green: #4caf50;
-            --dark-green: #0d3b2a;
-            --text-dark: #333333;
-            --text-light: #ffffff;
-            --shadow: rgba(30, 107, 82, 0.15);
-            --earth-brown: #8b7355;
-            --financial-blue: #2c5aa0;
-            --financial-light-blue: #e8f0fe;
         }
 
         body {
-            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
@@ -39,21 +49,24 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Modernized */
         header {
-            background-color: var(--primary-green);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
             padding: 1rem 0;
-            box-shadow: 0 4px 12px var(--shadow);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-area {
@@ -64,160 +77,217 @@
 
         .logo-icon {
             font-size: 2.5rem;
+            color: var(--accent-gold);
         }
 
         .logo-text h1 {
             font-size: 1.5rem;
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .logo-text p {
             font-size: 0.9rem;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .nav-links {
             display: flex;
             gap: 25px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
-            padding: 5px 0;
+            transition: var(--transition);
+            padding: 8px 0;
             position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            opacity: 0.9;
+            color: var(--accent-gold);
         }
 
         .nav-links a.active {
-            border-bottom: 2px solid var(--accent-green);
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section - Modern gradient with animation */
         .finance-hero {
-            background: linear-gradient(rgba(30, 107, 82, 0.9), rgba(30, 107, 82, 0.95)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--text-light);
-            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .finance-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .finance-hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .finance-hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .finance-hero p {
             font-size: 1.3rem;
             max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .dept-badge {
             display: inline-block;
-            background-color: var(--financial-blue);
-            color: white;
-            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--accent-gold), #c19b2e);
+            color: var(--white);
+            padding: 12px 30px;
             border-radius: 30px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
             font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Leadership Section */
-        .leadership-section {
-            padding: 4rem 0;
-            background-color: white;
+        /* Section Styles */
+        .leadership-section,
+        .history-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .activities-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-gray), var(--white));
         }
 
         .section-title {
             color: var(--primary-green);
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--light-green);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
             position: relative;
+            font-weight: 600;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: 0;
             left: 0;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-green);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
         }
 
         .finance-title:after {
             background-color: var(--financial-blue);
         }
 
+        /* Leadership Card */
         .leadership-card {
-            background-color: var(--light-green);
-            border-radius: 10px;
-            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--light-green), var(--white));
+            border-radius: 12px;
+            padding: 40px;
             display: flex;
             align-items: center;
-            gap: 30px;
-            box-shadow: 0 5px 15px var(--shadow);
-            margin-bottom: 3rem;
+            gap: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .leadership-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .leadership-img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-color: var(--secondary-green);
+            background: linear-gradient(135deg, var(--financial-blue), var(--primary-green));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            color: white;
+            color: var(--white);
             flex-shrink: 0;
+            border: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .leadership-card:hover .leadership-img {
+            transform: scale(1.05);
+            border-color: var(--white);
         }
 
         .leadership-info h3 {
             color: var(--dark-green);
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .leadership-info .title {
-            color: var(--primary-green);
+            color: var(--financial-blue);
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 20px;
-            display: block;
+            display: inline-block;
+            background: rgba(44, 90, 160, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
         }
 
         .leadership-info p {
             font-size: 1.1rem;
             margin-bottom: 15px;
+            color: var(--medium-gray);
+            line-height: 1.8;
         }
 
         /* Activities Section */
-        .activities-section {
-            padding: 4rem 0;
-            background-color: var(--financial-light-blue);
-        }
-
         .activities-intro {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px var(--shadow);
-            margin-bottom: 3rem;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
             font-size: 1.1rem;
             line-height: 1.8;
+            border-left: 4px solid var(--financial-blue);
+            color: var(--medium-gray);
         }
 
         .activities-grid {
@@ -227,42 +297,63 @@
         }
 
         .activity-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px var(--shadow);
-            border-left: 5px solid var(--financial-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--financial-blue);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--financial-blue), var(--accent-gold));
+            transition: height 0.3s ease;
         }
 
         .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .activity-card:hover:before {
+            height: 6px;
         }
 
         .activity-card i {
             color: var(--financial-blue);
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .activity-card:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
         }
 
         .activity-card h3 {
             color: var(--dark-green);
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
             font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .activity-card p {
-            color: var(--text-dark);
-            font-size: 1rem;
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* History Section */
-        .history-section {
-            padding: 4rem 0;
-            background-color: white;
-        }
-
         .history-content {
             display: flex;
             flex-direction: column;
@@ -270,44 +361,69 @@
         }
 
         .history-card {
-            background-color: var(--light-green);
-            border-radius: 10px;
-            padding: 2.5rem;
-            box-shadow: 0 5px 15px var(--shadow);
+            background: linear-gradient(135deg, var(--light-green), var(--white));
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .history-card h3 {
             color: var(--primary-green);
             font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
         }
 
         .history-card h3 i {
-            color: var(--accent-green);
+            color: var(--financial-blue);
         }
 
         .history-card p {
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 15px;
+            color: var(--medium-gray);
         }
 
+        /* Organizational Structure */
         .org-structure {
-            background-color: white;
-            border: 2px solid var(--secondary-green);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--white), var(--light-gray));
+            border: 2px solid var(--financial-blue);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
         }
 
         .org-structure h4 {
             color: var(--dark-green);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             text-align: center;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .org-structure h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--financial-blue);
         }
 
         .structure-list {
@@ -317,76 +433,151 @@
         }
 
         .structure-item {
-            padding: 1.2rem;
-            background-color: var(--light-green);
-            border-radius: 6px;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, var(--white), var(--light-green));
+            border-radius: 8px;
             text-align: center;
             font-weight: 500;
+            color: var(--dark-green);
+            border-left: 3px solid var(--financial-blue);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
-        /* Footer */
+        .structure-item:hover {
+            transform: translateX(5px);
+            border-left-color: var(--accent-gold);
+        }
+
+        /* Footer - Modernized */
         footer {
-            background-color: var(--dark-green);
-            color: var(--text-light);
-            padding: 3rem 0 2rem;
-            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-section h3 {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--light-green);
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .footer-section p, .footer-section li {
-            opacity: 0.85;
-            margin-bottom: 0.8rem;
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .footer-section ul {
-            list-style-type: none;
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
         }
 
         .footer-section li i {
-            margin-right: 10px;
-            color: var(--accent-green);
+            color: var(--accent-gold);
+            width: 20px;
         }
 
         .contact-link {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .contact-link:hover {
-            color: var(--accent-green);
+            color: var(--accent-gold);
+            text-decoration: none;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright p {
+            margin-bottom: 5px;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive adjustments */
         @media (max-width: 992px) {
+            .finance-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
             .leadership-card {
                 flex-direction: column;
                 text-align: center;
+                padding: 30px;
             }
             
             .leadership-img {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
                 font-size: 4rem;
             }
         }
@@ -395,24 +586,77 @@
             .header-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
             }
             
             .nav-links {
-                flex-wrap: wrap;
                 justify-content: center;
+                gap: 15px;
+            }
+            
+            .finance-hero {
+                padding: 60px 0;
             }
             
             .finance-hero h1 {
                 font-size: 2.2rem;
             }
             
+            .finance-hero p {
+                font-size: 1.1rem;
+            }
+            
             .activities-grid {
                 grid-template-columns: 1fr;
             }
             
-            .leadership-card, .history-card, .activities-intro {
-                padding: 1.5rem;
+            .leadership-card,
+            .history-card,
+            .activities-intro {
+                padding: 25px;
+            }
+            
+            .structure-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .finance-hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .dept-badge {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+            
+            .activity-card {
+                padding: 25px 20px;
+            }
+            
+            .leadership-img {
+                width: 150px;
+                height: 150px;
+                font-size: 3.5rem;
+            }
+            
+            .leadership-info h3 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -430,13 +674,13 @@
                     <p>Finance Department</p>
                 </div>
             </div>
-            <nav class="nav-links">
+            <!-- <nav class="nav-links">
                 <a href="#" class="active">Home</a>
                 <a href="#">About Us</a>
                 <a href="#">Services</a>
                 <a href="#">Reports</a>
                 <a href="#">Contact</a>
-            </nav>
+            </nav> -->
         </div>
     </header>
 
@@ -452,9 +696,9 @@
     <!-- Leadership Section -->
     <section class="leadership-section">
         <div class="container">
-            <h2 class="section-title finance-title">Department Leadership</h2>
+            <h2 class="section-title finance-title animate-on-scroll">Department Leadership</h2>
             
-            <div class="leadership-card">
+            <div class="leadership-card animate-on-scroll">
                 <div class="leadership-img">
                     <i class="fas fa-user-tie"></i>
                 </div>
@@ -465,98 +709,86 @@
                     <p>Mr. Kisombe leads a dedicated team of professional staff in the department, overseeing all financial operations and ensuring compliance with TTU regulations and policies.</p>
                 </div>
             </div>
-            
-            <!-- <div class="leadership-card">
-                <div class="leadership-img">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="leadership-info">
-                    <h3>Deputy Finance Officer</h3>
-                    <span class="title">Acting Deputy Finance Officer</span>
-                    <p>Assists the Finance Officer in managing the department's operations and ensuring the smooth execution of financial activities across the university.</p>
-                    <p>The Deputy Finance Officer plays a key role in supervising daily financial transactions, reporting, and supporting strategic financial planning initiatives.</p>
-                </div>
-            </div> -->
         </div>
     </section>
 
     <!-- Activities Section -->
     <section class="activities-section">
         <div class="container">
-            <h2 class="section-title finance-title">What We Do</h2>
+            <h2 class="section-title finance-title animate-on-scroll">What We Do</h2>
             
-            <div class="activities-intro">
+            <div class="activities-intro animate-on-scroll">
                 <p>The following activities of the Finance Department are intended to define its operational objectives in line with the relevant TTU regulations and policies:</p>
             </div>
             
             <div class="activities-grid">
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-book"></i>
                     <h3>Financial Books of Accounts</h3>
                     <p>Preparation and maintenance of financial books of accounts to ensure accurate and complete financial records.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-file-invoice-dollar"></i>
                     <h3>Source Documents Management</h3>
                     <p>Preparation of source documents including payment vouchers, invoices, receipts to facilitate management of receipts and expenditure activities.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-chart-bar"></i>
                     <h3>Statutory Reports & Records</h3>
                     <p>Preparation and maintenance of proper statutory reports/records in compliance with regulatory requirements.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-money-check-alt"></i>
                     <h3>Pay and Benefit System</h3>
                     <p>Preparation and management of the Pay and Benefit System for all university staff.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-file-alt"></i>
                     <h3>Annual Report Preparation</h3>
                     <p>Preparation and publication of statutory statements (Annual Report) reflecting the university's financial performance.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-chart-line"></i>
                     <h3>Management Reports</h3>
                     <p>Preparation of periodic management reports to support informed decision-making by university leadership.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-calculator"></i>
                     <h3>Budgeting & Control</h3>
                     <p>Budgeting and Budgetary Control of financial activities including preparation of five-year business plan with financial targets and performance indicators.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-warehouse"></i>
                     <h3>Assets & Records Management</h3>
                     <p>Proper custody and management of assets and records to ensure their security and proper utilization.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-coins"></i>
                     <h3>Cash Flow & Investments</h3>
                     <p>Cash flow and investments management to optimize the university's financial resources.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-project-diagram"></i>
                     <h3>Income Generating Projects</h3>
                     <p>Facilitating identification and implementation of income generating projects/programmes and preparing relevant financial reporting documents to external funding agencies.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-hand-holding-usd"></i>
                     <h3>Loans and Grants Management</h3>
                     <p>Management of loans and grants to ensure proper utilization and compliance with terms and conditions.</p>
                 </div>
                 
-                <div class="activity-card">
+                <div class="activity-card animate-on-scroll">
                     <i class="fas fa-tasks"></i>
                     <h3>Other Financial Duties</h3>
                     <p>Any other duties in line with the TTU regulations and policies to support the university's financial health.</p>
@@ -568,26 +800,26 @@
     <!-- History Section -->
     <section class="history-section">
         <div class="container">
-            <h2 class="section-title finance-title">History of the Department</h2>
+            <h2 class="section-title finance-title animate-on-scroll">History of the Department</h2>
             
             <div class="history-content">
-                <div class="history-card">
+                <div class="history-card animate-on-scroll">
                     <h3><i class="fas fa-history"></i> Department Structure</h3>
                     <p>The Finance Department is part of the Administration, Finance and Planning (AFP) Division of Taita Taveta University under the leadership of the Deputy Principal (AFP), with the Principal/CEO as the Accounting Officer.</p>
                     <p>It is headed by the Acting Finance Officer assisted by the Acting Deputy Finance Officer, who work with a dedicated team of professional staff in the department.</p>
                 </div>
                 
-                <div class="history-card">
+                <div class="history-card animate-on-scroll">
                     <h3><i class="fas fa-cogs"></i> Department Functions</h3>
                     <p>Activities within the Finance Department cover a wide range of functions such as basic bookkeeping, providing information, assisting managers in making strategic decisions, the day-to-day transactional accounting for the Institution and preparing the financial statements.</p>
                     <p>The department ensures that all financial operations are conducted in accordance with established policies, procedures, and regulatory requirements while supporting the strategic objectives of the university.</p>
                 </div>
                 
-                <div class="org-structure">
+                <div class="org-structure animate-on-scroll">
                     <h4>Organizational Structure</h4>
                     <div class="structure-list">
-                        <div class="structure-item">Principal/CEO (Accounting Officer)</div>
-                        <div class="structure-item">Deputy Principal (AFP)</div>
+                        <!-- <div class="structure-item">Principal/CEO (Accounting Officer)</div>
+                        <div class="structure-item">Deputy Principal (AFP)</div> -->
                         <div class="structure-item">Director of Finance (DOF)</div>
                         <div class="structure-item">Deputy Director of Finance</div>
                         <div class="structure-item">Professional Staff Team</div>
@@ -636,27 +868,41 @@
     </footer>
 
     <script>
-        // Simple animation for cards when they come into view
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.activity-card, .leadership-card, .history-card');
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('animated');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
             
-            cards.forEach(card => {
-                card.style.opacity = '0.8';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            animateElements.forEach(element => {
+                observer.observe(element);
             });
 
-            // Active navigation link
+            // Update copyright year
+            const currentYear = new Date().getFullYear();
+            const footerYear = document.querySelector('.copyright p:first-child');
+            if (footerYear) {
+                footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
+            }
+
+            // Add hover effects for cards
+            const cards = document.querySelectorAll('.activity-card, .leadership-card, .history-card, .structure-item');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+            });
+
+            // Active navigation link (commented out as nav is hidden)
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {

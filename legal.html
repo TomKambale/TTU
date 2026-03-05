@@ -5,33 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corporate & Legal Affairs Department - Taita Taveta University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Main Page CSS Variables - Matching the modern home page */
+        :root {
+            --primary-green: #006400;
+            --secondary-green: #228B22;
+            --light-green: #f0f9f0;
+            --dark-green: #004d00;
+            --accent-gold: #D4AF37;
+            --earth-brown: #8b7355;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-green: #1e6b52;
-            --secondary-green: #2d8c6f;
-            --light-green: #e8f5f0;
-            --accent-green: #4caf50;
-            --dark-green: #0d3b2a;
-            --text-dark: #333333;
-            --text-light: #ffffff;
-            --shadow: rgba(30, 107, 82, 0.15);
-            --earth-brown: #8b7355;
-            --legal-blue: #1e6b52;
-            --legal-light-blue: #e3f2fd;
-            --accent-gold: #d4af37;
         }
 
         body {
-            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,21 +47,24 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Modernized */
         header {
-            background-color: var(--legal-blue);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
             padding: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-area {
@@ -71,25 +81,29 @@
         .logo-text h1 {
             font-size: 1.5rem;
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .logo-text p {
             font-size: 0.9rem;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .nav-links {
             display: flex;
             gap: 25px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
             padding: 5px 0;
             position: relative;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
@@ -100,91 +114,129 @@
             border-bottom: 2px solid var(--accent-gold);
         }
 
-        /* Hero Section */
+        /* Hero Section - Modern gradient with animation */
         .legal-hero {
-            background: linear-gradient(rgba(30, 107, 82, 0.85), rgba(30, 107, 82, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--text-light);
-            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legal-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .legal-hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .legal-hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .legal-hero p {
             font-size: 1.3rem;
             max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .dept-badge {
             display: inline-block;
-            background-color: var(--accent-gold);
-            color: var(--legal-blue);
-            padding: 10px 25px;
+            background: linear-gradient(135deg, var(--accent-gold), #c19b2e);
+            color: var(--dark-green);
+            padding: 12px 28px;
             border-radius: 30px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             font-size: 1.1rem;
         }
 
-        /* Leadership Section */
-        .leadership-section {
-            padding: 4rem 0;
-            background-color: white;
+        /* Section Styles */
+        .leadership-section,
+        .functions-section {
+            padding: 60px 0;
+            background-color: var(--white);
+        }
+
+        .certifications-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-gray), var(--white));
         }
 
         .section-title {
-            color: var(--legal-blue);
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--light-green);
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
             position: relative;
+            font-weight: 600;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: 0;
             left: 0;
-            width: 100px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background-color: var(--accent-gold);
         }
 
-        .legal-title:after {
-            background-color: var(--accent-gold);
+        .section-title.legal-title {
+            color: var(--primary-green);
         }
 
+        /* Leadership Profile */
         .leadership-profile {
-            background-color: white;
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin-bottom: 4rem;
-            border: 1px solid var(--light-green);
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .leadership-profile:hover {
+            box-shadow: var(--shadow-hover);
         }
 
         .profile-header {
             display: flex;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid var(--light-green);
+            gap: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
             .profile-header {
                 flex-direction: column;
                 text-align: center;
+                gap: 20px;
             }
         }
 
@@ -192,144 +244,184 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--legal-blue), var(--primary-green));
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 5rem;
-            color: white;
+            color: var(--white);
             flex-shrink: 0;
-            border: 5px solid var(--accent-gold);
+            border: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-green);
         }
 
         .profile-info h2 {
-            color: var(--legal-blue);
+            color: var(--primary-green);
             font-size: 2rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .profile-info .title {
-            color: var(--primary-green);
+            color: var(--accent-gold);
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .profile-info .qualifications {
-            color: var(--accent-gold);
+            color: var(--medium-gray);
             font-size: 1.1rem;
             font-weight: 500;
         }
 
-        /* Qualifications Section */
+        .profile-details p {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Qualifications Grid */
         .qualifications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 3rem;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .qualification-card {
-            background-color: var(--legal-light-blue);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid var(--primary-green);
-            transition: transform 0.3s ease;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qualification-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+            transition: height 0.3s ease;
         }
 
         .qualification-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .qualification-card:hover:before {
+            height: 6px;
         }
 
         .qualification-card i {
-            color: var(--legal-blue);
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .qualification-card:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
         }
 
         .qualification-card h3 {
-            color: var(--dark-green);
-            margin-bottom: 1rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
             font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .qualification-card p {
-            color: var(--text-dark);
-            font-size: 1rem;
+            color: var(--medium-gray);
             line-height: 1.7;
         }
 
-        /* Certifications Section */
-        .certifications-section {
-            padding: 4rem 0;
-            background-color: var(--light-green);
-        }
-
+        /* Certifications Grid */
         .certifications-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
         .certification-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 5px 15px var(--shadow);
+            background: var(--white);
+            border-radius: 12px;
+            padding: 35px 25px;
+            box-shadow: var(--shadow);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             border-top: 4px solid var(--accent-gold);
         }
 
         .certification-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px var(--shadow);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
         }
 
         .certification-card i {
             color: var(--primary-green);
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
         }
 
         .certification-card h3 {
-            color: var(--legal-blue);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .certification-card p {
-            color: var(--text-dark);
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         .certification-date {
             display: inline-block;
-            background-color: var(--light-green);
+            background: linear-gradient(135deg, var(--light-green), var(--white));
             color: var(--primary-green);
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* Department Functions */
-        .functions-section {
-            padding: 4rem 0;
-            background-color: white;
-        }
-
+        /* Functions Section */
         .functions-intro {
-            background-color: var(--legal-light-blue);
-            padding: 2.5rem;
-            border-radius: 10px;
-            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--light-green), var(--white));
+            padding: 30px 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
             font-size: 1.1rem;
             line-height: 1.8;
-            border-left: 5px solid var(--legal-blue);
+            border-left: 4px solid var(--accent-gold);
+            color: var(--medium-gray);
+            box-shadow: var(--shadow);
         }
 
         .functions-list {
@@ -339,110 +431,283 @@
         }
 
         .function-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            border: 1px solid var(--light-green);
+            gap: 20px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .function-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-green), var(--accent-gold));
+            transition: width 0.3s ease;
+        }
+
+        .function-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .function-item i {
             color: var(--primary-green);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-top: 5px;
             flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .function-item:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
         }
 
         .function-item h3 {
-            color: var(--legal-blue);
+            color: var(--primary-green);
             margin-bottom: 10px;
             font-size: 1.1rem;
+            font-weight: 600;
         }
 
         .function-item p {
-            color: var(--text-dark);
-            font-size: 1rem;
+            color: var(--medium-gray);
+            line-height: 1.6;
         }
 
-        /* Footer */
+        /* Footer - Modernized */
         footer {
-            background-color: var(--legal-blue);
-            color: var(--text-light);
-            padding: 3rem 0 2rem;
-            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-section h3 {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             color: var(--accent-gold);
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .footer-section p, .footer-section li {
-            opacity: 0.85;
-            margin-bottom: 0.8rem;
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         .footer-section ul {
-            list-style-type: none;
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
         }
 
         .footer-section li i {
-            margin-right: 10px;
             color: var(--accent-gold);
+            width: 20px;
         }
 
         .contact-link {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
 
         .contact-link:hover {
             color: var(--accent-gold);
+            text-decoration: none;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright p {
+            margin-bottom: 5px;
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .legal-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .legal-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 180px;
+                height: 180px;
+                font-size: 4rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
             }
             
             .nav-links {
-                flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .legal-hero {
+                padding: 60px 0;
             }
             
             .legal-hero h1 {
                 font-size: 2.2rem;
             }
             
-            .qualifications-grid, .certifications-grid, .functions-list {
-                grid-template-columns: 1fr;
+            .legal-hero p {
+                font-size: 1.1rem;
             }
             
-            .leadership-profile, .functions-intro {
-                padding: 1.5rem;
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .qualifications-grid,
+            .certifications-grid,
+            .functions-list {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .leadership-profile,
+            .functions-intro {
+                padding: 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .legal-hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .dept-badge {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .profile-info h2 {
+                font-size: 1.6rem;
+            }
+            
+            .profile-info .title {
+                font-size: 1.1rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                font-size: 3.5rem;
+            }
+            
+            .qualification-card,
+            .certification-card {
+                padding: 25px;
+            }
+            
+            .function-item {
+                padding: 20px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .function-item:before {
+                width: 100%;
+                height: 4px;
+                top: 0;
+                left: 0;
+                background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
             }
         }
     </style>
@@ -460,14 +725,14 @@
                     <p>Corporate & Legal Affairs Department</p>
                 </div>
             </div>
-            <nav class="nav-links">
-                <a href="#" class="active">Home</a>
+            <!-- <nav class="nav-links">
+                <a href="legal-title" class="active">Home</a>
                 <a href="#">About</a>
                 <a href="#">Services</a>
                 <a href="#">Legal Resources</a>
                 <a href="#">Contact</a>
-            </nav>
-        </div>
+            </nav> -->
+        </div>`
     </header>
 
     <!-- Hero Section -->
@@ -484,7 +749,7 @@
         <div class="container">
             <h2 class="section-title legal-title">Department Leadership</h2>
             
-            <div class="leadership-profile">
+            <div class="leadership-profile animate-on-scroll">
                 <div class="profile-header">
                     <div class="profile-img">
                         <i class="fas fa-user-tie"></i>
@@ -504,19 +769,19 @@
             <h3 class="section-title legal-title" style="font-size: 1.8rem; margin-bottom: 2rem;">Academic Qualifications</h3>
             
             <div class="qualifications-grid">
-                <div class="qualification-card">
+                <div class="qualification-card animate-on-scroll">
                     <i class="fas fa-graduation-cap"></i>
                     <h3>Bachelor of Arts (B.A Hons)</h3>
                     <p>Social Anthropology, Government/Public Administration, Philosophy/Logic from University of Nairobi. This interdisciplinary foundation provides a comprehensive understanding of social systems, governance structures, and logical reasoning.</p>
                 </div>
                 
-                <div class="qualification-card">
+                <div class="qualification-card animate-on-scroll">
                     <i class="fas fa-scale-balanced"></i>
                     <h3>Bachelor of Law (LL.B Hons)</h3>
                     <p>University of Nairobi. Comprehensive legal education covering all fundamental areas of law, legal theory, and practical application in the Kenyan context.</p>
                 </div>
                 
-                <div class="qualification-card">
+                <div class="qualification-card animate-on-scroll">
                     <i class="fas fa-magnifying-glass-chart"></i>
                     <h3>Master of Laws (LL.M)</h3>
                     <p>Specialization in Financial Services, Public Finance & Public Accountability Laws – University of Nairobi. Advanced expertise in financial regulation, public sector finance management, and accountability frameworks.</p>
@@ -531,38 +796,38 @@
             <h2 class="section-title legal-title">Professional Certifications & Memberships</h2>
             
             <div class="certifications-grid">
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-file-certificate"></i>
                     <h3>Post Graduate Diploma in Law (PGDL)</h3>
                     <p>The Kenya School of Law - Professional legal training qualifying for admission to the Bar</p>
                 </div>
                 
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-landmark"></i>
                     <h3>Advocate of the High Court of Kenya</h3>
                     <p>Signed the Roll of Advocates on 28/3/2012. Current Practicing Certificate for Year 2021.</p>
                     <div class="certification-date">Since 2012</div>
                 </div>
                 
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-stamp"></i>
                     <h3>Commissioner for Oaths and Notary Public</h3>
                     <p>Legally authorized to administer oaths and certify documents for official use.</p>
                 </div>
                 
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-user-shield"></i>
                     <h3>Certified Public Secretary (ICPS)</h3>
                     <p>Professional certification in corporate governance and secretarial practice.</p>
                 </div>
                 
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-handshake"></i>
                     <h3>Certified Professional Mediator (MTI)</h3>
                     <p>Accredited to Court Annexed Mediation Unit at the Judiciary of Kenya. Specialized training in alternative dispute resolution.</p>
                 </div>
                 
-                <div class="certification-card">
+                <div class="certification-card animate-on-scroll">
                     <i class="fas fa-university"></i>
                     <h3>Diploma in Banking & Finance</h3>
                     <p>ACIB/AKIB and (Part) CPSK Section III - Specialized knowledge in banking operations and financial management.</p>
@@ -576,12 +841,12 @@
         <div class="container">
             <h2 class="section-title legal-title">Department Functions & Responsibilities</h2>
             
-            <div class="functions-intro">
+            <div class="functions-intro animate-on-scroll">
                 <p>The Corporate & Legal Affairs Department provides comprehensive legal services and corporate governance support to Taita Taveta University. Our mandate encompasses legal advisory, contract management, compliance oversight, and corporate governance to ensure the University operates within the legal framework and achieves its strategic objectives.</p>
             </div>
             
             <div class="functions-list">
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-file-contract"></i>
                     <div>
                         <h3>Contract Management</h3>
@@ -589,7 +854,7 @@
                     </div>
                 </div>
                 
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-gavel"></i>
                     <div>
                         <h3>Legal Advisory Services</h3>
@@ -597,7 +862,7 @@
                     </div>
                 </div>
                 
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-shield-alt"></i>
                     <div>
                         <h3>Compliance & Risk Management</h3>
@@ -605,7 +870,7 @@
                     </div>
                 </div>
                 
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-balance-scale"></i>
                     <div>
                         <h3>Dispute Resolution</h3>
@@ -613,7 +878,7 @@
                     </div>
                 </div>
                 
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-landmark"></i>
                     <div>
                         <h3>Corporate Governance</h3>
@@ -621,7 +886,7 @@
                     </div>
                 </div>
                 
-                <div class="function-item">
+                <div class="function-item animate-on-scroll">
                     <i class="fas fa-user-tie"></i>
                     <div>
                         <h3>Intellectual Property Management</h3>
@@ -664,32 +929,38 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Taita Taveta University - Corporate & Legal Affairs Department. All rights reserved.</p>
+                <p>&copy; 2026 Taita Taveta University - Corporate & Legal Affairs Department. All rights reserved.</p>
                 <p>This website is for informational purposes only and does not constitute legal advice.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple animation for cards when they come into view
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.qualification-card, .certification-card, .function-item');
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('animated');
                     }
                 });
-            }, { threshold: 0.1 });
-            
-            cards.forEach(card => {
-                card.style.opacity = '0.8';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Update copyright year
+            const currentYear = new Date().getFullYear();
+            const footerYear = document.querySelector('.copyright p:first-child');
+            if (footerYear) {
+                footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
+            }
 
             // Active navigation link
             const navLinks = document.querySelectorAll('.nav-links a');
@@ -701,12 +972,13 @@
                 });
             });
 
-            // Add current year to copyright
-            const yearSpan = document.querySelector('.copyright');
-            if (yearSpan) {
-                const currentYear = new Date().getFullYear();
-                yearSpan.innerHTML = yearSpan.innerHTML.replace('2023', currentYear);
-            }
+            // Add hover effects for cards
+            const cards = document.querySelectorAll('.qualification-card, .certification-card, .function-item, .leadership-profile');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+            });
         });
     </script>
 </body>

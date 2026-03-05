@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICT Department - Taita Taveta University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Main Page CSS Variables - Matching the modern home page */
+        :root {
+            --primary-green: #006400;
+            --secondary-green: #228B22;
+            --light-green: #f0f9f0;
+            --dark-green: #004d00;
+            --accent-gold: #D4AF37;
+            --earth-brown: #8b7355;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-green: #1e6b52;
-            --secondary-green: #2d8c6f;
-            --light-green: #e8f5f0;
-            --accent-green: #4caf50;
-            --dark-green: #0d3b2a;
-            --text-dark: #333333;
-            --text-light: #ffffff;
-            --shadow: rgba(30, 107, 82, 0.15);
-            --earth-brown: #8b7355;
         }
 
         body {
-            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            background-color: #f9f9f9;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
@@ -37,21 +47,24 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Modernized */
         header {
-            background-color: var(--primary-green);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
             padding: 1rem 0;
-            box-shadow: 0 4px 12px var(--shadow);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-area {
@@ -62,210 +75,260 @@
 
         .logo-icon {
             font-size: 2.5rem;
+            color: var(--accent-gold);
         }
 
         .logo-text h1 {
             font-size: 1.5rem;
             margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .logo-text h1 a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo-text h1 a:hover {
+            color: var(--accent-gold);
         }
 
         .logo-text p {
             font-size: 0.9rem;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .director-info {
-            background-color: var(--dark-green);
-            padding: 10px 15px;
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
         }
 
-        /* Hero Section */
+        .director-info strong {
+            color: var(--accent-gold);
+        }
+
+        .director-info p {
+            margin-bottom: 5px;
+        }
+
+        .director-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Hero Section - Modern gradient with animation */
         .hero {
-            background: linear-gradient(rgba(30, 107, 82, 0.85), rgba(30, 107, 82, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--text-light);
-            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 80px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 2.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.8;
         }
 
         .year-badge {
             display: inline-block;
-            background-color: var(--accent-green);
-            color: white;
-            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--accent-gold), #c19b2e);
+            color: var(--dark-green);
+            padding: 10px 25px;
             border-radius: 30px;
-            font-weight: bold;
-            margin-top: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Main Content */
         .content-section {
-            padding: 4rem 0;
+            padding: 60px 0;
         }
 
         .section-title {
             color: var(--primary-green);
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--light-green);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
             position: relative;
+            font-weight: 600;
         }
 
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: 0;
             left: 0;
-            width: 100px;
-            height: 3px;
-            background-color: var(--accent-green);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
         }
 
-        .overview-content {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px var(--shadow);
-            margin-bottom: 3rem;
-        }
-
-        .overview-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .highlight-box {
-            background-color: var(--light-green);
-            border-left: 5px solid var(--secondary-green);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* Functions Section */
-        .functions-section {
-            background-color: var(--light-green);
-            padding: 4rem 0;
-        }
-
-        .functions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 2rem;
-        }
-
-        .function-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.8rem;
-            box-shadow: 0 5px 15px var(--shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .function-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .function-card i {
-            color: var(--secondary-green);
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .function-card h3 {
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            margin: 30px 0 20px;
             color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 6px;
+            background-color: var(--light-gray);
         }
 
-        /* Departments Section */
-        .departments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 2rem;
+        .back-link i {
+            margin-right: 8px;
+            transition: var(--transition);
         }
 
-        .department-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 5px 15px var(--shadow);
-            text-align: center;
-            border-top: 5px solid var(--earth-brown);
-            transition: all 0.3s ease;
+        .back-link:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+            transform: translateX(-5px);
         }
 
-        .department-card:hover {
-            border-top-color: var(--primary-green);
-            box-shadow: 0 8px 20px var(--shadow);
-        }
-
-        .department-card i {
-            color: var(--earth-brown);
-            font-size: 2.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .department-card h3 {
-            color: var(--dark-green);
-            font-size: 1.2rem;
+        .back-link:hover i {
+            transform: translateX(-3px);
         }
 
         /* Staff Profile */
         .staff-profile {
             display: flex;
             align-items: center;
-            gap: 25px;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px var(--shadow);
-            margin-bottom: 2rem;
+            gap: 40px;
+            background: linear-gradient(135deg, var(--white), var(--light-gray));
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .staff-profile:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .staff-photo {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            background-color: var(--light-green);
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--secondary-green);
+            font-size: 5rem;
+            color: var(--white);
+            flex-shrink: 0;
+            border: 4px solid var(--accent-gold);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .staff-photo:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-green);
         }
 
         .staff-info h3 {
             color: var(--primary-green);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .staff-title {
-            color: var(--secondary-green);
+            color: var(--accent-gold);
             font-weight: 600;
             margin-bottom: 15px;
             display: block;
+            font-size: 1.2rem;
+        }
+
+        .staff-info p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        /* Overview Content */
+        .overview-content {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .overview-content:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .overview-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--light-green), var(--white));
+            border-left: 4px solid var(--accent-gold);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 1.15rem;
+            color: var(--dark-green);
+            font-weight: 500;
         }
 
         /* Activities List */
@@ -275,99 +338,323 @@
         }
 
         .activities-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            padding: 12px 0 12px 35px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
-            padding-left: 30px;
+            color: var(--medium-gray);
+            transition: var(--transition);
+        }
+
+        .activities-list li:hover {
+            background-color: var(--light-green);
+            padding-left: 45px;
         }
 
         .activities-list li:before {
             content: '✓';
             position: absolute;
-            left: 0;
-            color: var(--accent-green);
+            left: 10px;
+            color: var(--accent-gold);
             font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        /* Footer */
+        /* Functions Section */
+        .functions-section {
+            background: linear-gradient(135deg, var(--light-gray), var(--white));
+            padding: 60px 0;
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .function-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .function-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+            transition: height 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .function-card:hover:before {
+            height: 6px;
+        }
+
+        .function-card i {
+            color: var(--primary-green);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .function-card:hover i {
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        .function-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .function-card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        /* Footer - Modernized */
         footer {
-            background-color: var(--dark-green);
-            color: var(--text-light);
-            padding: 3rem 0 2rem;
-            margin-top: 3rem;
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         .footer-section h3 {
             font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            color: var(--light-green);
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .footer-section p, .footer-section li {
-            opacity: 0.85;
-            margin-bottom: 0.8rem;
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
 
         .footer-section ul {
-            list-style-type: none;
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
         }
 
         .footer-section li i {
-            margin-right: 10px;
-            color: var(--accent-green);
+            color: var(--accent-gold);
+            width: 20px;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
+            font-size: 0.95rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Back to Departments */
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--primary-green);
-            text-decoration: none;
-            font-weight: 600;
+        .copyright p {
+            margin-bottom: 5px;
         }
 
-        .back-link i {
-            margin-right: 8px;
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .staff-profile {
+                padding: 30px;
+            }
+            
+            .staff-photo {
+                width: 160px;
+                height: 160px;
+                font-size: 4rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 60px 0;
             }
             
             .hero h1 {
                 font-size: 2.2rem;
             }
             
-            .functions-grid, .departments-grid {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .overview-content {
-                padding: 1.5rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             
             .staff-profile {
                 flex-direction: column;
                 text-align: center;
+                gap: 20px;
+                padding: 25px;
+            }
+            
+            .staff-photo {
+                width: 150px;
+                height: 150px;
+                font-size: 3.5rem;
+            }
+            
+            .staff-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .overview-content {
+                padding: 25px;
+            }
+            
+            .functions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            
+            .year-badge {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
+            
+            .back-link {
+                margin: 20px 0 15px;
+            }
+            
+            .staff-profile {
+                padding: 20px;
+            }
+            
+            .staff-photo {
+                width: 130px;
+                height: 130px;
+                font-size: 3rem;
+            }
+            
+            .overview-content {
+                padding: 20px;
+            }
+            
+            .activities-list li {
+                font-size: 0.95rem;
+            }
+            
+            .function-card {
+                padding: 25px;
             }
         }
     </style>
@@ -382,16 +669,14 @@
                         <i class="fas fa-university"></i>
                     </div>
                     <div class="logo-text">
-                        <a href="Home.html" style="color: white; text-decoration: none;">
-                            <h1 >Taita Taveta University</h1>
-                        </a>
+                        <h1><a href="Home1.html">Taita Taveta University</a></h1>
                         <p>ICT Department</p>
                     </div>
                 </div>
-                <div class="director-info">
+                <!-- <div class="director-info">
                     <p><strong>Head of Department:</strong> Mr. Kibwana Zamani</p>
                     <p><strong>Contact:</strong> manager.ict@ttu.ac.ke</p>
-                </div>
+                </div> -->
             </div>
         </div>
     </header>
@@ -400,7 +685,7 @@
     <section class="hero">
         <div class="container">
             <h1>ICT Department</h1>
-            <p>The Department of Information and Communication Technology (ICT) is the central hub for managing and supporting the university’s ICT infrastructure, systems, and services.</p>
+            <p>The Department of Information and Communication Technology (ICT) is the central hub for managing and supporting the university's ICT infrastructure, systems, and services.</p>
             <div class="year-badge">Established: 2007</div>
         </div>
     </section>
@@ -408,81 +693,64 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Back to Departments Link -->
-        <a href="departments.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to All Departments</a>
+        <a href="departments.html" class="back-link animate-on-scroll"><i class="fas fa-arrow-left"></i> Back to All Departments</a>
         
         <!-- Staff Profile -->
-        <div class="content-section">
-            <div class="staff-profile">
-                <div class="staff-photo">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <div class="staff-info">
-                    <h3>Mr. Kibwana Zamani </h3>
-                    <span class="staff-title">Head of ICT Department</span>
-                    <p>Mr. Kibwana Zamani  leads the ICT Department .</p>
-                </div>
+        <div class="staff-profile animate-on-scroll">
+            <div class="staff-photo">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="staff-info">
+                <h3>Mr. Kibwana Zamani</h3>
+                <span class="staff-title">Head of ICT Department</span>
+                <p>Mr. Kibwana Zamani leads the ICT Department, overseeing the university's technology infrastructure, systems development, and digital transformation initiatives.</p>
+                <p><strong>Contact:</strong> manager.ict@ttu.ac.ke</p>
             </div>
         </div>
 
         <!-- What We Do -->
         <div class="content-section">
-            <h2 class="section-title">What We Do</h2>
-            <div class="overview-content">
-                <!-- <p>The Department of Information and Communication Technology (ICT) is the central hub for managing and supporting the university’s ICT infrastructure, systems, and services.</p> -->
-                
+            <h2 class="section-title animate-on-scroll">What We Do</h2>
+            <div class="overview-content animate-on-scroll">
                 <p>Our mandate as a department is to:</p>
                 
                 <ul class="activities-list">
                     <li>Develop and implement ICT policies, procedures, and standards to ensure efficient and secure operations.</li>
-                    <li>Manage ICT projects, including the deployment of new technologies and systems to support the university’s academic, administrative, and research functions.</li>
+                    <li>Manage ICT projects, including the deployment of new technologies and systems to support the university's academic, administrative, and research functions.</li>
                     <li>Provide reliable and innovative ICT services to students, faculty, and staff.</li>
                     <li>Offer user support and training to enhance digital literacy and ensure effective utilization of ICT resources.</li>
-                    <li>Ensure the security, integrity, and availability of the University’s ICT systems and data.</li>
+                    <li>Ensure the security, integrity, and availability of the University's ICT systems and data.</li>
                     <li>Identify and integrate emerging technologies to enhance University operations and services.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- History -->
-        <!-- <div class="content-section">
-            <h2 class="section-title">History of the Department</h2>
-            <div class="overview-content">
-                <p>The department was established in 2011 when the college was a campus. The department currently has 6 members of staff, who are highly skilled and motivated in procurement and supply chain activities.</p>
-                
-                <div class="highlight-box">
-                    <p><strong>Department Scope:</strong> Activities within the Procurement Department cover a wide range of functions such as maintaining a list of prequalified bidders, preparing and publishing procurement opportunities, coordinating evaluation of tenders and quotations, issuing bid documents, and conducting periodic and annual stock taking.</p>
-                </div>
-                
-                <p>The department has evolved significantly since the university's establishment, implementing modern procurement systems and technologies to enhance efficiency and transparency in financial management.</p>
-            </div>
-        </div> -->
-
         <!-- Functions Grid -->
         <div class="functions-section">
             <div class="container">
-                <h2 class="section-title">Key Functions</h2>
+                <h2 class="section-title animate-on-scroll">Key Functions</h2>
                 <div class="functions-grid">
-                    <div class="function-card">
+                    <div class="function-card animate-on-scroll">
                         <i class="fas fa-chart-line"></i>
                         <h3>ICT Infrastructure Management</h3>
-                        <p>Overseeing the university’s network, servers, and cloud systems.</p>
+                        <p>Overseeing the university's network, servers, and cloud systems to ensure optimal performance and availability.</p>
                     </div>
-                    <div class="function-card">
+                    <div class="function-card animate-on-scroll">
                         <i class="fas fa-list-check"></i>
                         <h3>Project Management</h3>
-                        <p>Leading ICT projects from planning to execution, ensuring timely and within-budget delivery.</p>
+                        <p>Leading ICT projects from planning to execution, ensuring timely and within-budget delivery of technology solutions.</p>
                     </div>
-                    <div class="function-card">
+                    <div class="function-card animate-on-scroll">
                         <i class="fa-solid fa-headset"></i>
                         <h3>User Support and Training</h3>
                         <p>Providing technical assistance and training programs to empower users with ICT tools and systems.</p>
                     </div>
-                    <div class="function-card">
-                       <i class="fa-solid fa-file-shield"></i>
+                    <div class="function-card animate-on-scroll">
+                        <i class="fa-solid fa-file-shield"></i>
                         <h3>Cybersecurity and Data Protection</h3>
-                        <p>Implementing measures to safeguard the university’s digital assets and sensitive information.</p>
+                        <p>Implementing measures to safeguard the university's digital assets and sensitive information from threats.</p>
                     </div>
-                    <div class="function-card">
+                    <div class="function-card animate-on-scroll">
                         <i class="fa-solid fa-people-roof"></i>
                         <h3>Service Management</h3>
                         <p>Delivering and maintaining ICT services such as email, learning management systems, and enterprise resource planning (ERP) systems.</p>
@@ -513,9 +781,9 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" style="color: white; text-decoration: none;">TTU Main Website</a></li>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" style="color: white; text-decoration: none;">Student Portal</a></li>
-                        <li><i class="fas fa-chevron-right"></i> <a href="#" style="color: white; text-decoration: none;">Staff Portal</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#">TTU Main Website</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#">Student Portal</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="#">Staff Portal</a></li>
                     </ul>
                 </div>
             </div>
@@ -524,5 +792,42 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Update copyright year
+            const currentYear = new Date().getFullYear();
+            const footerYear = document.querySelector('.copyright p');
+            if (footerYear) {
+                footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
+            }
+
+            // Add hover effects for cards
+            const cards = document.querySelectorAll('.staff-profile, .overview-content, .function-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

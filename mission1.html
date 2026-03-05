@@ -6,49 +6,42 @@
     <title>Mission & Vision | Taita Taveta University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Main Page CSS Variables - Matching the main page exactly */
-        :root {
-            --primary-green: #006400;
-            --secondary-green: #228B22;
-            --light-green: #f0f9f0;
-            --dark-green: #004d00;
-            --accent-gold: #D4AF37;
-            --earth-brown: #8b7355;
-            --white: #ffffff;
-            --light-gray: #f8f9fa;
-            --medium-gray: #6c757d;
-            --dark-gray: #343a40;
-            --transition: all 0.3s ease;
-            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        :root {
+            --primary-green: #1e6b52;
+            --secondary-green: #2d8c6f;
+            --light-green: #e8f5f0;
+            --accent-green: #4caf50;
+            --dark-green: #0d3b2a;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --shadow: rgba(30, 107, 82, 0.15);
+            --earth-brown: #8b7355;
+        }
+
         body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
-            color: var(--dark-gray);
-            overflow-x: hidden;
-            background-color: var(--white);
+            background-color: #f9fdfb;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        /* Header Styles - Keeping your existing header but updating colors */
+
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
-            color: var(--white);
-            padding: 100px 0 60px;
+            color: var(--text-light);
+            padding: 80px 0 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -57,19 +50,12 @@
         header::before {
             content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s linear infinite;
-            z-index: 1;
-        }
-        
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(-50px, -50px) rotate(360deg); }
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" opacity="0.1"><path fill="white" d="M0,0 L100,0 L100,100 Z"/><path fill="white" d="M0,0 L0,100 L100,100 Z"/></svg>');
+            background-size: cover;
         }
 
         .header-content {
@@ -78,22 +64,19 @@
         }
 
         h1 {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             font-weight: 700;
-            color: var(--white);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .subtitle {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.6;
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
         }
 
-        /* Philosophy Cards - Styled to match main page */
+        /* Philosophy Container - Updated from original */
         .philosophy-container {
             display: flex;
             flex-wrap: wrap;
@@ -106,44 +89,27 @@
         }
 
         .philosophy-card {
-            background: var(--white);
+            background: var(--text-light);
             border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
+            padding: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
             text-align: center;
             flex: 1;
             min-width: 300px;
             max-width: 350px;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
-            transition: height 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--secondary-green);
         }
 
         .philosophy-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .philosophy-card:hover:before {
-            height: 6px;
+            box-shadow: 0 15px 40px rgba(30, 107, 82, 0.25);
         }
 
         .philosophy-icon {
+            background: var(--light-green);
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--light-green), rgba(0, 100, 0, 0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -151,45 +117,34 @@
             margin: 0 auto 25px;
             color: var(--primary-green);
             font-size: 2.2rem;
-            transition: var(--transition);
-            border: 2px solid rgba(0, 100, 0, 0.1);
-        }
-
-        .philosophy-card:hover .philosophy-icon {
-            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-            color: var(--white);
-            transform: scale(1.1) rotate(10deg);
-            border-color: var(--accent-gold);
         }
 
         .philosophy-card h3 {
-            color: var(--primary-green);
+            color: var(--dark-green);
             margin-bottom: 15px;
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.8rem;
         }
 
         .philosophy-card p {
-            color: var(--medium-gray);
+            color: var(--text-dark);
             line-height: 1.7;
         }
 
-        /* Section Styles */
+        /* Mission & Vision Sections */
         .section {
             padding: 80px 0;
         }
 
         .section:nth-child(even) {
-            background-color: var(--light-gray);
+            background-color: var(--light-green);
         }
 
         .section-title {
             text-align: center;
-            color: var(--primary-green);
+            color: var(--dark-green);
             font-size: 2.5rem;
             margin-bottom: 50px;
             position: relative;
-            font-weight: 600;
         }
 
         .section-title::after {
@@ -200,11 +155,10 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--accent-gold);
+            background-color: var(--accent-green);
             border-radius: 2px;
         }
 
-        /* Content Wrapper */
         .content-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -217,19 +171,13 @@
             min-width: 300px;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px var(--shadow);
         }
 
         .content-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .content-image:hover img {
-            transform: scale(1.05);
         }
 
         .content-text {
@@ -241,185 +189,99 @@
             color: var(--primary-green);
             margin-bottom: 20px;
             font-size: 1.8rem;
-            font-weight: 600;
         }
 
         .content-text p {
             margin-bottom: 20px;
             font-size: 1.1rem;
-            color: var(--medium-gray);
-            line-height: 1.8;
         }
 
         /* Values Section */
         .values-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
 
         .value-card {
-            background: var(--white);
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
+            background: var(--text-light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-left: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--earth-brown);
         }
 
         .value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
         }
 
         .value-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--light-green), rgba(0, 100, 0, 0.1));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary-green);
-            font-size: 2rem;
-            transition: var(--transition);
-        }
-
-        .value-card:hover .value-icon {
-            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-            color: var(--white);
-            transform: scale(1.1);
+            color: var(--earth-brown);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
         }
 
         .value-card h4 {
-            color: var(--primary-green);
+            color: var(--dark-green);
             margin-bottom: 15px;
-            font-size: 1.3rem;
-            font-weight: 600;
         }
 
-        .value-card p {
-            color: var(--medium-gray);
-            line-height: 1.6;
-        }
-
-        /* Call to Action - Matching main page CTA */
+        /* Call to Action */
         .cta-section {
             background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
-            color: var(--white);
+            color: var(--text-light);
             text-align: center;
             padding: 80px 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s linear infinite;
-            z-index: 1;
-        }
-
-        .cta-section .container {
-            position: relative;
-            z-index: 2;
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: var(--white);
-            font-weight: 700;
         }
 
         .cta-section p {
             max-width: 700px;
             margin: 0 auto 40px;
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.95);
+            opacity: 0.9;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-gold);
-            color: var(--dark-green);
+            background-color: var(--accent-green);
+            color: var(--text-light);
             padding: 15px 35px;
-            border-radius: 6px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 2px solid var(--accent-gold);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .cta-button:hover {
-            background-color: transparent;
-            color: var(--white);
+            background-color: var(--text-light);
+            color: var(--primary-green);
             transform: translateY(-5px);
-            border-color: var(--white);
         }
 
-        /* Footer - Updated to match main page style */
+        /* Footer */
         footer {
             background-color: var(--dark-green);
-            color: var(--white);
+            color: var(--text-light);
             padding: 40px 0;
             text-align: center;
         }
 
         footer p {
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-
-        footer p:last-child {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Animation Classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 0.8;
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            header {
-                padding: 80px 0 40px;
-            }
-            
             h1 {
                 font-size: 2.5rem;
             }
@@ -439,72 +301,21 @@
             .section-title {
                 font-size: 2rem;
             }
-            
-            .content-wrapper {
-                flex-direction: column;
-            }
-            
-            .cta-section h2 {
-                font-size: 2rem;
-            }
         }
 
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
+        @media (max-width: 480px) {
             .philosophy-card {
                 min-width: 100%;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .content-wrapper {
+                flex-direction: column;
             }
-            
-            .value-card {
-                padding: 25px 20px;
-            }
-        }
-
-        /* Placeholder image styling */
-        .placeholder-image {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .placeholder-image i {
-            font-size: 8rem;
-            opacity: 0.7;
-            transition: transform 0.5s ease;
-        }
-
-        .placeholder-image:hover i {
-            transform: scale(1.1);
-        }
-
-        .placeholder-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
-            background-size: 30px 30px;
-            animation: float 15s linear infinite;
         }
     </style>
 </head>
 <body>
-    <!-- Header - Keeping your existing structure with updated colors -->
+    <!-- Header -->
     <header>
         <div class="container header-content">
             <h1>Mission & Vision</h1>
@@ -512,11 +323,11 @@
         </div>
     </header>
 
-    <!-- Philosophy Cards - Updated styling -->
+    <!-- Philosophy Cards -->
     <div class="container">
         <div class="philosophy-container">
             <!-- Philosophy -->
-            <div class="philosophy-card animate-on-scroll">
+            <div class="philosophy-card">
                 <div class="philosophy-icon">
                     <i class="fas fa-brain"></i>
                 </div>
@@ -525,7 +336,7 @@
             </div>
             
             <!-- Mission -->
-            <div class="philosophy-card animate-on-scroll">
+            <div class="philosophy-card">
                 <div class="philosophy-icon">
                     <i class="fas fa-bullseye"></i>
                 </div>
@@ -534,7 +345,7 @@
             </div>
             
             <!-- Vision -->
-            <div class="philosophy-card animate-on-scroll">
+            <div class="philosophy-card">
                 <div class="philosophy-icon">
                     <i class="fas fa-eye"></i>
                 </div>
@@ -549,15 +360,16 @@
         <div class="container">
             <h2 class="section-title">Our Mission in Detail</h2>
             <div class="content-wrapper">
-                <div class="content-text animate-on-scroll">
+                <div class="content-text">
                     <h3>Advancing Resource Management Through Education</h3>
                     <p>Our primary mission is to provide world-class education in natural resource management, equipping students with the knowledge and skills needed to address the complex challenges of sustainable development.</p>
                     <p>We are committed to fostering innovative research that bridges scientific discovery with practical application, ensuring that our findings contribute directly to improved resource management practices.</p>
                     <p>Through community engagement and outreach programs, we extend our expertise beyond campus boundaries, working collaboratively with local communities to develop sustainable solutions that balance ecological, social, and economic needs.</p>
                 </div>
-                <div class="content-image animate-on-scroll">
-                    <div class="placeholder-image">
-                        <i class="fas fa-graduation-cap"></i>
+                <div class="content-image">
+                    <!-- Using a placeholder image related to education and nature -->
+                    <div style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-graduation-cap" style="font-size: 8rem; opacity: 0.7;"></i>
                     </div>
                 </div>
             </div>
@@ -569,12 +381,13 @@
         <div class="container">
             <h2 class="section-title">Our Vision for the Future</h2>
             <div class="content-wrapper">
-                <div class="content-image animate-on-scroll">
-                    <div class="placeholder-image">
-                        <i class="fas fa-seedling"></i>
+                <div class="content-image">
+                    <!-- Using a placeholder image related to sustainability -->
+                    <div style="background: linear-gradient(135deg, var(--earth-brown), var(--secondary-green)); height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-seedling" style="font-size: 8rem; opacity: 0.7;"></i>
                     </div>
                 </div>
-                <div class="content-text animate-on-scroll">
+                <div class="content-text">
                     <h3>A Transformed Society Through Sustainability</h3>
                     <p>We envision a future where communities are empowered with knowledge and tools to manage natural resources responsibly, ensuring their availability for generations to come.</p>
                     <p>Our vision extends beyond academic excellence to societal transformation, where sustainable practices become integrated into all aspects of community life, from agriculture and mining to energy production and conservation.</p>
@@ -589,28 +402,28 @@
         <div class="container">
             <h2 class="section-title">Our Core Values</h2>
             <div class="values-container">
-                <div class="value-card animate-on-scroll">
+                <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h4>Sustainability</h4>
                     <p>We prioritize long-term ecological balance in all our programs and initiatives.</p>
                 </div>
-                <div class="value-card animate-on-scroll">
+                <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h4>Excellence</h4>
                     <p>We maintain the highest standards in education, research, and community service.</p>
                 </div>
-                <div class="value-card animate-on-scroll">
+                <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h4>Community</h4>
                     <p>We engage and empower communities as partners in sustainable development.</p>
                 </div>
-                <div class="value-card animate-on-scroll">
+                <div class="value-card">
                     <div class="value-icon">
                         <i class="fas fa-lightbulb"></i>
                     </div>
@@ -630,7 +443,7 @@
         </div>
     </section>
 
-    <!-- Footer - Keeping your structure with updated styling -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Taita Taveta University. All rights reserved.</p>
@@ -639,38 +452,38 @@
     </footer>
 
     <script>
+        // Add simple hover effect for philosophy cards
         document.addEventListener('DOMContentLoaded', function() {
-            // Animation on scroll
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            const cards = document.querySelectorAll('.philosophy-card, .value-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                });
+            });
+            
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }, observerOptions);
             
-            animateElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Update copyright year
-            const currentYear = new Date().getFullYear();
-            const footerYear = document.querySelector('footer p:first-child');
-            if (footerYear) {
-                footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
-            }
-            
-            // Hover effects enhancement
-            const cards = document.querySelectorAll('.philosophy-card, .value-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                });
+            // Observe content sections
+            const sections = document.querySelectorAll('.content-wrapper, .values-container');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
             });
         });
     </script>

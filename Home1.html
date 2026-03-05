@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ngrok-skip-browser-warning" content="true">
+    <title>Taita Taveta University - <b>Home of Ideas</b></title>
+    <meta name="description" content="Taita Taveta University - Premier institution offering quality education, research, and innovation across 19 undergraduate programmes. Join our community of future leaders.">
+    <meta name="keywords" content="Taita Taveta University, TTU, University Kenya, Higher Education, Undergraduate Programmes, Research, Innovation, Admissions">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-green: #006400;
+            --secondary-green: #228B22;
+            --light-green: #f0f9f0;
+            --dark-green: #004d00;
+            --accent-gold: #D4AF37;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --dark-gray: #343a40;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-gold);
+            color: var(--dark-green);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c19b2e;
+            color: var(--dark-green);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-green);
+        }
+        
+        .btn-large {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+        }
+        
+        /* Header with Logo - COMPACT & REFINED */
+        .header-with-logo {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 100, 0, 0.08);
+            padding: 0;
+            height: 80px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            height: 100%;
+        }
+        
+        /* Logo moved COMPLETELY to the far left edge */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            flex-shrink: 0;
+            margin-right: auto;
+            padding-left: 0;
+            margin-left: -5px;
+        }
+        
+        .logo-image {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .university-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+        
+        .university-tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            margin: 3px 0 0 0;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+        
+        /* Professional Classic Navbar - COMPACT VERSION */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            margin-left: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            gap: 0;
+            height: 100%;
+        }
+        
+        nav ul li {
+            margin: 0;
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 10px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            height: 38px;
+            margin: 0 1px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(0, 100, 0, 0.05);
+            color: var(--dark-green);
+        }
+        
+        nav ul li a.active {
+            background-color: rgba(0, 100, 0, 0.08);
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+        
+        /* Dropdown Styles - COMPACT */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 6px 0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            margin-top: 5px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dropdown-content a {
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--medium-gray);
+            font-weight: 400;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+            height: auto;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            padding-left: 20px;
+        }
+        
+        .dropdown-content a i {
+            width: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        .dropdown > a i.fa-chevron-down {
+            font-size: 0.7rem;
+            margin-left: 3px;
+            transition: var(--transition);
+        }
+        
+        .dropdown:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        /* Apply Now Button - COMPACT */
+        .btn-apply {
+            padding: 7px 18px !important;
+            background-color: var(--accent-gold) !important;
+            color: var(--dark-green) !important;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 3px 12px rgba(212, 175, 55, 0.25);
+            transition: all 0.3s ease !important;
+            font-size: 0.85rem !important;
+            height: 36px !important;
+            margin-left: 8px !important;
+        }
+        
+        .btn-apply:hover {
+            background-color: var(--primary-green) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 100, 0, 0.25);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            cursor: pointer;
+            padding: 6px;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            transition: var(--transition);
+            margin-left: 15px;
+        }
+        
+        .mobile-menu-btn:hover {
+            background-color: rgba(0, 100, 0, 0.05);
+        }
+        
+        /* Updated: Schools Showcase Slider with Images & Transparent Overlay */
+        .schools-showcase {
+            height: 90vh;
+            min-height: 700px;
+            position: relative;
+            margin-top: 80px;
+            padding-top: 0;
+        }
+        
+        .schools-slider {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-container {
+            height: 100%;
+            position: relative;
+        }
+        
+        .school-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .school-slide.active {
+            opacity: 1;
+        }
+        
+        /* Updated: Slide background with images */
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Zoom effect on hover */
+        .school-slide:hover .slide-bg {
+            transform: scale(1.05);
+        }
+        
+        /* Updated: Transparent overlay to show image colors */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4));
+            z-index: 2;
+            opacity: 0.7;
+        }
+        
+        /* Updated: Slide content with better text visibility */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: var(--white);
+            z-index: 3;
+            max-width: 600px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slide-content h2 {
+            font-size: 3.2rem;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .slide-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Updated: Slider controls with better visibility */
+        .slider-controls {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 4;
+        }
+        
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--dark-gray);
+            transform: scale(1.1);
+            border-color: var(--accent-gold);
+        }
+        
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .dot.active, .dot:hover {
+            background-color: var(--accent-gold);
+            transform: scale(1.2);
+        }
+        
+        /* Hero Section with School Showcase */
+        .hero-section {
+            background: linear-gradient(rgba(0, 100, 0, 0.85), rgba(0, 80, 0, 0.85));
+            color: var(--white);
+            padding: 120px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .hero-section h1 {
+            color: var(--white);
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-section p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+        }
+        
+        /* University Highlights - STYLISH 4-BOX DESIGN */
+        .section-light {
+            background-color: var(--light-green);
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* STYLISH 4-BOX GRID - Enhanced Design */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Force 4 columns */
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .highlight-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 35px 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            border: 1px solid rgba(0, 100, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .highlight-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold));
+            transition: height 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .highlight-card:hover:before {
+            height: 6px;
+        }
+        
+        .highlight-icon-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--light-green), rgba(0, 100, 0, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+            border: 2px solid rgba(0, 100, 0, 0.1);
+        }
+        
+        .highlight-icon-bg {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 90px;
+            height: 90px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .highlight-card:hover .highlight-icon {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            transform: scale(1.1) rotate(10deg);
+            border-color: var(--accent-gold);
+        }
+        
+        .highlight-card:hover .highlight-icon-bg {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .highlight-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .highlight-card p {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Featured Programmes - Enhanced */
+        .programmes-section {
+            padding: 100px 0;
+        }
+        
+        .programmes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .programme-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .programme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .programme-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .programme-img:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .programme-card:hover .programme-img:before {
+            transform: translateX(100%);
+        }
+        
+        .programme-content {
+            padding: 30px;
+        }
+        
+        .programme-content h3 {
+            margin-bottom: 10px;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+        
+        .programme-school {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .programme-features {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid var(--light-green);
+            border-bottom: 1px solid var(--light-green);
+        }
+        
+        .programme-features span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        /* News Section - Enhanced */
+        .news-section {
+            padding: 100px 0;
+            background-color: var(--light-green);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .news-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-green), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-green);
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        /* International Exposure - Enhanced */
+        .international-section {
+            padding: 100px 0;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .partner-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-green);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .partner-card:hover .partner-logo {
+            background-color: var(--primary-green);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        /* Call to Action - Enhanced */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-content h2 {
+            color: var(--white);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .cta-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-gold);
+        }
+        
+        .cta-content p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        /* Footer - Enhanced */
+        .main-footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .footer-university-name {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            margin: 5px 0 0 0;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info i {
+            color: var(--accent-gold);
+            margin-top: 3px;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-gold);
+            color: var(--dark-green);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links h4 {
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links li a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .footer-links li a i {
+            font-size: 0.8rem;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .footer-legal a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Responsive Design - Updated for more compact layout and slider */
+        @media (max-width: 1200px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .highlights-grid {
+                gap: 20px;
+            }
+            
+            .highlight-card {
+                padding: 30px 20px;
+            }
+            
+            .highlight-card h3 {
+                font-size: 1.25rem;
+                min-height: 55px;
+            }
+        }
+        
+        @media (max-width: 1100px) {
+            nav ul li a {
+                padding: 9px 11px;
+                font-size: 0.82rem;
+            }
+            
+            .btn-apply {
+                padding: 6px 16px !important;
+                font-size: 0.82rem !important;
+            }
+            
+            .university-name {
+                font-size: 1.3rem;
+            }
+            
+            .logo-image {
+                height: 48px;
+            }
+            
+            nav {
+                margin-left: 15px;
+            }
+            
+            .logo-container {
+                gap: 12px;
+            }
+            
+            /* 4 boxes become 2x2 grid on medium screens */
+            .highlights-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .highlight-card h3 {
+                min-height: auto;
+                margin-bottom: 15px;
+            }
+            
+            /* Adjust slider content for medium screens */
+            .slide-content {
+                left: 8%;
+                max-width: 550px;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .slide-content p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .slide-content h2 {
+                font-size: 2.6rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .programmes-grid,
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            
+            .schools-showcase {
+                height: 80vh;
+                min-height: 600px;
+            }
+            
+            .university-name {
+                font-size: 1.2rem;
+            }
+            
+            .logo-image {
+                height: 45px;
+            }
+            
+            nav ul li a {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            
+            nav {
+                margin-left: 12px;
+            }
+            
+            .logo-container {
+                gap: 10px;
+                margin-left: -8px;
+            }
+            
+            .slide-content {
+                left: 5%;
+                max-width: 500px;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.4rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            nav ul li a span:not(.fa) {
+                display: none;
+            }
+            
+            nav ul li a {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            
+            nav ul li a i.fa {
+                margin-right: 0;
+            }
+            
+            .btn-apply span {
+                display: none;
+            }
+            
+            .btn-apply {
+                padding: 8px 10px !important;
+                width: 40px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            nav {
+                margin-left: 10px;
+            }
+            
+            .slide-content {
+                left: 5%;
+                right: 5%;
+                max-width: 90%;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .logo-container {
+                gap: 10px;
+            }
+            
+            .logo-image {
+                height: 42px;
+            }
+            
+            .university-name {
+                font-size: 1.1rem;
+            }
+            
+            .university-tagline {
+                font-size: 0.7rem;
+            }
+            
+            nav {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 0;
+                height: auto;
+                z-index: 999;
+                margin-left: 0;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                padding: 10px 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            nav ul li a {
+                display: flex;
+                padding: 14px 20px;
+                border-radius: 0;
+                height: auto;
+                font-size: 0.9rem;
+                justify-content: flex-start;
+            }
+            
+            nav ul li a span:not(.fa) {
+                display: inline;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background-color: rgba(0, 100, 0, 0.03);
+                padding-left: 30px;
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .dropdown-content a {
+                padding: 10px 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: static;
+            }
+            
+            .btn-apply span {
+                display: inline;
+            }
+            
+            .btn-apply {
+                width: auto !important;
+                padding: 10px 20px !important;
+                margin: 10px 20px !important;
+            }
+            
+            .schools-showcase {
+                height: 70vh;
+                min-height: 500px;
+                margin-top: 80px;
+            }
+            
+            .slide-content {
+                left: 5%;
+                right: 5%;
+                text-align: center;
+            }
+            
+            .slide-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .slide-content p {
+                font-size: 1.1rem;
+            }
+            
+            /* Update overlay for mobile for better visibility */
+            .slide-overlay {
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5));
+                opacity: 0.8;
+            }
+            
+            .hero-section {
+                padding: 100px 0 80px;
+                margin-top: 80px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .highlight-card h3 {
+                min-height: auto;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .footer-legal {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo-image {
+                height: 38px;
+            }
+            
+            .university-name {
+                font-size: 1rem;
+            }
+            
+            .university-tagline {
+                font-size: 0.65rem;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.9rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 1.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            .programmes-grid,
+            .news-grid,
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schools-showcase {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.7rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 1.9rem;
+            }
+            
+            .footer-logo {
+                height: 40px;
+            }
+            
+            .footer-university-name {
+                font-size: 1.1rem;
+            }
+            
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .slider-controls {
+                gap: 20px;
+            }
+        }
+        
+        /* Animation for cards on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo - COMPACT & REFINED -->
+    <header class="header-with-logo">
+        <div class="header-container">
+            <!-- Logo moved COMPLETELY to the far left edge -->
+            <a href="index.html" class="logo-container">
+                <!-- Logo Image -->
+                <img src="static/images/ttulogo.png" alt="Taita Taveta University Logo" class="logo-image">
+                <!-- University Name & Tagline -->
+                <div class="logo-text-container">
+                    <h1 class="university-name">Taita Taveta University</h1>
+                    <p class="university-tagline">Home of Ideas</p>
+                </div>
+            </a>
+            
+            <!-- Professional Classic Navbar - COMPACT VERSION -->
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                    <li class="dropdown">
+                        <a href="programmes.html"><i class="fas fa-graduation-cap"></i> <span>Programmes</span> <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="programmes.html#engineering"><i class="fas fa-cogs"></i> School of Mines and Engineering</a>
+                            <a href="programmes.html#Informatics & Computings"><i class="fas fa-laptop-code"></i> School of Science and Informatics </a>
+                            <a href="programmes.html#agriculture"><i class="fas fa-seedling"></i> School of Agriculture, Earth and Environmental Sciences, Earth and Environmental Sciences</a>
+                            <a href="programmes.html#education"><i class="fas fa-chalkboard-teacher"></i> School of Education</a>
+                            <a href="programmes.html#business"><i class="fas fa-chart-line"></i> School of Business, Economics and Social Sciences</a>
+                            <a href="programmes.html#science"><i class="fas fa-flask"></i> School of Science</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="nav-link"><i class="fas fa-info-circle"></i> About TTU<i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="about.html"><i class="fas fa-university"></i> About University</a>
+                        <a href="history.html"><i class="fas fa-history"></i> History</a>
+                        <a href="mission.html"><i class="fas fa-bullseye"></i> Mission & Vision</a>
+                        <a href="administration.html"><i class="fas fa-users-cog"></i> University Council</a>
+                        <a href="vice-chancellor.html"><i class="fa fa-user"></i> Vice Chancellor</a>
+                        <a href="aro.html"><i class="fa fa-user"></i> Deputy Vice Chancellor - Academic Research and Outreach</a>
+                        <a href="afp.html"><i class="fa fa-user"></i> Deputy Vice Chancellor - Administration, Finance and Planning</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-file-signature"></i> Service Departments
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="dapd.html"><i class="fa fa-book"></i> Director Administration, Planning and Development</a>
+                        <a href="dof.html"><i class="fa fa-credit-card-alt"></i> Director of Finance</a>
+                        <a href="legal.html"><i class="fa fa-balance-scale"></i> Corporate & Legal Affairs Department</a>
+                        <a href="procurement.html"><i class="fas fa-calendar-times"></i> Procurement Department</a>
+                        <a href="internalaudit.html"><i class="fas fa-money-check-alt"></i> Internal Audit Department</a>
+                        <a href="ict.html"><i class="fa fa-laptop"></i> ICT Department</a>
+                        <a href="security.html"><i class="fa fa-lock"></i> Security Department</a>
+                        <a href="#"><i class="fa-regular fa-building"></i> Facilities Management Department</a>
+                        <a href="catering.html"><i class="fa fa-cutlery"></i> Catering Department</a>
+                        <a href="health.html"><i class="fa-regular fa-hospital"></i> Health Unit</a>
+                    </div>
+                </li>
+                    <!-- <li><a href="admissions.html"><i class="fas fa-file-alt"></i> <span>Admissions</span></a></li> -->
+                    <li><a href="news.html"><i class="fas fa-newspaper"></i> <span>News & Events</span></a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> <span>Gallery</span></a></li>
+                    <li><a href="kcse-candidates.html"><i class="fas fa-users"></i> <span>KCSE Candidates</span></a></li>
+                    <li><a href="admissions.html#apply" class="btn btn-primary btn-apply"><i class="fas fa-paper-plane"></i> <span>Apply Now</span></a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Updated: Schools Showcase Slider with Images -->
+    <section class="schools-showcase">
+        <div class="schools-slider">
+            <div class="slider-container">
+                <!-- School of Mines and Engineering Slide -->
+                <div class="school-slide active">
+                    <div class="slide-content">
+                        <h2>School of Mines and Engineering</h2>
+                        <p>State-of-the-art engineering labs and workshops preparing future innovators and problem-solvers for global challenges. Hands-on learning with modern equipment.</p>
+                        <a href="programmes.html#engineering" class="btn btn-secondary">Explore Engineering Programmes</a>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <!-- Using image from static/images folder -->
+                    <div class="slide-bg" style="background-image: url('static/images/engineering-school.jpg');"></div>
+                </div>
+                
+                <!-- School of Science and Informatics  Slide -->
+                <div class="school-slide">
+                    <div class="slide-content">
+                        <h2>School of Informatics and Computing</h2>
+                        <p>Cutting-edge technology education in computer science, information systems, and software engineering. Prepare for careers in the digital economy.</p>
+                        <a href="programmes.html#Informatics & Computings" class="btn btn-secondary">Explore Informatics & Computings Programmes</a>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <!-- Using image from static/images folder -->
+                    <div class="slide-bg" style="background-image: url('static/images/Informatics & Computings-school.jpg');"></div>
+                </div>
+                
+                <!-- School of Agriculture, Earth and Environmental Sciences, Earth and Environmental Sciences Slide -->
+                <div class="school-slide">
+                    <div class="slide-content">
+                        <h2>School of Agriculture, Earth and Environmental Sciences, Earth and Environmental Sciences</h2>
+                        <p>Modern agricultural techniques and sustainable farming practices. Research-driven programmes addressing food security and agricultural innovation.</p>
+                        <a href="programmes.html#agriculture" class="btn btn-secondary">Explore Agriculture Programmes</a>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <!-- Using image from static/images folder -->
+                    <div class="slide-bg" style="background-image: url('static/images/agriculture-school.jpg');"></div>
+                </div>
+                
+                <!-- School of Education Slide -->
+                <div class="school-slide">
+                    <div class="slide-content">
+                        <h2>School of Education</h2>
+                        <p>Training future educators with innovative teaching methodologies. Developing educational leaders who transform learning environments.</p>
+                        <a href="programmes.html#education" class="btn btn-secondary">Explore Education Programmes</a>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <!-- Using image from static/images folder -->
+                    <div class="slide-bg" style="background-image: url('static/images/education-school.jpg');"></div>
+                </div>
+                
+                <!-- School of Business, Economics and Social Sciences Slide -->
+                <div class="school-slide">
+                    <div class="slide-content">
+                        <h2>School of Business, Economics and Social Sciences</h2>
+                        <p>Developing business leaders for the global marketplace. Entrepreneurship, management, and economics programmes with industry partnerships.</p>
+                        <a href="programmes.html#business" class="btn btn-secondary">Explore Business Programmes</a>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <!-- Using image from static/images folder -->
+                    <div class="slide-bg" style="background-image: url('static/images/business-school.jpg');"></div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Highlights - STYLISH 4-BOX DESIGN -->
+    <section class="section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Taita Taveta University?</h2>
+                <p>We are committed to providing quality education, fostering research and innovation, and preparing students for global opportunities and leadership roles.</p>
+            </div>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon-container">
+                        <div class="highlight-icon-bg"></div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                    </div>
+                    <h3>Internationally Recognized Faculty</h3>
+                    <p>Learn from distinguished professors and researchers with global experience, advanced degrees, and expertise in their fields. Our faculty includes award-winning scholars and industry experts.</p>
+                </div>
+                
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon-container">
+                        <div class="highlight-icon-bg"></div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                    </div>
+                    <h3>Research & Innovation Excellence</h3>
+                    <p>Engage in groundbreaking research with state-of-the-art facilities, patent opportunities, and funded projects. Our innovation hub supports student startups and commercialization of research.</p>
+                </div>
+                
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon-container">
+                        <div class="highlight-icon-bg"></div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                    </div>
+                    <h3>Global Opportunities</h3>
+                    <p>Study abroad programs, international exchange partnerships, and global internships with universities worldwide. Expand your horizons through our network of 120+ international partners.</p>
+                </div>
+                
+                <div class="highlight-card animate-on-scroll">
+                    <div class="highlight-icon-container">
+                        <div class="highlight-icon-bg"></div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                    <h3>Modern Campus Facilities</h3>
+                    <p>State-of-the-art laboratories, smart lecture halls, extensive library resources, sports complex with swimming pool, and comfortable student accommodation on a beautiful, green campus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Programmes -->
+    <section class="programmes-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Programmes</h2>
+                <p>Explore our diverse range of undergraduate programmes designed to equip you with skills for the future job market and global opportunities.</p>
+            </div>
+            
+            <div class="programmes-grid">
+                <div class="programme-card animate-on-scroll">
+                    <div class="programme-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="programme-content">
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        <span class="programme-school">School of Information & Communication Technology</span>
+                        <p>Gain cutting-edge skills in software development, artificial intelligence, cybersecurity, and data science. Hands-on training in modern computer labs with industry-standard tools.</p>
+                        <div class="programme-features">
+                            <span><i class="fas fa-clock"></i> 4 Years</span>
+                            <span><i class="fas fa-graduation-cap"></i> Degree</span>
+                            <span><i class="fas fa-users"></i> 120 Students</span>
+                        </div>
+                        <a href="programme-detail.html?programme=computer-science" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="programme-card animate-on-scroll">
+                    <div class="programme-img">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="programme-content">
+                        <h3>Bachelor of Science in Mechanical Engineering</h3>
+                        <span class="programme-school">School of Mines and Engineering</span>
+                        <p>Design and develop mechanical systems with hands-on training in our modern engineering labs and workshops. Focus on innovation, sustainability, and practical problem-solving.</p>
+                        <div class="programme-features">
+                            <span><i class="fas fa-clock"></i> 5 Years</span>
+                            <span><i class="fas fa-graduation-cap"></i> Degree</span>
+                            <span><i class="fas fa-users"></i> 80 Students</span>
+                        </div>
+                        <a href="programme-detail.html?programme=mechanical-engineering" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="programme-card animate-on-scroll">
+                    <div class="programme-img">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="programme-content">
+                        <h3>Bachelor of Science in Agriculture</h3>
+                        <span class="programme-school">School of Agriculture, Earth and Environmental Sciences, Earth and Environmental Sciences</span>
+                        <p>Modern agricultural techniques, agribusiness management, and sustainable farming practices with practical field training. Prepare for careers in food security and agricultural innovation.</p>
+                        <div class="programme-features">
+                            <span><i class="fas fa-clock"></i> 4 Years</span>
+                            <span><i class="fas fa-graduation-cap"></i> Degree</span>
+                            <span><i class="fas fa-users"></i> 100 Students</span>
+                        </div>
+                        <a href="programme-detail.html?programme=agriculture" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 50px;">
+                <a href="programmes.html" class="btn btn-secondary btn-large">View All 19 Programmes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News & Events -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest News & Events</h2>
+                <p>Stay updated with the latest happenings, research breakthroughs, and student activities at Taita Taveta University.</p>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card animate-on-scroll">
+                    <div class="news-img">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">April 15, 2024</span>
+                        <h3>2024 Graduation Ceremony: Celebrating Excellence</h3>
+                        <p>TTU celebrates the graduation of over 1,200 students across all schools and faculties in a grand ceremony attended by industry leaders and government officials.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-avatar">TT</div>
+                                <span>University PR</span>
+                            </div>
+                            <a href="news-detail.html?id=1" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-on-scroll">
+                    <div class="news-img">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">March 28, 2024</span>
+                        <h3>Research Grant Awarded for Renewable Energy Project</h3>
+                        <p>TTU researchers receive KSh 25M grant for solar-powered irrigation systems project focusing on arid regions. The project aims to benefit 10,000+ farmers.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-avatar">DN</div>
+                                <span>David Njoroge</span>
+                            </div>
+                            <a href="news-detail.html?id=2" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-card animate-on-scroll">
+                    <div class="news-img">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">March 10, 2024</span>
+                        <h3>Student Exchange Program: Germany and China</h3>
+                        <p>15 TTU students depart for semester exchange programs in Germany and China as part of our international partnership initiatives with leading universities.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-avatar">SJ</div>
+                                <span>Sarah Johnson</span>
+                            </div>
+                            <a href="news-detail.html?id=3" class="news-link">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="news.html" class="btn btn-primary btn-large">View All News & Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- International Exposure -->
+    <section class="international-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Global Connections & Partnerships</h2>
+                <p>Our students gain international exposure through exchange programs, study tours, and global partnerships with universities worldwide.</p>
+            </div>
+            
+            <div class="partners-grid">
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Technical University of Munich</h4>
+                    <p>Germany - Engineering & Technology Exchange</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--medium-gray);">
+                        <i class="fas fa-exchange-alt"></i> Student Exchange Program
+                    </div>
+                </div>
+                
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>University of Nairobi</h4>
+                    <p>Kenya - Research Collaboration</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--medium-gray);">
+                        <i class="fas fa-handshake"></i> Joint Research Projects
+                    </div>
+                </div>
+                
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>Beijing University of Agriculture</h4>
+                    <p>China - Agricultural Research</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--medium-gray);">
+                        <i class="fas fa-seedling"></i> Agricultural Technology Exchange
+                    </div>
+                </div>
+                
+                <div class="partner-card animate-on-scroll">
+                    <div class="partner-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4>University of Toronto</h4>
+                    <p>Canada - Faculty Exchange Program</p>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--medium-gray);">
+                        <i class="fas fa-chalkboard-teacher"></i> Faculty Development
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Begin Your Success Story at TTU</h2>
+                <p>Join thousands of successful TTU alumni who are making a difference in Kenya and around the world. Your journey to becoming a future leader, innovator, and change-maker starts here.</p>
+                <div class="cta-buttons">
+                    <a href="admissions.html" class="btn btn-secondary btn-large">Apply Now</a>
+                    <a href="kcse-candidates.html" class="btn btn-outline btn-large">KCSE Candidates</a>
+                    <a href="gallery.html" class="btn btn-outline btn-large">Virtual Campus Tour</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo-container">
+                        <img src="static/images/ttulogo.png" alt="Taita Taveta University Logo" class="footer-logo">
+                        <div>
+                            <h3 class="footer-university-name">Taita Taveta University</h3>
+                            <p class="footer-tagline">Home of Ideas</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> P.O. Box 635-80300, Voi, Kenya</p>
+                        <p><i class="fas fa-phone"></i> +254 (0) 123 456 789</p>
+                        <p><i class="fas fa-envelope"></i> info@ttu.ac.ke</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                            <li><a href="programmes.html"><i class="fas fa-chevron-right"></i> Programmes</a></li>
+                            <li><a href="admissions.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                            <li><a href="news.html"><i class="fas fa-chevron-right"></i> News & Events</a></li>
+                            <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                            <li><a href="kcse-candidates.html"><i class="fas fa-chevron-right"></i> KCSE Candidates</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h4>Academic Schools</h4>
+                        <ul>
+                            <li><a href="programmes.html#engineering"><i class="fas fa-chevron-right"></i> School of Mines and Engineering</a></li>
+                            <li><a href="programmes.html#Informatics & Computings"><i class="fas fa-chevron-right"></i> School of Science and Informatics </a></li>
+                            <li><a href="programmes.html#agriculture"><i class="fas fa-chevron-right"></i> School of Agriculture, Earth and Environmental Sciences, Earth and Environmental Sciences</a></li>
+                            <li><a href="programmes.html#education"><i class="fas fa-chevron-right"></i> School of Education</a></li>
+                            <li><a href="programmes.html#business"><i class="fas fa-chevron-right"></i> School of Business, Economics and Social Sciences</a></li>
+                            <li><a href="programmes.html#science"><i class="fas fa-chevron-right"></i> School of Science</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <div class="footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Library Portal</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Research Portal</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Student Portal</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> E-Learning Platform</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Career Services</a></li>
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> Alumni Network</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Taita Taveta University. All Rights Reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Accessibility</a>
+                    <a href="#">Site Map</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="static/js/main.js"></script>
+    <script>
+        // Image preloading function for smoother slider transitions
+        function preloadSliderImages() {
+            const imagePaths = [
+                'static/images/engineering-school.jpg',
+                'static/images/Informatics & Computings-school.jpg',
+                'static/images/agriculture-school.jpg',
+                'static/images/education-school.jpg',
+                'static/images/business-school.jpg'
+            ];
+            
+            imagePaths.forEach(path => {
+                const img = new Image();
+                img.src = path;
+                console.log('Preloading image:', path);
+            });
+        }
+        
+        // Schools slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload images for better performance
+            preloadSliderImages();
+            
+            const slides = document.querySelectorAll('.school-slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                
+                // Add subtle animation to slide content when changing slides
+                const activeSlideContent = slides[currentSlide].querySelector('.slide-content');
+                activeSlideContent.style.opacity = '0';
+                activeSlideContent.style.transform = 'translateY(20px) translateY(-50%)';
+                
+                setTimeout(() => {
+                    activeSlideContent.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    activeSlideContent.style.opacity = '1';
+                    activeSlideContent.style.transform = 'translateY(-50%)';
+                }, 100);
+            }
+            
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+            
+            // Auto slide every 6 seconds
+            let slideInterval = setInterval(nextSlide, 6000);
+            
+            // Reset interval on manual navigation
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 6000);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                resetInterval();
+            });
+            
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                resetInterval();
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    showSlide(index);
+                    resetInterval();
+                });
+            });
+            
+            // Pause auto-slide on hover
+            const slider = document.querySelector('.schools-slider');
+            slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
+            
+            // Scroll animations
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mainNav.classList.toggle('active');
+                this.innerHTML = mainNav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                this.setAttribute('aria-expanded', mainNav.classList.contains('active'));
+            });
+            
+            // Mobile dropdown functionality
+            dropdowns.forEach(dropdown => {
+                const dropdownLink = dropdown.querySelector('a');
+                
+                dropdownLink.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('header') && mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+                }
+            });
+            
+            // Close mobile menu on link click (except dropdowns)
+            document.querySelectorAll('nav a:not(.dropdown > a)').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+                    }
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#' || href.startsWith('#')) {
+                        e.preventDefault();
+                        
+                        // Close mobile menu if open
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                        
+                        if (href !== '#') {
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) {
+                                window.scrollTo({
+                                    top: targetElement.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Update current year in footer
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.querySelector('.copyright p');
+            if (copyrightElement) {
+                copyrightElement.innerHTML = copyrightElement.innerHTML.replace('2024', currentYear);
+            }
+            
+            // Logo hover effect enhancement
+            const logoImage = document.querySelector('.logo-image');
+            if (logoImage) {
+                logoImage.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                logoImage.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            }
+            
+            // Add active class to current page in nav (excluding dropdown)
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('nav ul li a[href]:not(.dropdown-content a)');
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Add loading state for slider images
+            const slideBgs = document.querySelectorAll('.slide-bg');
+            slideBgs.forEach(bg => {
+                bg.style.opacity = '0.7';
+                bg.addEventListener('load', function() {
+                    this.style.transition = 'opacity 0.8s ease';
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
